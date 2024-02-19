@@ -1,11 +1,11 @@
-package com.ltdd.testing;
+package com.example.ltdd_01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-//comment - one
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
