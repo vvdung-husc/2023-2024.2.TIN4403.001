@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.ltdd_01.testing"
+    namespace = "com.ltdd_01.ltdd_01"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.ltdd_01.testing"
+        applicationId = "com.ltdd_01.ltdd_01"
         minSdk = 21
         targetSdk = 34
         versionCode = 1
