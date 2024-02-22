@@ -1,1 +1,11 @@
-a
+https://nginx.org/en/download.html
+
+
+netstat -oanp tcp | findstr LIST
+
+tạo folder uploads trong nginx/html
+vào conf chỉnh nginx.conf
+thêm
+ location /uploads {
+        autoindex on;
+    }
