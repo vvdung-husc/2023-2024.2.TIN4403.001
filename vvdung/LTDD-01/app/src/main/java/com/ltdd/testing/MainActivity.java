@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    static String   _usernameLogined;
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
     TextView m_lblRegister;//Biến điều khiển Đăng ký mới
@@ -75,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),json,Toast.LENGTH_SHORT).show();
         Log.d("K45",json);
 
-        //boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
-        /*if (bOk){
-            _userNameLogined = "Võ Việt Dũng";
+        boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
+        if (bOk){
+            _usernameLogined = "Võ Việt Dũng";
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             startActivity(intent);
         }
@@ -88,6 +89,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không chính xác.",Toast.LENGTH_SHORT).show();
                 }
             });
-        }*/
+        }
     }//void apiLogin(String user, String pass) throws IOException {
 }//public class MainActivity extends AppCompatActivity {
