@@ -2,11 +2,13 @@ package com.ltdd.testing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -14,7 +16,8 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
-    Button m_btnLogin; //Biến điều khiển Button
+    Button m_btnLogin; //Biến điều khiển Đăng nhập
+    TextView m_lblRegister;//Biến điều khiển Đăng ký mới
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +28,13 @@ public class MainActivity extends AppCompatActivity {
         m_edtPass = (EditText)findViewById(R.id.edtPassword);
         m_btnLogin = (Button) findViewById(R.id.btnLogin);
 
+        m_lblRegister = (TextView) findViewById(R.id.lblRegister);
+
         //Cài đặt sự kiện Click cho Button Login
         m_btnLogin.setOnClickListener(new CButtonLogin());
+
+        //Cài đặt sự kiện Click cho Button Register
+        m_lblRegister.setOnClickListener(new CButtonRegister());
 
     }//protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
         }//public void onClick(View v) {//Hàm sử lý sự kiện click button login
     }//public class CButtonLogin  implements View.OnClickListener {
 
+    public class CButtonRegister implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {//Hàm sử lý sự kiện click button register
+            //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+            startActivity(i);
+        }
+    }//public class CButtonRegister implements View.OnClickListener {
 
     //Hàm dịch vụ Login
     void apiLogin(String user, String pass) throws IOException {
