@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="stringee_color">#F5C50A0A</color>
+    <color name="stringee_background_color">#2196F3</color>
+    <color name="stringee_start_color">#2196F3</color>
+    <color name="stringee_center_color">#673AB7</color>
+    <color name="stringee_end_color">#FF5722</color>
+    <color name="zalo">#0474FD</color>
 </resources>
