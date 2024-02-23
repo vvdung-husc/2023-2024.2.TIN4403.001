@@ -1,4 +1,4 @@
-package com.example.nt2_01;
+ package com.example.nt2_01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
