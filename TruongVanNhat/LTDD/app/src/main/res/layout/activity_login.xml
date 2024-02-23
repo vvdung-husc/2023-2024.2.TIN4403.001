@@ -13,11 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="email"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="30sp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="pass"
+        android:text="PASSWORD"
         android:textColor="@color/black"
         android:textSize="30sp"/>
     <EditText
@@ -25,5 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:hint="password"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="30sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@android:dimen/app_icon_size"
+        android:hint="LOGIN"
+        android:textColor="@color/black"
+        android:textSize="30sp"/>
 </androidx.appcompat.widget.LinearLayoutCompat>
