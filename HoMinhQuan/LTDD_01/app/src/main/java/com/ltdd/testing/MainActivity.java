@@ -1,9 +1,8 @@
-package com.ltdd.testing1;
+package com.ltdd.testing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,11 +46,7 @@ public class MainActivity extends AppCompatActivity {
             String pass = m_edtPass.getText().toString();
             Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
-                //Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!",Toast.LENGTH_SHORT).show();
-                Toast toast = Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!",Toast.LENGTH_SHORT);
-                TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                toastMessage.setTextColor(Color.RED);
-                toast.show();
+                Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!",Toast.LENGTH_SHORT).show();
                 return;
             }
             try {
@@ -78,11 +73,12 @@ public class MainActivity extends AppCompatActivity {
     void apiLogin(String user, String pass) throws IOException {
 
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
+        Toast.makeText(getApplicationContext(),json,Toast.LENGTH_SHORT).show();
         Log.d("K45",json);
 
-        boolean bOk = (user.equals("nhatnvh") && pass.equals("123456"));
+        boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
         if (bOk){
-            _usernameLogined = "Nguyễn Văn Hoàng Nhật";
+            _usernameLogined = "Võ Việt Dũng";
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             startActivity(intent);
         }
@@ -90,14 +86,7 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    //Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không chính xác.",Toast.LENGTH_SHORT).show();
-                    String str = "Tài khoản hoặc mật khẩu không chính xác [" + user + "/" + pass + "]";
-                    Toast toast = Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT);
-                    View view = toast.getView();
-                    view.setBackgroundColor(Color.GREEN);
-                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                    toastMessage.setTextColor(Color.RED);
-                    toast.show();
+                    Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không chính xác.",Toast.LENGTH_SHORT).show();
                 }
             });
         }

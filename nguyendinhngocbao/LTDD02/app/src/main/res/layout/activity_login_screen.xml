@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterScreen">
-
+    tools:context=".LoginScreen">
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -18,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edtName"
+        android:id="@+id/edtNameLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -40,10 +39,10 @@
         android:text="Mật Khẩu"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNameLog" />
 
     <EditText
-        android:id="@+id/edtPass"
+        android:id="@+id/edtPassLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -56,41 +55,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="32dp"
-        android:text="Số Điện Thoại"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPass" />
-
-    <EditText
-        android:id="@+id/edtPhoneNum"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Số Điện Thoại"
-        android:textSize="18sp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="24dp"
-        android:inputType="phone"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
     <Button
-        android:id="@+id/btnSubmit"
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:width="250dp"
         android:backgroundTint="#00d4ff"
-        android:text="Submit"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="@+id/edtPhoneNum"
-        app:layout_constraintStart_toStartOf="@+id/edtPhoneNum"
-        app:layout_constraintTop_toBottomOf="@+id/edtPhoneNum" />
+        android:text="LogIn"
+        app:layout_constraintEnd_toEndOf="@+id/edtPassLog"
+        app:layout_constraintStart_toStartOf="@+id/edtPassLog"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassLog" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

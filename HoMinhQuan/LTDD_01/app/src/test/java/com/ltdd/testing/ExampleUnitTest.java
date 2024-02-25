@@ -1,4 +1,4 @@
-package com.example.ltdd_01;
+package com.ltdd.testing;
 
 import org.junit.Test;
 
