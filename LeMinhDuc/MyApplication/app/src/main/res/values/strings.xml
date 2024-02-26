@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Hyperlink_textview</string>
+
+    <!-- href tag is used to add link-->
+    <!-- link for home text view-->
+    <string name="hyperlink"><a href="https://www.google.com/">Google</a></string>
+
+</resources>
