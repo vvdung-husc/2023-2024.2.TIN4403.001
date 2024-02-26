@@ -3,6 +3,7 @@ WiFi - CNTT-MMT/13572468
 Phần mềm
 1. Android Studio - Hedgehog
  - https://developer.android.com/
+ - okhttp https://square.github.io/okhttp/
 2. Emulators (BlueStacks, LDPlayer, NoxPlayer, ...)
  - https://www.bluestacks.com/
 3. Visual Studio Code
