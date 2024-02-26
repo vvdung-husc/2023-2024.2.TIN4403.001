@@ -45,8 +45,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="38dp"
         android:ems="10"
-        android:hint="Nhập tên tài khoản"
         android:inputType="text"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -78,8 +78,10 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="38dp"
+        android:drawableEnd="@drawable/baseline_remove_red_eye_24"
         android:ems="10"
         android:inputType="textPassword"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -97,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_dangnhap"
+        app:layout_constraintTop_toBottomOf="@+id/text_facebook"
         app:layout_constraintVertical_bias="0.066" />
 
     <TextView
@@ -110,7 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.153"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_quenmatkhau"
+        app:layout_constraintTop_toBottomOf="@+id/button_dangnhap"
         app:layout_constraintVertical_bias="0.091" />
 
     <Button
@@ -128,47 +130,37 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_password"
-        app:layout_constraintVertical_bias="0.316" />
+        app:layout_constraintVertical_bias="0.078" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
         android:text="Chưa có tài khoản?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/text_dangki"
-        app:layout_constraintHorizontal_bias="0.914"
+        app:layout_constraintHorizontal_bias="0.82"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_facebook"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintVertical_bias="0.222" />
 
     <TextView
         android:id="@+id/text_dangki"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
         android:text="Đăng Ký"
         android:textColor="#03A9F4"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintHorizontal_bias="0.717"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_facebook"
-        app:layout_constraintVertical_bias="0.56" />
-
-    <CheckBox
-        android:id="@+id/button_hienthipass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="45dp"
-        android:text="Hiển thị mật khẩu"
-        app:layout_constraintBottom_toTopOf="@+id/button_dangnhap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.143"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_password"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.221" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
