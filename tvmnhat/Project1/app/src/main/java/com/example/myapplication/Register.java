@@ -22,6 +22,7 @@ public class Register extends AppCompatActivity {
         Button Register_btn = findViewById(R.id.registerButton);
         TextView login_btn = findViewById(R.id.btnlogin);
 
+
         //admin, email and admin
 
         Register_btn.setOnClickListener(new View.OnClickListener() {
@@ -38,12 +39,9 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        login_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Register.this, Login.class));
-                finish();
-            }
+        login_btn.setOnClickListener(view -> {
+            startActivity(new Intent(Register.this, Login.class));
+            finish();
         });
 
     }
