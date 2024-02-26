@@ -18,4 +18,4 @@ API -
    + x-www-form-urlencode: username/password
  - POST https://dev.husc.edu.vn/tin4403/api/userinfo
  - POST https://dev.husc.edu.vn/tin4403/api/register
- 
+   
