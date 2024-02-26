@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "com.ltdd.testing1"
+    namespace = "com.example.ltdd"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.ltdd.testing1"
-        minSdk = 21
+        applicationId = "com.example.ltdd"
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -19,7 +19,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {

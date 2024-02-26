@@ -1,9 +1,9 @@
-package com.ltdd_testing1;
+package com.example.ltdd;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.text.HtmlCompat;
 
 import java.io.IOException;
 
@@ -22,93 +25,70 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
 
+public class LoginActivity extends AppCompatActivity {
     static String   _usernameLogined;
-    EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
-    Button m_btnLogin; //Biến điều khiển Đăng nhập
-    TextView m_lblRegister;//Biến điều khiển Đăng ký mới
+    EditText edtUser;
+    EditText edtPass;
+    Button btnLogin;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        //Khởi tạo các biến điều khiển tương ứng trong layout
-        m_edtUser = (EditText)findViewById(R.id.edtUsername);
-        m_edtPass = (EditText)findViewById(R.id.edtPassword);
-        m_btnLogin = (Button) findViewById(R.id.btnLogin);
+        edtUser = findViewById(R.id.edtUser);
+        edtPass = findViewById(R.id.edtPass);
+        btnLogin = findViewById(R.id.btnLogin);
 
-        m_lblRegister = (TextView) findViewById(R.id.lblRegister);
+        btnLogin.setOnClickListener(new CButtonLogin());
 
-        //Cài đặt sự kiện Click cho Button Login
-        m_btnLogin.setOnClickListener(new CButtonLogin());
-
-        //Cài đặt sự kiện Click cho Button Register
-        m_lblRegister.setOnClickListener(new CButtonRegister());
-
-    }//protected void onCreate(Bundle savedInstanceState) {
+    }
 
     public class CButtonLogin  implements View.OnClickListener {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button login
-            String user = m_edtUser.getText().toString();
-            String pass = m_edtPass.getText().toString();
-            Log.d("K44","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+            String user = edtUser.getText().toString();
+            String pass = edtPass.getText().toString();
+            Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
-                Toast toast = Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!",Toast.LENGTH_SHORT);
-                TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                toastMessage.setTextColor(Color.RED);
-                toast.show();
+                Toast.makeText(getApplicationContext(), "Tài khoản hoặc mật khẩu không hợp lệ!", Toast.LENGTH_SHORT).show();
                 return;
             }
             try {
                 //Gọi hàm dịch vụ Login
-                //apiLogin(user,pass);
-                okhttpApiLogin(user,pass);
+                apiLogin(user,pass);
+                //okhttpApiLogin(user,pass);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-        }//public void onClick(View v) {//Hàm sử lý sự kiện click button login
-    }//public class CButtonLogin  implements View.OnClickListener {
-
-    public class CButtonRegister implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {//Hàm sử lý sự kiện click button register
-            //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-            startActivity(i);
         }
-    }//public class CButtonRegister implements View.OnClickListener {
+    }
 
     //Hàm dịch vụ Login
     void apiLogin(String user, String pass) throws IOException {
 
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
-        Toast.makeText(getApplicationContext(),json, Toast.LENGTH_SHORT).show();
         Log.d("K45",json);
 
-        boolean bOk = (user.equals("ntvanh") && pass.equals("123456"));
+        boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
         if (bOk){
-            _usernameLogined = "Nguyễn Thị Vân Anh";// kích hoạt activity_user
-            Intent intent = new Intent(getApplicationContext(),UserActivity.class);
+            _usernameLogined = "Võ Việt Dũng";
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intent);
         }
         else{
-            MainActivity.this.runOnUiThread(new Runnable() {
+            LoginActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    //Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không chính xác.",Toast.LENGTH_SHORT).show();
                     String str = "Tài khoản hoặc mật khẩu không chính xác [" + user + "/" + pass + "]";
-                    Toast toast = Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT);
-                    View view = toast.getView();
-                    view.setBackgroundColor(Color.GREEN);
-                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                    toastMessage.setTextColor(Color.RED);
-                    toast.show();                }
+                    ShowToast(str);
+                }
             });
         }
-    }//void apiLogin(String user, String pass) throws IOException {
+    } //void apiLogin(String user, String pass) throws IOException {
 
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
@@ -137,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + response.body().string();
                 Log.d("K45",errStr);
                 if (!response.isSuccessful()){
-                    MainActivity.this.runOnUiThread(new Runnable() {
+                    LoginActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
@@ -147,18 +127,30 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 _usernameLogined = user;
-                Intent intent = new Intent(getApplicationContext(),UserActivity.class);
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
 
             }
         });//client.newCall(request).enqueue(new Callback() {
     } //void okhttpApiLogin(String user, String pass) throws IOException{
 
+    void ShowToast(String msg){
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            Toast toast = Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            view.setBackgroundColor(Color.GREEN);
+            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+            toastMessage.setTextColor(Color.RED);
+            toast.show();
+        }
+        else {
+            Toast.makeText(getApplicationContext(),
+                    HtmlCompat.fromHtml("<font color='red'>" + msg +"</font>" , HtmlCompat.FROM_HTML_MODE_LEGACY),
+                    Toast.LENGTH_LONG).show();
+        }
 
 
-
-
-
+    }
 
     ///////////// CÁCH SỬ DỤNG OKHTTP GET/POST ///////////////
     //Hàm mẫu sử dụng phương thức GET - chỉ tham khảo
@@ -175,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String myResponse = response.body().string();
-                MainActivity.this.runOnUiThread(new Runnable() {
+                LoginActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         //txtString.setText(myResponse);
@@ -210,4 +202,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-}//public class MainActivity extends AppCompatActivity {
+
+}//public class LoginActivity extends AppCompatActivity {
