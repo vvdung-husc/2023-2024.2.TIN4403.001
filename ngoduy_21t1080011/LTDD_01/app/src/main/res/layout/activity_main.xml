@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -119,10 +119,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
+        android:backgroundTint="@color/zalo"
         android:text="Đăng nhập"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:backgroundTint="@color/zalo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -137,10 +137,11 @@
         android:text="Chưa có tài khoản?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.386"
+        app:layout_constraintEnd_toStartOf="@+id/text_dangki"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_facebook"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintVertical_bias="0.56" />
 
     <TextView
         android:id="@+id/text_dangki"
@@ -151,13 +152,13 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.688"
+        app:layout_constraintHorizontal_bias="0.681"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_facebook"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintVertical_bias="0.56" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/button_hienthipass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -168,6 +169,6 @@
         app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_password"
-        app:layout_constraintVertical_bias="0.692" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

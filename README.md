@@ -1,4 +1,5 @@
 # TIN4403 - Lập trình ứng dụng cho các thiết bị di động
+WiFi - CNTT-MMT/13572468
 Phần mềm
 1. Android Studio - Hedgehog
  - https://developer.android.com/
@@ -9,5 +10,12 @@ Phần mềm
 4. MEAN Stack - https://meanjs.org/
  - MongoDB, ExpressJS, AngularJS, and Node.js
 
-WiFi - CNTT-MMT/13572468
+5. Postman - https://www.postman.com/
 
+API - 
+ - GET https://dev.husc.edu.vn/tin4403/api
+ - POST https://dev.husc.edu.vn/tin4403/api/login
+   + x-www-form-urlencode: username/password
+ - POST https://dev.husc.edu.vn/tin4403/api/userinfo
+ - POST https://dev.husc.edu.vn/tin4403/api/register
+ 
