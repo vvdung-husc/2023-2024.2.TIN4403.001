@@ -6,31 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="329dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="100dp"
-        android:ems="10"
-        android:hint="Nhập tài khoản"
-        android:inputType="textPassword"
-        android:textAlignment="gravity"
-        android:textAllCaps="true"
-        android:textColor="#000000"
-        android:textColorHighlight="#000000"
-        android:textColorHint="#989393"
-        android:textColorLink="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="110dp"
         android:layout_height="36dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="44dp"
         android:text="Tài khoản"
         android:textColor="#000000"
         android:textColorHighlight="#000000"
@@ -63,10 +44,9 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="268dp"
+        android:layout_width="111dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="148dp"
         android:text="Mật khẩu"
         android:textColor="#000000"
         android:textColorHighlight="#000000"
@@ -75,25 +55,27 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="308dp"
         android:layout_height="56dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="60dp"
         android:text="Đăng nhập"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintVertical_bias="0.425" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="143dp"
         android:layout_height="24dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="380dp"
         android:text="Chưa có tài khoản ?"
         android:textAlignment="textEnd"
         android:textSize="16sp"
@@ -106,13 +88,36 @@
         android:id="@+id/checkedTextView"
         android:layout_width="98dp"
         android:layout_height="23dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="116dp"
+        android:layout_marginEnd="104dp"
         android:text="Đăng ký mới"
         android:textColor="#3F51B5"
         android:textColorHighlight="#28357E"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/editTextText"
+        wrap_contentapp:layout_constraintTop_toTopOf="par
+
+    <EditText
+        android:layout_width="
+        android:layout_width="331dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="600dp"
+        android:ems="10"
+        android:hint="Nhập tài khoản"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editTextText2"
+        tools:layout_editor_absoluteY="94dp"
+        tools:layout_editor_absoluteX="39dp" />

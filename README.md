@@ -1,6 +1,5 @@
 # TIN4403 - Lập trình ứng dụng cho các thiết bị di động
 WiFi - CNTT-MMT/13572468
-
 Phần mềm
 1. Android Studio - Hedgehog
  - https://developer.android.com/
