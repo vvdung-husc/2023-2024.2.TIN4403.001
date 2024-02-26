@@ -1,4 +1,4 @@
-package com.ltdd.testing;
+package com.example.fromregister;
 
 import org.junit.Test;
 
