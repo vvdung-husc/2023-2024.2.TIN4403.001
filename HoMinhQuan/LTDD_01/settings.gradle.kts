@@ -13,6 +13,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LTDD_01"
+rootProject.name = "FromLogin"
+include(":app")
 include(":app")
  
