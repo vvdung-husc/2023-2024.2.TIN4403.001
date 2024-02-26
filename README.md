@@ -12,5 +12,10 @@ Phần mềm
 
 5. Postman - https://www.postman.com/
 
-
+API - 
+ - GET https://dev.husc.edu.vn/tin4403/api
+ - POST https://dev.husc.edu.vn/tin4403/api/login
+   + x-www-form-urlencode: username/password
+ - POST https://dev.husc.edu.vn/tin4403/api/userinfo
+ - POST https://dev.husc.edu.vn/tin4403/api/register
  
