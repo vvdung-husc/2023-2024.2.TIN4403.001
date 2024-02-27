@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
     static String   _usernameLogined;
-    EditText edtPhone;
+    EditText edtUser;
     EditText edtPass;
     Button btnDN;
     @Override
@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        edtPhone = findViewById(R.id.edtPhone);
+        edtUser = findViewById(R.id.edtUser);
         edtPass = findViewById(R.id.edtPassWord);
         btnDN = findViewById(R.id.btnDN);
 
@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     public class CButtonLogin  implements View.OnClickListener {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button login
-            String phone = edtPhone.getText().toString();
+            String phone = edtUser.getText().toString();
             String pass = edtPass.getText().toString();
             Log.d("K45", "CLICK BUTTON LOGIN ACCOUNT " + phone + "/" + pass);
             if (phone.length() < 3 || pass.length() < 6) {
@@ -57,9 +57,9 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),json,Toast.LENGTH_SHORT).show();
         Log.d("K45",json);
 
-        boolean bOk = (user.equals("123123") && pass.equals("123456"));
+        boolean bOk = (user.equals("phudeptrai123") && pass.equals("123456"));
         if (bOk){
-            _usernameLogined = "Võ Việt Dũng";
+            _usernameLogined = "Dinh Quang Phu";
             Intent intent = new Intent(LoginActivity.this,ComfirmLoginActivity.class);
             startActivity(intent);
         }
