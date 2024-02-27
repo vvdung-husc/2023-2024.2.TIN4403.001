@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }//void apiLogin(String user, String pass) throws IOException {
-
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
@@ -210,4 +209,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }//public class MainActivity extends AppCompatActivity {
