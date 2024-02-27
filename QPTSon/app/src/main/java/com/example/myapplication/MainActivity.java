@@ -14,6 +14,15 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+
 public class MainActivity extends AppCompatActivity {
 
     static String   _usernameLogined;
@@ -56,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
             }
             try {
                 //Gọi hàm dịch vụ Login
-                apiLogin(user,pass);
-
+                //apiLogin(user,pass);
+                okhttpApiLogin(user,pass);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -80,9 +89,9 @@ public class MainActivity extends AppCompatActivity {
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
 
-        boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
+        boolean bOk = (user.equals("") && pass.equals(""));
         if (bOk){
-            _usernameLogined = "Võ Việt Dũng";
+            _usernameLogined = "";
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             startActivity(intent);
         }
