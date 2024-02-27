@@ -1,14 +1,14 @@
-package com.example.myapplication001;
+package com.ltdd.ltdd;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class RegisterActivity2 extends AppCompatActivity {
+public class activity_user extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register2);
+        setContentView(R.layout.activity_user);
     }
 }
