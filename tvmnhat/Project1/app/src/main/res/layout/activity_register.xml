@@ -11,7 +11,7 @@
         android:layout_width="176dp"
         android:layout_height="144dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/fmt_image"
         android:src="@drawable/fmt" />
 
@@ -23,7 +23,7 @@
         android:text="Create Account"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:textSize="30dp"
         android:textColor="@color/white"
         android:layout_marginLeft="12dp"
@@ -81,11 +81,29 @@
         android:drawablePadding="10dp"
         android:inputType="textPassword"/>
 
+    <EditText
+        android:id="@+id/password_toggle3"
+        android:layout_width="387dp"
+        android:layout_height="59dp"
+        android:layout_below="@id/password_toggle2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:hint="Confirm your password"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:drawableStart="@drawable/baseline_chevron_right_24"
+        android:drawablePadding="10dp"
+        android:inputType="textPassword"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="14dp"
         android:id="@+id/quenmatkhau"
-        android:layout_below="@+id/password_toggle2"
+        android:layout_below="@+id/password_toggle3"
         android:text="@string/forgot_password"
         android:gravity="right"
         android:textColor="#8CAAB9"
