@@ -8,14 +8,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class UserActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     TextView m_lblWelcome;
     Button m_btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_main);
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
         m_lblWelcome = (TextView)findViewById(R.id.lblWelcome);
@@ -27,8 +27,8 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
-                startActivity(intent);
+                Intent myIntent = new Intent(MainActivity.this, LoginActivity.class);
+                MainActivity.this.startActivity(myIntent);
                 finish();
             }
         });
