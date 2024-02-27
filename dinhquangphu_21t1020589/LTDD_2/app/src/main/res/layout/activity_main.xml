@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="211dp"
+        android:src="@drawable/backgroundzalo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Gọi video ổn định"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Trò chuyện thật đã với chất lượng video ổn định"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="mọi lúc mọi nơi"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="*********"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnDangNhap"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Đăng Nhập"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btnDangKy"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Đăng Ký"
+        android:textSize="20dp" />
+
+</LinearLayout>
