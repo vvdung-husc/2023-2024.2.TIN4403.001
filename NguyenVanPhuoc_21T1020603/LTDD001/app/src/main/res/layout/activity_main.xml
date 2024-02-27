@@ -7,12 +7,108 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:id="@+id/tenTaiKhoan"
+        android:layout_width="142dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="30dp"
+        android:text="Tên tài khoản"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <EditText
+        android:id="@+id/taiKhoan"
+        android:layout_width="337dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="580dp"
+        android:ems="10"
+        android:hint="Tên tài khoản"
+        android:inputType="textEmailAddress"
+        android:textColor="#595858"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tenTaiKhoan"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/matkhau"
+        android:layout_width="142dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginBottom="504dp"
+        android:text="Mật Khẩu"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tenTaiKhoan"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="336dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Nhập mật khẩu"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.426"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/matkhau"
+        app:layout_constraintVertical_bias="0.002" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="327dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginBottom="336dp"
+        android:text="Đăng Nhập"
+        android:textSize="24sp"
+        app:iconTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tenTaiKhoan" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="146dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="83dp"
+        android:text="Chưa có tài khoản ? "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintVertical_bias="0.102" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="97dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="28dp"
+        android:text=" Đăng Ký Mới"
+        android:textColor="#1E88E5"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.098" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
