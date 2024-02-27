@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d("K44","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
                 Toast toast = Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!",Toast.LENGTH_SHORT);
-                TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                toastMessage.setTextColor(Color.RED);
+                //TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                //toastMessage.setTextColor(Color.RED);
                 toast.show();
                 return;
             }
