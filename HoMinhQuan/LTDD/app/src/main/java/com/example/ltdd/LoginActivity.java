@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
         if (bOk){
             _usernameLogined = "Võ Việt Dũng";
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), UserActivity.class);
             startActivity(intent);
         }
         else{
@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 _usernameLogined = user;
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
                 startActivity(intent);
 
             }
