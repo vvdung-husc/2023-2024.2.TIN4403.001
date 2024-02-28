@@ -10,9 +10,8 @@ Phần mềm
  - https://code.visualstudio.com/
 4. MEAN Stack - https://meanjs.org/
  - MongoDB, ExpressJS, AngularJS, and Node.js
-
 5. Postman - https://www.postman.com/
-
+6. Thư viện okhttp (chi tiết trong file Notes.txt)
 API - 
  - GET https://dev.husc.edu.vn/tin4403/api
  - POST https://dev.husc.edu.vn/tin4403/api/login
