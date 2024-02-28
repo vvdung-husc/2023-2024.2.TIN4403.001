@@ -24,15 +24,15 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
+            android:exported="false">
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:exported="true">
+            android:exported="false">
         </activity>
         <activity
             android:name=".UserActivity"
-            android:exported="true">
+            android:exported="false">
         </activity>
     </application>
 
