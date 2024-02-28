@@ -36,7 +36,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_2, username);
         contentValues.put(COL_3, password);
         long result = db.insert(TABLE_NAME, null, contentValues);
-
         return result != -1;
     }
 }

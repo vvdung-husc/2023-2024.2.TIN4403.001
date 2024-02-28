@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:background="#3F51B5"
-        android:paddingLeft="15dp"
+        android:paddingLeft="35dp"
         android:paddingTop="5dp"
         android:text="Đăng ký"
         android:textColor="#FEFEFE"
@@ -19,6 +19,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgbtnback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:background="#00FFFFFF"
+        android:rotation="90"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/arrow_down_float" />
 
     <TextView
         android:id="@+id/thongbaodangky"

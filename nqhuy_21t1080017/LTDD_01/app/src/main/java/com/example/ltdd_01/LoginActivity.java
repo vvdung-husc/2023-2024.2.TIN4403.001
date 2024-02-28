@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         hienthimatkhau = findViewById(R.id.hienthimatkhau);
         matkhau = findViewById(R.id.matkhau);
         btndangnhap = findViewById(R.id.btndangnhap);
-        imgbtnback = findViewById(R.id.imgbtnback);
+            imgbtnback = findViewById(R.id.imgbtnback);
         btndangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
