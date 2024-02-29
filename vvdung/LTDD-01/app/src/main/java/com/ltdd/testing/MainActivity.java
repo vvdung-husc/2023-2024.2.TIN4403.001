@@ -113,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+                //.url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("http://192.168.3.116:4080/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -122,7 +123,13 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
                 Log.d("K45","onFailure\n" + errStr);
-                Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 call.cancel();
             }
 
