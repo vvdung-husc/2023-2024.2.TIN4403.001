@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url(" http://192.168.223.195:4080/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
                 Log.d("K45","onFailure\n" + errStr);
-                Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,errStr,Toast.LENGTH_SHORT).show();
                 call.cancel();
             }
 
@@ -117,14 +117,14 @@ public class LoginActivity extends AppCompatActivity {
                     LoginActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,errStr,Toast.LENGTH_SHORT).show();
                         }
                     });
                     return;
                 }
 
                 _usernameLogined = user;
-                Intent intent = new Intent(getApplicationContext(), ComfirmLoginActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ComfirmLoginActivity.class);
                 startActivity(intent);
 
             }
@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
 
     void ShowToast(String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            Toast toast = Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(LoginActivity.this,msg,Toast.LENGTH_SHORT);
             View view = toast.getView();
             view.setBackgroundColor(Color.GREEN);
             TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
