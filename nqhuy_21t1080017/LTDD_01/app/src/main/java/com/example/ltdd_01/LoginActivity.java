@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 String sdt = sodienthoai.getText().toString();
                 String pass = matkhau.getText().toString();
                 Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + sdt + "/" + pass);
-                if (sdt.length() < 3 || pass.length() < 6){
+                if (sdt.length() == 10 || pass.length() < 6){
                     ShowToast("Tài khoản hoặc mật khẩu không hợp lệ!");
                     return;
                 }
