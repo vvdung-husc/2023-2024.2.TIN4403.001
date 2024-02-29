@@ -13,7 +13,7 @@ app.get("/", function (req, res) {
 
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
-    var user = req.body.phonenumber;
+    var phone = req.body.phonenumber;
     var pass = req.body.password;	
     console.log("ACCOUNT:",user, "/",pass );
     login(user,pass,res);
