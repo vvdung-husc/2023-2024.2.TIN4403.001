@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LapTrinhDD"
+rootProject.name = "CodeAppSameZalo"
 include(":app")
  

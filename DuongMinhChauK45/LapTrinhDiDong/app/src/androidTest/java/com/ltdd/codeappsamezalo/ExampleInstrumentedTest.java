@@ -1,4 +1,4 @@
-package com.ltdd.laptrinhdd;
+package com.ltdd.codeappsamezalo;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.ltdd.laptrinhdd", appContext.getPackageName());
+        assertEquals("com.ltdd.codeappsamezalo", appContext.getPackageName());
     }
 }

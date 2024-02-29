@@ -1,4 +1,4 @@
-package com.ltdd.laptrinhdd;
+package com.ltdd.codeappsamezalo;
 
 import org.junit.Test;
 

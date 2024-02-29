@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "com.ltdd.laptrinhdd"
+    namespace = "com.ltdd.codeappsamezalo"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.ltdd.laptrinhdd"
-        minSdk = 21
+        applicationId = "com.ltdd.codeappsamezalo"
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
