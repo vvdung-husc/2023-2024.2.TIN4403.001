@@ -29,7 +29,7 @@ app.post("/register", function (req, res) {
         password: pass,
         fullname: name
     }
-    console.log(ophone);
+    console.log(ouser);
     res.status(200).send("API REGISTER - POST");
 });
 
