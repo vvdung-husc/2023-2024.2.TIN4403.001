@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
-        RequestBody body = new FormBody.Builder()
+        RequestBody  body = new FormBody.Builder()
                 .add("username", user)
                 .add("password", pass)
                 .build();
