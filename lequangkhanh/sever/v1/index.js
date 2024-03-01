@@ -11,7 +11,7 @@ app.get("/", function (req, res) {
   res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - khanhlq");
 });
 app.get("/test", function (req, res) {
-    res.status(200).send("ROUTE TEST .....");
+    res.status(200).send("khanh");
   });
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
