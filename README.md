@@ -10,6 +10,9 @@ Phần mềm
  - https://code.visualstudio.com/
 4. MEAN Stack - https://meanjs.org/
  - MongoDB, ExpressJS, AngularJS, and Node.js
+ - Search Google: mean stack la gi
+ - Cài đặt Nodejs v20.11.1 (https://nodejs.org/), MongoDB
+   
 5. Postman - https://www.postman.com/
 6. Thư viện okhttp (chi tiết trong file Notes.txt)
 API - 
