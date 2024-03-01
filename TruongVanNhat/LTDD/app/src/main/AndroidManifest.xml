@@ -19,13 +19,7 @@
             android:name=".activity_register"
             android:exported="false" />
         <activity
-            android:name=".RegisterMainActivity2"
-            android:exported="false" />
-        <activity
             android:name=".LoginMainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginMainActivity2"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
