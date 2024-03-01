@@ -17,15 +17,15 @@ app.get("/test", function (req, res) {
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
   var user = req.body.username;
-  var pass = req.body.password;	
-  console.log("ACCOUNT:",user, "/",pass );
-  login(user,pass,res);
+  var pass = req.body.password;
+  console.log("ACCOUNT:", user, "/", pass);
+  login(user, pass, res);
 });
 
 //hàm đăng ký tài khoản
 app.post("/register", function (req, res) {
   var user = req.body.username;
-  var pass = req.body.password;	
+  var pass = req.body.password;
   var name = req.body.fullname;
   var oUser = {
     username: user,
@@ -44,10 +44,10 @@ app.post("/userinfo", function (req, res) {
 //dịch vụ WebService chạy tại cổng số n
 var server = app.listen(4080, function () {
   console.log("API Running on port.", server.address().port);
-}); 
+});
 
-function login(user,pass,res){
-  if (user == "vvdung" && pass == "123456" )
+function login(user, pass, res) {
+  if (user == "vvdung" && pass == "123456")
     res.status(200).send("API LOGIN - THANH CONG");
   else
     res.status(503).send("API LOGIN - LOI TAI KHOAN");
