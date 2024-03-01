@@ -47,7 +47,7 @@ var server = app.listen(4080, function () {
 }); 
 
 function login(user,pass,res){
-  if (user == "vvdung" && pass == "123456" )
+  if (user == "lephiphat" && pass == "lephiphat" )
     res.status(200).send("API LOGIN - THANH CONG");
   else
     res.status(503).send("API LOGIN - LOI TAI KHOAN");
