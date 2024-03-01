@@ -10,9 +10,6 @@ console.log("HELLO NODEJS")
 app.get("/", function (req, res) {
   res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
 });
-app.get("/test", function (req, res) {
-  res.status(200).send("ROUTE TEST ....");
-});
 
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
@@ -47,7 +44,7 @@ var server = app.listen(4080, function () {
 }); 
 
 function login(user,pass,res){
-  if (user == "lephiphat" && pass == "lephiphat" )
+  if (user == "vvdung" && pass == "123456" )
     res.status(200).send("API LOGIN - THANH CONG");
   else
     res.status(503).send("API LOGIN - LOI TAI KHOAN");
