@@ -18,8 +18,8 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
     static String   _usernameLogined;
     EditText edtname,edtpass;
-    Button btnlogin,btnregister;
-
+    Button btnlogin;
+    TextView btnregister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         edtpass = (EditText) findViewById(R.id.edtpass);
         btnlogin = (Button) findViewById(R.id.btnlogin);
 
-        btnregister = (Button) findViewById(R.id.btnregister);
+        btnregister = (TextView) findViewById(R.id.btnregister);
 
         //Cài đặt sự kiện Click cho Button Login
         btnlogin.setOnClickListener(new CButtonLogin());
