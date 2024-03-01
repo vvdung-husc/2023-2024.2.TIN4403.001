@@ -8,16 +8,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 console.log("HELLO NODEJS")
 //sử dụng để kiểm tra API có đang hoạt động
 app.get("/", function (req, res) {
-  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
+  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VOHoangNhat");
 });
 app.get("/test", function (req, res) {
-  res.status(200).send("ROUTE TEST ....");
+  res.status(200).send("ROUTE TEST VHN ....");
 });
 
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
   var user = req.body.username;
-  var pass = req.body.password;
+  var pass = req.body.password;	
   console.log("ACCOUNT:",user, "/",pass );
   login(user,pass,res);
 });
@@ -25,7 +25,7 @@ app.post("/login", function (req, res) {
 //hàm đăng ký tài khoản
 app.post("/register", function (req, res) {
   var user = req.body.username;
-  var pass = req.body.password;
+  var pass = req.body.password;	
   var name = req.body.fullname;
   var oUser = {
     username: user,
@@ -44,7 +44,7 @@ app.post("/userinfo", function (req, res) {
 //dịch vụ WebService chạy tại cổng số n
 var server = app.listen(4080, function () {
   console.log("API Running on port.", server.address().port);
-});
+}); 
 
 function login(user,pass,res){
   if (user == "vvdung" && pass == "123456" )
