@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("http://192.168.43.139:4080/login")
                 .post(body)
                 .build();
 
