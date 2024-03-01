@@ -12,12 +12,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class LoginActivity extends AppCompatActivity {
     EditText loiginUsername,loginPassword;
     Button loginButton;
     static String   _usernameLogined;
-    String usename = "ngoduy";
-    String password = "12345";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +49,13 @@ public class LoginActivity extends AppCompatActivity {
                     toast.show();
                     return;
                 }
-                boolean checkOk=use.equals(usename) && pas.equals(password);
-                if(checkOk) {
-                    String name = loiginUsername.getText().toString();
-                    startActivity(new Intent(LoginActivity.this, PageUseActivity.class));
-                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công:"+name , Toast.LENGTH_LONG).show();
-                    _usernameLogined = use;
-                }else{
-                    Toast.makeText(getApplicationContext(), "Đăng nhập thất bại", Toast.LENGTH_LONG).show();
+                try {
+                    //apiLogin(use,pas);
+                    okhttpApiLogin(use,pas);
+                }catch (IOException e){
+                    e.printStackTrace();
                 }
+
             }
         });
         btn.setOnClickListener(new View.OnClickListener() {
@@ -58,5 +65,82 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+    void apiLogin(String user,String pass) throws IOException{
+        String usename = "ngoduy";
+        String password = "12345";
+        String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
+        Toast.makeText(getApplicationContext(),json, Toast.LENGTH_SHORT).show();
+        Log.d("K44",json);
+        boolean checkOk=user.equals(usename) && pass.equals(password);
+        if(checkOk) {
+            String name = loiginUsername.getText().toString();
+            startActivity(new Intent(LoginActivity.this, PageUseActivity.class));
+            Toast.makeText(getApplicationContext(), "Đăng nhập thành công:"+name , Toast.LENGTH_LONG).show();
+            _usernameLogined = user;
+        }else{
+            LoginActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    String str = "Tài khoản hoặc mật khẩu không chính xác [" + user + "/" + pass + "]";
+                    Toast toast = Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT);
+                    View view = toast.getView();
+/*                    view.setBackgroundColor(Color.GREEN);*/
+                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                    toastMessage.setTextColor(Color.RED);
+                    toast.show();
+                }
+            });
+        }
+    }
+    void okhttpApiLogin(String user, String pass) throws IOException{
+        String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
+        Log.d("K45",json);
+        RequestBody  body = new FormBody.Builder()
+                .add("username", user)
+                .add("password", pass)
+                .build();
+
+        Request request = new Request.Builder()
+                .url("http://192.168.3.103:4080/login")
+                //.url("https://dev.husc.edu.vn/tin4403/api/login")
+                .post(body)
+                .build();
+        OkHttpClient client = new OkHttpClient();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
+                Log.d("K45","onFailure\n" + errStr);
+
+                LoginActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                    }
+                });
+                call.cancel();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + response.body().string();
+                Log.d("K45",errStr);
+                if (!response.isSuccessful()){
+                    LoginActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    return;
+                }
+                Log.d("K45","abc");
+                _usernameLogined = user;
+                Intent intent = new Intent(getApplicationContext(),PageUseActivity.class);
+                startActivity(intent);
+
+            }
+        });//client.newCall(request).enqueue(new Callback() {
     }
 }
