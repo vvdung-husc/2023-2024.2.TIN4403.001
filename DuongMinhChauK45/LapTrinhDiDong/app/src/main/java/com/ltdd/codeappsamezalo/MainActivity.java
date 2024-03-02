@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 String user = usernameInput.getText().toString();
                 String pass = passwordInput.getText().toString();
                 Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
-                if (user.length() < 12 || pass.length() < 12){
+                if (user.length() < 3 || pass.length() < 5){
                     ShowToast("Tài khoản hoặc mật khẩu không hợp lệ!");
                     return;
                 }
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
 
-        boolean bOk = (user.equals("mchau") && pass.equals("123456"));
+        boolean bOk = (user.equals("mchau1011") && pass.equals("1234567"));
         if (bOk){
             _usernameLogined = "mchau";
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
