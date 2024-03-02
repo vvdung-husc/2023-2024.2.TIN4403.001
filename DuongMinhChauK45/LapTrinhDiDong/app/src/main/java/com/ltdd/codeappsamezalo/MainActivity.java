@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 String user = usernameInput.getText().toString();
                 String pass = passwordInput.getText().toString();
                 Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
-                if (user.length() < 3 || pass.length() < 6){
+                if (user.length() < 12 || pass.length() < 12){
                     ShowToast("Tài khoản hoặc mật khẩu không hợp lệ!");
                     return;
                 }
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean bOk = (user.equals("mchau") && pass.equals("123456"));
         if (bOk){
-            _usernameLogined = "Dương Minh Châu";
+            _usernameLogined = "mchau";
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             startActivity(intent);
         }
