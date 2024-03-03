@@ -8,21 +8,23 @@
 
     <TextView
         android:id="@+id/lblWelcome"
-        android:layout_width="201dp"
-        android:layout_height="59dp"
-        android:text="TextView"
+        android:layout_width="311dp"
+        android:layout_height="48dp"
+        android:text="Chúc mừng bạn đã đăng nhập thành công"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintVertical_bias="0.349" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="179dp"
         android:layout_height="99dp"
         android:text="Đăng Xuất"
-        tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="512dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblWelcome" />
 </androidx.constraintlayout.widget.ConstraintLayout>

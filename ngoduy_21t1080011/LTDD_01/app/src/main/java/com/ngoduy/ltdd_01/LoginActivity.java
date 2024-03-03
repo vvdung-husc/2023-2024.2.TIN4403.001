@@ -96,13 +96,14 @@ public class LoginActivity extends AppCompatActivity {
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
-        RequestBody body = new FormBody.Builder()
+        RequestBody  body = new FormBody.Builder()
                 .add("username", user)
                 .add("password", pass)
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("http://192.168.3.103:4080/login")
+                //.url("https://dev.husc.edu.vn/tin4403/api/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -111,7 +112,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
                 Log.d("K45","onFailure\n" + errStr);
-                Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+
+                LoginActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                    }
+                });
                 call.cancel();
             }
 
@@ -128,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
                     return;
                 }
-
+                Log.d("K45","abc");
                 _usernameLogined = user;
                 Intent intent = new Intent(getApplicationContext(),PageUseActivity.class);
                 startActivity(intent);
