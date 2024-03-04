@@ -11,13 +11,15 @@ Phần mềm
 4. MEAN Stack - https://meanjs.org/
  - MongoDB, ExpressJS, AngularJS, and Node.js
  - Search Google: mean stack la gi
- - Cài đặt Nodejs, MongoDB
+ - Cài đặt Nodejs v20.11.1 (https://nodejs.org/), MongoDB
+   
 5. Postman - https://www.postman.com/
 6. Thư viện okhttp (chi tiết trong file Notes.txt)
 API - 
  - GET https://dev.husc.edu.vn/tin4403/api
  - POST https://dev.husc.edu.vn/tin4403/api/login
-   + x-www-form-urlencode: username/password
+   + BODY TYPE x-www-form-urlencode: username/password
  - POST https://dev.husc.edu.vn/tin4403/api/userinfo
  - POST https://dev.husc.edu.vn/tin4403/api/register
+   + BODY TYPE x-www-form-urlencode: username[/password/fullname/email]
    

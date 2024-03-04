@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 console.log("HELLO NODEJS")
 //sử dụng để kiểm tra API có đang hoạt động
 app.get("/", function (req, res) {
-  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
+  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - DUONG MINH CHAU");
 });
 
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
@@ -44,7 +44,7 @@ var server = app.listen(4080, function () {
 }); 
 
 function login(user,pass,res){
-  if (user == "mchau" && pass == "123" )
+  if (user == "mchau1011" && pass == "1234567" )
     res.status(200).send("API LOGIN - THANH CONG");
   else
     res.status(503).send("API LOGIN - LOI TAI KHOAN");

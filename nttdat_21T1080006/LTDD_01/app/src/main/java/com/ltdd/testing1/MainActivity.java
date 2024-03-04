@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             String user = m_edtUser.getText().toString();
             String pass = m_edtPass.getText().toString();
             Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
-            if (user.length() < 3 || pass.length() < 6){
+            if (user.length() < 3 || pass.length() < 5){
                 ShowToast("Tài khoản hoặc mật khẩu không hợp lệ!");
                 return;
             }
