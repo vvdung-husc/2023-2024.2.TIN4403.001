@@ -56,7 +56,7 @@ public class Activity_regisrer extends AppCompatActivity {
             String pass = m_edtPass.getText().toString();
             Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
-                MainActivity.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
+                MainActivity.ShowToast(getApplicationContext(),"Tài khoản or mật khẩu không hợp lệ!");
                 return;
             }
             String repass = m_edtRePass.getText().toString();
