@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/khungDK"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+
+        >
+
+        <ImageView
+            android:layout_width="153dp"
+            android:layout_height="213dp"
+            android:layout_gravity="center"
+            android:src="@drawable/fb_icon_325x325" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tendangnhap"
+            android:textColorHint="@color/gray"
+            android:padding="20dp"
+            android:background="@drawable/border_input"
+            android:layout_marginBottom="20dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nhapmatkhau"
+            android:textColorHint="@color/gray"
+            android:padding="20dp"
+            android:background="@drawable/border_input"
+            android:password="true"
+            android:layout_marginBottom="20dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dangnhap"
+            android:textSize="20dp"
+            android:background="@drawable/border_input"
+            android:backgroundTint="#0866FF"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fogotpass"
+            android:textSize="18dp"
+            android:textColor="@color/gray2"
+            android:autoLink=""
+            android:gravity="center"
+            android:layout_marginTop="20dp"/>
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="@string/createaccount"
+            android:background="@drawable/border_input"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:textSize="17dp"
+            />
+    </LinearLayout>
+</RelativeLayout>

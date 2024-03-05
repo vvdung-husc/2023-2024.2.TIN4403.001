@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 //Gọi hàm dịch vụ Login
                // apiLogin(user,pass);
-okhttpApiLogin(user,pass);
+               okhttpApiLogin(user,pass);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -119,7 +119,9 @@ okhttpApiLogin(user,pass);
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+               // .url("https://dev.husc.edu.vn/tin4403/api/login")
+               // .url("http://192.168.3.100:4080/login")
+                .url("http://192.168.1.11:4080/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();

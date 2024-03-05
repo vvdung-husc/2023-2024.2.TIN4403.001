@@ -2,6 +2,7 @@ package com.example.ltdd_02;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,8 +18,9 @@ import java.io.IOException;
 import java.text.BreakIterator;
 
 public class RegisterScreen extends AppCompatActivity {
-    EditText m_edtUserName,m_edtPass, m_edtPhoneNum; //Biến điều khiển EditText
+    EditText m_edtUserName,m_edtPass, m_edtFullName, m_edtEmail; //Biến điều khiển EditText
     Button m_btnSubmit; //Biến điều khiển Đăng nhập
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,8 @@ public class RegisterScreen extends AppCompatActivity {
         //Khởi tạo các biến điều khiển tương ứng trong layout
         m_edtUserName = (EditText)findViewById(R.id.edtName);
         m_edtPass = (EditText)findViewById(R.id.edtPass);
-        m_edtPhoneNum = (EditText)findViewById(R.id.edtPhoneNum);
+        m_edtFullName = (EditText)findViewById(R.id.edtFullName);
+        m_edtEmail = (EditText)findViewById(R.id.edtEmail);
         m_btnSubmit = (Button) findViewById(R.id.btnSubmit);
 
 
@@ -41,8 +44,7 @@ public class RegisterScreen extends AppCompatActivity {
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
             String name = m_edtUserName.getText().toString();
             String pass = m_edtPass.getText().toString();
-            String phoneNum = m_edtPhoneNum.getText().toString();
-            if((name.length() < 3 || pass.length() < 6 || phoneNum.length() < 10)){
+            if((name.length() < 3 || pass.length() < 6)){
                 Toast toast = Toast.makeText(getApplicationContext(),"Không hợp lệ!",Toast.LENGTH_SHORT);
                 TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
                 toastMessage.setTextColor(Color.RED);
