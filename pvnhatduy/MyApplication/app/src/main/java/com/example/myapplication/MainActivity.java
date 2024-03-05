@@ -1,5 +1,4 @@
-package com.example.thuchah3;
-
+package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
