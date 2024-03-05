@@ -25,12 +25,11 @@ dependencies {
     </application>
 </manifest>
 
-4. Cho phép gửi CLEARTEXT (password) Android >= 9 - trong file AndroidManifest.xml
+4. Thêm quyên cho phép gửi CLEARTEXT PASSWORD trong file AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest ...>
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        ...
         android:usesCleartextTraffic="true"
         ...
     </application>
