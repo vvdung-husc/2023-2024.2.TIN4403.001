@@ -23,6 +23,8 @@ public class UserActivity extends AppCompatActivity {
 
         String s = "Chào mừng : " + MainActivity._usernameLogined;
         m_lblWelcome.setText(s);
+
+
         m_btnLogout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -30,6 +32,16 @@ public class UserActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        }
+        );
+        Button btnChangePassword = findViewById(R.id.btnChangePassword);
+        btnChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Thực hiện điều hướng đến màn hình đổi mật khẩu
+                Intent intent = new Intent(UserActivity.this, ChangePass.class);
+                startActivity(intent);
             }
         });
 
