@@ -1,22 +1,22 @@
 package com.le.pp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.fragment.DialogFragmentNavigatorDestinationBuilder;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -34,10 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        ed_userName = (EditText)findViewById(R.id.reg_un);
-        ed_passWord = (EditText)findViewById(R.id.reg_pw);
-        ed_fullName = (EditText)findViewById(R.id.reg_fn);
-        btnReg = (Button) findViewById(R.id.btn_register);
+        btnReg =      findViewById(R.id.btn_register);
 
         btnReg.setOnClickListener(new CButtonSignUp());
     }
@@ -45,50 +42,79 @@ public class RegisterActivity extends AppCompatActivity {
     public class CButtonSignUp implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            ed_userName = (EditText)v.findViewById(R.id.reg_un);
-            ed_passWord = (EditText)v.findViewById(R.id.reg_pw);
-            ed_fullName = (EditText)v.findViewById(R.id.reg_fn);
+            ed_userName = findViewById(R.id.reg_un);
+            ed_passWord = findViewById(R.id.reg_pw);
+            ed_fullName = findViewById(R.id.reg_fn);
+
             try {
                 Log.d("K45", "clicked");
-                okhttpApiSignUp(ed_fullName.getText().toString(), ed_userName.getText().toString(), ed_passWord.getText().toString());
+                JSONObject user = new JSONObject();
+                String userName = (ed_userName == null) ? "p1" : ed_userName.getText().toString();
+                String passWord = (ed_passWord == null) ? "p1" : ed_passWord.getText().toString();
+                String fullName = (ed_fullName == null) ? "p1" : ed_fullName.getText().toString();
+
+                user.put("username", userName);
+                user.put("password", passWord);
+                user.put("fullname", fullName);
+                Log.d("K45", user.toString());
+                okhttpApiRegister(user);
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.d("K45", "" + e.getMessage());
             }
         }
     }
 
-    void okhttpApiSignUp(String fullname, String user, String pass) throws IOException {
-        Log.d("K45", "ok");
-        RequestBody body = new FormBody.Builder()
-                .add("username", user)
-                .add("password", pass)
-                .add("fullname", fullname)
-                .build();
+    void okhttpApiRegister(JSONObject oUser) {
+        OkHttpClient client = new OkHttpClient();
+        String json = oUser.toString();
+        RequestBody body = RequestBody.create(json, MainActivity.JSON);
+
         Request request = new Request.Builder()
-                .url("http://192.168.3.128:4080/register")
+                .url(MainActivity._URL + "/register")
                 .post(body)
                 .build();
-        OkHttpClient client = new OkHttpClient();
+
+
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                String errStr = "Đăng kí không thành công!.\n" + e.getMessage();
+                String errStr = "Đăng ký lỗi.\n" + e.getMessage();
                 Log.d("K45","onFailure\n" + errStr);
-                Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_LONG).show();
+                RegisterActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                    }
+                });
                 call.cancel();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String errStr = "Đăng kí thành công\n" + response.body().string();
-                Log.d("K45",errStr);
-                if (!response.isSuccessful()) {
-                    Log.d("K45", "pass");
+
+                if (!response.isSuccessful()){
+                    String strMsg = "Đăng ký lỗi.\n" + response.body().string();
+                    Log.d("K45",strMsg);
+                    RegisterActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), strMsg,Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     return;
                 }
+                String strMsg = "Đăng ký thành công tài khoản [ " + ed_fullName.getText().toString() + " ]";
+                Log.d("K45",strMsg);
+                RegisterActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),strMsg,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
             }
-        });//client.newCall(request).enqueue(new Callback() {
+        });
     }
 }
