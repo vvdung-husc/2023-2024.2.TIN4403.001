@@ -9,7 +9,7 @@ console.log("HELLO NODEJS")
 //sử dụng để kiểm tra API có đang hoạt động
 app.get("/", function (req, res) {
   console.log(arrUser);
-  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - DƯƠNG MINH CHÂU");
+  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
 });
 app.get("/test", function (req, res) {
   res.status(200).send(JSON.stringify(arrUser));
@@ -18,7 +18,7 @@ app.get("/test", function (req, res) {
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "mchau1011";
+oUser.username = "mchau169";
 oUser.password = "1234567";
 oUser.fullname = "Dương Minh Châu";
 oUser.email = "mchau169@gmail.com";
