@@ -18,8 +18,8 @@ app.get("/test", function (req, res) {
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "qpts";
-oUser.password = "123456";
+oUser.username = "tsq";
+oUser.password = "000000";
 oUser.fullname = "Quách Phạm Thiện Sơn";
 oUser.email = "thiensonquach123@gmail.com";
 
