@@ -9,7 +9,7 @@ console.log("HELLO NODEJS")
 //sử dụng để kiểm tra API có đang hoạt động
 app.get("/", function (req, res) {
   console.log(arrUser);
-  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
+  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - DƯƠNG MINH CHÂU");
 });
 app.get("/test", function (req, res) {
   res.status(200).send(JSON.stringify(arrUser));
