@@ -35,17 +35,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
-        m_edtUser = (EditText) findViewById(R.id.edtUsername);
-        m_edtPass = (EditText) findViewById(R.id.edtPassword);
-        m_btnLogin = (Button) findViewById(R.id.btnLogin);
+        //m_edtUser = (EditText) findViewById(R.id.edtUsername);
+       // m_edtPass = (EditText) findViewById(R.id.edtPassword);
+        //m_btnLogin = (Button) findViewById(R.id.btnLogin);
 
-        m_lblRegister = (TextView) findViewById(R.id.lblRegister);
+        //m_lblRegister = (TextView) findViewById(R.id.lblRegister);
 
         //Cài đặt sự kiện Click cho Button Login
-        m_btnLogin.setOnClickListener(new CButtonLogin());
+        //m_btnLogin.setOnClickListener(new CButtonLogin());
 
         //Cài đặt sự kiện Click cho Button Register
-        m_lblRegister.setOnClickListener(new CButtonRegister());
+        //m_lblRegister.setOnClickListener(new CButtonRegister());
 
     }//protected void onCreate(Bundle savedInstanceState) {
 
