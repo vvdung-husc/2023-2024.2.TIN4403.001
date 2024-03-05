@@ -16,10 +16,10 @@ app.get("/test", function (req, res) {
   });
   var arrUser = [];
   var oUser = {};
-  oUser.username = "vvdung";
+  oUser.username = "khanhlq";
   oUser.password = "123456";
-  oUser.fullname = "Võ Việt Dũng";
-  oUser.email = "vvdung@gmail.com";
+  oUser.fullname = "Le Quang Khanh";
+  oUser.email = "khanhlq@gmail.com";
   
   arrUser.push(oUser);
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
