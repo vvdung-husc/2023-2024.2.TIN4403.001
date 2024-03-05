@@ -8,8 +8,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 console.log("HELLO NODEJS")
 //sử dụng để kiểm tra API có đang hoạt động
 app.get("/", function (req, res) {
-  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - DUONG MINH CHAU");
+  console.log(arrUser);
+  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
 });
+app.get("/test", function (req, res) {
+  res.status(200).send(JSON.stringify(arrUser));
+  //res.status(200).send("ROUTE TEST ....");
+});
+
+var arrUser = [];
+var oUser = {};
+oUser.username = "mchau169";
+oUser.password = "1234567";
+oUser.fullname = "Dương Minh Châu";
+oUser.email = "mchau169@gmail.com";
+
+arrUser.push(oUser);
 
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
@@ -46,8 +60,23 @@ var server = app.listen(4080, function () {
   console.log("API Running on port.", server.address().port);
 }); 
 
+function getUser(user){
+  var n = arrUser.length;
+  for (var i = 0; i < n; ++i){
+    if (arrUser[i].username == user) return arrUser[i];
+  }
+  return null;
+}
+function isExist(user,pass){
+  var oUser = getUser(user);
+  if (oUser && oUser.password == pass) return true;
+  return false;
+}
+
+
 function login(user,pass,res){
-  if (user == "mchau1011" && pass == "1234567" )
+//  if (user == "mchau1011" && pass == "1234567" )
+  if (isExist(user,pass))
     res.status(200).send("API LOGIN - THANH CONG");
   else
     res.status(503).send("API LOGIN - LOI TAI KHOAN");
