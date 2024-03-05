@@ -87,15 +87,17 @@ public class MainActivity extends AppCompatActivity {
     void okhttpApiLogin(String user, String pass) throws IOException {
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
+
         RequestBody body = new FormBody.Builder()
                 .add("username", user)
                 .add("password", pass)
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("http://192.168.3.128:4080/login")
                 .post(body)
                 .build();
+
         OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {
             @Override

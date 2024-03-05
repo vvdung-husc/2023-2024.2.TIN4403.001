@@ -62,7 +62,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        btnregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),register.class);
+                startActivity(intent);
+            }
+        });
     }
     void okhttpLogin(String user,String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
@@ -72,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 .add("password",pass).build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+                //.url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("http://192.168.56.1:4080/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
