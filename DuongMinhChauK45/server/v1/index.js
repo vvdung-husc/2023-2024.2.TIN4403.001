@@ -18,7 +18,7 @@ app.get("/test", function (req, res) {
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "mchau169";
+oUser.username = "mchau1011";
 oUser.password = "1234567";
 oUser.fullname = "Dương Minh Châu";
 oUser.email = "mchau169@gmail.com";

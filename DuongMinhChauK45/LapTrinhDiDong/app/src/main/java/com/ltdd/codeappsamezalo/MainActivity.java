@@ -1,5 +1,6 @@
 package com.ltdd.codeappsamezalo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -27,6 +29,9 @@ import androidx.core.text.HtmlCompat;
 
 
 public class MainActivity extends AppCompatActivity {
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    //thay đổi _URL đúng với IP đang chạy dịch vu WebService
+    static String _URL = "http://192.168.3.114:4080";//
     static String   _usernameLogined;
     EditText usernameInput; //Biến điều khiển EditText
     EditText passwordInput; //Biến điều khiển EditText
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 String pass = passwordInput.getText().toString();
                 Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
                 if (user.length() < 3 || pass.length() < 5){
-                    ShowToast("Tài khoản hoặc mật khẩu không hợp lệ!");
+                    ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
                     return;
                 }
                 try {
@@ -87,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean bOk = (user.equals("mchau1011") && pass.equals("1234567"));
         if (bOk){
-            _usernameLogined = "mchau";
+            _usernameLogined = "Dương Minh Châu";
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             startActivity(intent);
         }
@@ -97,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     //Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không chính xác.",Toast.LENGTH_SHORT).show();
                     String str = "Tài khoản hoặc mật khẩu không chính xác [" + user + "/" + pass + "]";
-                    ShowToast(str);
+                    ShowToast(getApplicationContext(),str);
                 }
             });
         }
@@ -113,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         Request request = new Request.Builder()
                 //.url("https://dev.husc.edu.vn/tin4403/api/login")
-                .url("http://192.168.3.114:4080/login")
+                .url(_URL + "/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -154,9 +159,9 @@ public class MainActivity extends AppCompatActivity {
         });//client.newCall(request).enqueue(new Callback() {
     } //void okhttpApiLogin(String user, String pass) throws IOException{
 
-    void ShowToast(String msg){
+    static public void ShowToast(Context ctx, String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            Toast toast = Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_SHORT);
             View view = toast.getView();
             view.setBackgroundColor(Color.GREEN);
             TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
@@ -164,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
         }
         else {
-            Toast.makeText(getApplicationContext(),
+            Toast.makeText(ctx,
                     HtmlCompat.fromHtml("<font color='red'>" + msg +"</font>" , HtmlCompat.FROM_HTML_MODE_LEGACY),
                     Toast.LENGTH_LONG).show();
         }
