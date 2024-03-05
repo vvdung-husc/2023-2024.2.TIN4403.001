@@ -18,13 +18,12 @@ app.get("/test", function (req, res) {
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "mchau1011";
-oUser.password = "1234567";
-oUser.fullname = "Dương Minh Châu";
-oUser.email = "mchau169@gmail.com";
+oUser.username = "vvdung";
+oUser.password = "123456";
+oUser.fullname = "Võ Việt Dũng";
+oUser.email = "vvdung@gmail.com";
 
 arrUser.push(oUser);
-
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
   var user = req.body.username;
@@ -72,16 +71,13 @@ function isExist(user,pass){
   if (oUser && oUser.password == pass) return true;
   return false;
 }
-
-
 function login(user,pass,res){
-//  if (user == "mchau1011" && pass == "1234567" )
+  //if (user == "vvdung" && pass == "123456" )
   if (isExist(user,pass))
     res.status(200).send("API LOGIN - THANH CONG");
   else
     res.status(503).send("API LOGIN - LOI TAI KHOAN");
 }
-
 function register(user,pass,name,email,res){
   //if (user == "vvdung" && pass == "123456" )
   var u = getUser(user);
