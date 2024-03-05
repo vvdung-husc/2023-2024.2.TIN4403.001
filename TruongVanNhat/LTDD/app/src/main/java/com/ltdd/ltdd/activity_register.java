@@ -48,7 +48,7 @@ public class activity_register extends AppCompatActivity {
         public void onClick(View v) {//Hàm sử lý sự kiện click button register
             String user = edtUser.getText().toString();
             String pass = edtPass.getText().toString();
-            Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+            Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
                 MainActivity.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
                 return;
@@ -66,9 +66,9 @@ public class activity_register extends AppCompatActivity {
                 oUser.put("password",pass);
                 oUser.put("fullname",edtName.getText().toString());
                 oUser.put("email",edtEmail.getText().toString());
-                Log.d("TIN4403",oUser.toString());
+                Log.d("K45",oUser.toString());
                 String json = oUser.toString();
-                Log.d("TIN4403",json);
+                Log.d("K45",json);
                 okhttpApiRegister(oUser);
 
             } catch (JSONException e) {
@@ -94,7 +94,7 @@ public class activity_register extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 String input = "Đăng ký lỗi.\n" + e.getMessage();
-                Log.d("TIN4403","onFailure\n" + input);
+                Log.d("K45","onFailure\n" + input);
                 activity_register.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -109,7 +109,7 @@ public class activity_register extends AppCompatActivity {
 
                 if (!response.isSuccessful()){
                     String strMsg = "Đăng ký lỗi.\n" + response.body().string();
-                    Log.d("TIN4403",strMsg);
+                    Log.d("K45",strMsg);
                     activity_register.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -119,7 +119,7 @@ public class activity_register extends AppCompatActivity {
                     return;
                 }
                 String strMsg = "Đăng ký thành công tài khoản [ " + edtUser.getText().toString() + " ]";
-                Log.d("TIN4403",strMsg);
+                Log.d("K45",strMsg);
                 activity_register.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
