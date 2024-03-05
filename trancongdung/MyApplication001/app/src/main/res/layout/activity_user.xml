@@ -20,13 +20,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.113" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        tools:ignore="MissingConstraints" />
-
-
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
@@ -70,16 +63,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Order" />
-            <Button
-                android:id="@+id/btnChangePassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Đổi mật khẩu"
-                app:layout_constraintTop_toBottomOf="@id/btnLogout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
