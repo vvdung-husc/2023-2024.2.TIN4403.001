@@ -22,46 +22,55 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="268dp"
+        android:layout_height="252dp"
         android:layout_marginHorizontal="20dp"
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/edtUser"
             android:layout_width="match_parent"
-            android:layout_height="74dp"
+            android:layout_height="56dp"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:hint="Username"
+            android:inputType="text"    
+            android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/edtPhoneRegister"
+            android:id="@+id/edtPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone"
-            android:hint="Phone Number"/>
+            android:hint="PassWord"
+            android:inputType="textPassword" />
 
         <EditText
-            android:id="@+id/edtPassWordRegister"
+            android:id="@+id/edtRepass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
-            android:hint="PassWord"/>
+            android:hint="ConfirmPassWord"
+            android:inputType="textPassword" />
 
         <EditText
-            android:id="@+id/edtCfPassWordRegister"
+            android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
-            android:hint="ConfirmPassWord"/>
+            android:hint="Fullname"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:hint="Email"/>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btncfRegister"
+        android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="Xác Nhận Đăng Ký"

@@ -103,7 +103,8 @@ public class LoginScreen extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+                //.url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("https://192.168.3.114:4080/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
