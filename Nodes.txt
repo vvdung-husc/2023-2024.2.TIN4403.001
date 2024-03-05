@@ -1,0 +1,26 @@
+
+Tài khoản test login - POST https://dev.husc.edu.vn/tin4403/api/login
+username: tin4403
+password: 1234321
+
+OKHTTP - https://square.github.io/okhttp
+
+Thêm thư viện okhttp vào dự án
+
+1. thêm thư viện okhttp trong file app/build.gradle (Module::app)
+dependencies {
+  ...
+  implementation("com.squareup.okhttp3:okhttp:4.12.0")
+  ...
+}
+
+2. cài đặt thư viện từ menu Files/Sync Project with Gradle Files
+
+3. Thêm quyền truy xuất internet trong file AndroidManifest.xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ...>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        ...
+    </application>
+</manifest>
