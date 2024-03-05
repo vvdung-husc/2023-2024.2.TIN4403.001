@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
-        m_edtUser = (EditText)findViewById(R.id.editTextTextEmailAddress);
-        m_edtPass = (EditText)findViewById(R.id.editTextTextPassword);
-        m_btnLogin = (Button) findViewById(R.id.button);
+        m_edtUser = (EditText)findViewById(R.id.editEmail);
+        m_edtPass = (EditText)findViewById(R.id.editPassword);
+        m_btnLogin = (Button) findViewById(R.id.btnLogin);
 
-        m_lblRegister = (TextView) findViewById(R.id.textView9);
+        m_lblRegister = (TextView) findViewById(R.id.editRegister);
 
         //Cài đặt sự kiện Click cho Button Login
         m_btnLogin.setOnClickListener(new CButtonLogin());
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button register
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), RegisterForm.class);
+            Intent i = new Intent(MainActivity.this, RegisterForm.class);
             startActivity(i);
         }
     }//public class CButtonRegister implements View.OnClickListener {
@@ -87,17 +87,17 @@ public class MainActivity extends AppCompatActivity {
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
 
-        boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
+        boolean bOk = (user.equals("nvphuoc") && pass.equals("123456"));
         if (bOk){
-            _usernameLogined = "Võ Việt Dũng";
-            Intent intent = new Intent(getApplicationContext(),UserForm.class);
+            _usernameLogined = "Nguyen Van Phuoc";
+            Intent intent = new Intent(MainActivity.this,UserForm.class);
             startActivity(intent);
         }
         else{
             MainActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    //Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không chính xác.",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this,"Tài khoản hoặc mật khẩu không chính xác.",Toast.LENGTH_SHORT).show();
                     String str = "Tài khoản hoặc mật khẩu không chính xác [" + user + "/" + pass + "]";
                     ShowToast(str);
                 }
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("http://192.168.3.116:4080/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -123,7 +123,13 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
                 Log.d("K45","onFailure\n" + errStr);
-                Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this,errStr,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 call.cancel();
             }
 
@@ -135,14 +141,14 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,errStr,Toast.LENGTH_SHORT).show();
                         }
                     });
                     return;
                 }
 
                 _usernameLogined = user;
-                Intent intent = new Intent(getApplicationContext(),UserForm.class);
+                Intent intent = new Intent(MainActivity.this,UserForm.class);
                 startActivity(intent);
 
             }
@@ -151,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
     void ShowToast(String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            Toast toast = Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT);
             View view = toast.getView();
             view.setBackgroundColor(Color.GREEN);
             TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
@@ -159,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
         }
         else {
-            Toast.makeText(getApplicationContext(),
+            Toast.makeText(MainActivity.this,
                     HtmlCompat.fromHtml("<font color='red'>" + msg +"</font>" , HtmlCompat.FROM_HTML_MODE_LEGACY),
                     Toast.LENGTH_LONG).show();
         }
@@ -217,4 +223,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

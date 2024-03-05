@@ -8,9 +8,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 console.log("HELLO NODEJS")
 //sử dụng để kiểm tra API có đang hoạt động
 app.get("/", function (req, res) {
-  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
+  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - DoanAT");
 });
-
+app.get("/test", function (req, res) {
+    res.status(200).send("test thanh cong");
+  });
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
   var user = req.body.username;

@@ -116,10 +116,10 @@ public class MainActivity extends AppCompatActivity {
                 .add("username", user)
                 .add("password", pass)
                 .build();
-
+        // đưa dữ liệu của body theo api dưới đây để post lên server xem username và password có khớp không
         Request request = new Request.Builder()
                 .url("https://dev.husc.edu.vn/tin4403/api/login")
-                .post(body)
+                .post(body)//method post, data đẩy lên dưới dạng JSON là body
                 .build();
         OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {
