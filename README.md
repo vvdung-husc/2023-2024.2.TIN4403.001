@@ -15,7 +15,7 @@ Phần mềm
    
 5. Postman - https://www.postman.com/
 6. Thư viện okhttp (chi tiết trong file Notes.txt)
-API - 
+API -  
  - GET https://dev.husc.edu.vn/tin4403/api
  - POST https://dev.husc.edu.vn/tin4403/api/login
    + BODY TYPE x-www-form-urlencode: username/password

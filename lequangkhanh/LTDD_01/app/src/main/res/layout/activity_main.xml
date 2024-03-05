@@ -61,8 +61,8 @@
 
     <EditText
         android:id="@+id/edtUsername"
-        android:layout_width="315dp"
-        android:layout_height="45dp"
+        android:layout_width="320dp"
+        android:layout_height="54dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Tên tài khoản"

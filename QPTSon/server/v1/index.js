@@ -9,7 +9,7 @@ console.log("HELLO NODEJS")
 //sử dụng để kiểm tra API có đang hoạt động
 app.get("/", function (req, res) {
   console.log(arrUser);
-  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - NGODUY");
+  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
 });
 app.get("/test", function (req, res) {
   res.status(200).send(JSON.stringify(arrUser));
@@ -18,16 +18,16 @@ app.get("/test", function (req, res) {
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "ngoduy";
-oUser.password = "123456";
-oUser.fullname = "Ngô Duy";
-oUser.email = "ngoduy@gmail.com";
+oUser.username = "tsq";
+oUser.password = "000000";
+oUser.fullname = "Quách Phạm Thiện Sơn";
+oUser.email = "thiensonquach123@gmail.com";
 
 arrUser.push(oUser);
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
   var user = req.body.username;
-  var pass = req.body.password;	
+  var pass = req.body.password; 
   console.log("ACCOUNT:",user, "/",pass );
   login(user,pass,res);
 });
@@ -35,7 +35,7 @@ app.post("/login", function (req, res) {
 //hàm đăng ký tài khoản
 app.post("/register", function (req, res) {
   var user = req.body.username;
-  var pass = req.body.password;	
+  var pass = req.body.password; 
   var name = req.body.fullname;
   var email = req.body.email;
   var oUser = {
