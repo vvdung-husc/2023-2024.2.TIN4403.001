@@ -1,4 +1,4 @@
-package com.ltdd.testing;
+package com.example.ltdd_01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
