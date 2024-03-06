@@ -17,6 +17,7 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -26,11 +27,16 @@ public class LoginActivity extends AppCompatActivity {
     EditText loiginUsername,loginPassword;
     Button loginButton;
     static String   _usernameLogined;
-
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    static String _URL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //_URL = "https://dev.husc.edu.vn/tin4403/api";
+        _URL = "http://192.168.3.102:4080";
+
         loiginUsername = findViewById(R.id.input_usename);
         loginPassword=findViewById(R.id.input_password);
         loginButton = findViewById(R.id.button_dangnhap);
@@ -102,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.3.103:4080/login")
+                .url(_URL + "/login")
                 //.url("https://dev.husc.edu.vn/tin4403/api/login")
                 .post(body)
                 .build();
@@ -134,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                     return;
-                }
+                } 
                 Log.d("K45","abc");
                 _usernameLogined = user;
                 Intent intent = new Intent(getApplicationContext(),PageUseActivity.class);
