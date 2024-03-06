@@ -19,12 +19,15 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class LoginScreen extends AppCompatActivity {
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    static String _URL = "https://192.168.3.114:4080";
     static String   _usernameLogined;
     EditText m_edtUserLog,m_edtPassLog; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
@@ -104,7 +107,7 @@ public class LoginScreen extends AppCompatActivity {
 
         Request request = new Request.Builder()
                 //.url("https://dev.husc.edu.vn/tin4403/api/login")
-                .url("https://192.168.3.114:4080/login")
+                .url(_URL+"/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
