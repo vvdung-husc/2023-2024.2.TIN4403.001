@@ -1,4 +1,4 @@
-package com.ltdd.testing1;
+package com.ltdd.testing;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;

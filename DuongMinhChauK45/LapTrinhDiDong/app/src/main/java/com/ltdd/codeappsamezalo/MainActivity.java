@@ -31,14 +31,12 @@ import androidx.core.text.HtmlCompat;
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    static String _URL = "http://192.168.1.4:4080";//"https://dev.husc.edu.vn/tin4403/api";
+    static String _URL = "http://192.168.3.114:4080";//
     static String   _usernameLogined;
     EditText usernameInput; //Biến điều khiển EditText
     EditText passwordInput; //Biến điều khiển EditText
     Button loginBtn; //Biến điều khiển Đăng nhập
     Button registerBtn; //Biến điều khiển Đăng kí
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         passwordInput = (EditText) findViewById(R.id.password_input);
         loginBtn = (Button) findViewById(R.id.login_btn);
         registerBtn = (Button) findViewById(R.id.register_btn);
-
 
         //Cài đặt sự kiện Click cho Button Login
         loginBtn.setOnClickListener(new CButtonLogin());
@@ -95,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean bOk = (user.equals("mchau1011") && pass.equals("1234567"));
         if (bOk){
-            _usernameLogined = "mchau";
+            _usernameLogined = "Dương Minh Châu";
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             startActivity(intent);
         }
@@ -121,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         Request request = new Request.Builder()
                 //.url("https://dev.husc.edu.vn/tin4403/api/login")
-                .url("http://192.168.3.114:4080/login")
+                .url(_URL + "/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
