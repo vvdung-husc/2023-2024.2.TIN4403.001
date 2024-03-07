@@ -1,6 +1,7 @@
 package com.example.ltdd_01;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ReactiveGuide;
 import androidx.core.text.HtmlCompat;
 
 import android.content.Context;
@@ -31,7 +32,7 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    static String _URL = "http://192.168.1.113:4080";
+    static String _URL = "http://192.168.3.105:4080";
     static String   _phonenumberLogined;
     private CheckBox hienthimatkhau;
     private EditText password;

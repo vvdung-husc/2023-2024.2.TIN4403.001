@@ -36,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity{
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private EditText username, phonenumber, password, configpassword;
+    private String _username = username.getText().toString();
     private Button btndangky;
     private ImageButton imgbtnback;
     private CheckBox hienthimatkhau;
@@ -115,16 +116,6 @@ public class RegisterActivity extends AppCompatActivity{
         finish(); // hoặc thực hiện logic quay lại khác tùy thuộc vào yêu cầu của bạn
     }
 
-    private void saveCredentials(String phone, String pass) {
-        // Lưu thông tin đăng ký vào SharedPreferences hoặc Database
-        // Ví dụ sử dụng SharedPreferences
-        SharedPreferences preferences = getSharedPreferences("user_credentials", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("phone_number", phone);
-        editor.putString("password", pass);
-        editor.apply();
-    }
-
     static public void ShowToast(Context ctx, String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_SHORT);
@@ -188,8 +179,8 @@ public class RegisterActivity extends AppCompatActivity{
                         Toast.makeText(getApplicationContext(),strMsg,Toast.LENGTH_SHORT).show();
                     }
                 });
-
                 Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                intent.putExtra("username", _username);
                 startActivity(intent);
             }
         });

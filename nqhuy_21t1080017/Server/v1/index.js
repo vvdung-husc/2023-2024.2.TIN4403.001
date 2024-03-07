@@ -38,7 +38,7 @@ app.post("/login", function (req, res) {
 // hàm đăng ký tài khoản
 app.post("/register", function (req, res) {
   var username = unidecode(req.body.username);
-  var phonenumber = unidecode(req.body.phonenumber);
+  var phonenumber = req.body.phonenumber;
   var pass = req.body.password;
   var oUser = {
     username: username,
@@ -75,8 +75,8 @@ function isExist(phonenumber, pass) {
   return false;
 }
 
-function login(phonenumber, pass, res) {
-  console.log("Attempting login for:", phonenumber, "/", pass);
+function login(username,phonenumber, pass, res) {
+  console.log("Attempting login for:", username, "/" ,phonenumber, "/", pass);
   if (isExist(phonenumber, pass))
     res.status(200).send("API LOGIN - THANH CONG");
   else res.status(503).send("API LOGIN - LOI TAI KHOAN");
