@@ -22,4 +22,7 @@ API -
  - POST https://dev.husc.edu.vn/tin4403/api/userinfo
  - POST https://dev.husc.edu.vn/tin4403/api/register
    + BODY TYPE x-www-form-urlencode: username[/password/fullname/email]
+- POST https://dev.husc.edu.vn/tin4403/api/userupdate
+   + HEADER : token lấy từ bước đăng nhập
+   + BODY TYPE x-www-form-urlencode: [password/fullname/email]
    
