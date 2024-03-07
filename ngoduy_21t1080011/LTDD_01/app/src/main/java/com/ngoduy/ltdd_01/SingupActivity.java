@@ -31,7 +31,7 @@ public class SingupActivity extends AppCompatActivity {
     Button btndangki;
     CheckBox checkBoxMatKhau;
     TextView btnlogin;
-
+    static String  fullname,email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,7 +187,8 @@ public class SingupActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),strMsg,Toast.LENGTH_SHORT).show();
                     }
                 });
-
+                fullname = fullnamesignup.getText().toString();
+                email = emailsignup.getText().toString();
                 Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
             }

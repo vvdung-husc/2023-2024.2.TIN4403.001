@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText loiginUsername,loginPassword;
     Button loginButton;
     CheckBox checkBoxMkLogin;
-    static String   _usernameLogined;
+    static String   _usernameLogined,_passwordnameLogined;
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     static String _URL;
     @Override
@@ -39,7 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //_URL = "https://dev.husc.edu.vn/tin4403/api";
-        _URL = "http://192.168.3.99:4080";
+        //_URL = "http://192.168.3.99:4080";
+        _URL = "http://192.168.1.7:5080";
 
         loiginUsername = findViewById(R.id.input_usename);
         loginPassword=findViewById(R.id.input_password);
@@ -159,6 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                 } 
                 Log.d("K45","abc");
                 _usernameLogined = user;
+                _passwordnameLogined = pass;
                 Intent intent = new Intent(getApplicationContext(),PageUseActivity.class);
                 startActivity(intent);
 
