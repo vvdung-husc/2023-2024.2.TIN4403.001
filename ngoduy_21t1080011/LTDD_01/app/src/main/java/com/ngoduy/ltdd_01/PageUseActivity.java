@@ -9,27 +9,18 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class PageUseActivity extends AppCompatActivity {
-    Button btnlogin,btnsignup,btndangxuat;
+    Button btnsignup,btndangxuat;
     TextView textWellcome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_use);
         textWellcome = findViewById(R.id.textviewUsename);
-        btndangxuat = findViewById(R.id.button_dangxuat_use);
-        btnlogin = findViewById(R.id.button_login_use);
+        btndangxuat = findViewById(R.id.button_dangxuat);
         btnsignup = findViewById(R.id.button_signup_use);
         String s = LoginActivity._usernameLogined;
         textWellcome.setText(s);
         btndangxuat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),PageUseActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
