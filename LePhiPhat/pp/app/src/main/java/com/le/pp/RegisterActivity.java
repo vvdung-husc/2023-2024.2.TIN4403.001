@@ -42,9 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
     public class CButtonSignUp implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            ed_userName = findViewById(R.id.reg_un);
-            ed_passWord = findViewById(R.id.reg_pw);
-            ed_fullName = findViewById(R.id.reg_fn);
+            ed_userName = v.findViewById(R.id.reg_un);
+            ed_passWord = v.findViewById(R.id.reg_pw);
+            ed_fullName = v.findViewById(R.id.reg_fn);
 
             try {
                 Log.d("K45", "clicked");
@@ -57,6 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                 user.put("password", passWord);
                 user.put("fullname", fullName);
                 Log.d("K45", user.toString());
+                Log.d("K45", "wtf");
                 okhttpApiRegister(user);
             } catch (Exception e) {
                 Log.d("K45", "" + e.getMessage());
