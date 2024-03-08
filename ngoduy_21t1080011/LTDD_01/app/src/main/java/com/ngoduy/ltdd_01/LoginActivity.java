@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +29,8 @@ import okhttp3.Response;
 public class LoginActivity extends AppCompatActivity {
     EditText loiginUsername,loginPassword;
     Button loginButton;
-    static String   _usernameLogined;
+    CheckBox checkBoxMkLogin;
+    static String   _usernameLogined,_passwordnameLogined;
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     static String _URL;
     @Override
@@ -35,13 +39,26 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //_URL = "https://dev.husc.edu.vn/tin4403/api";
-        _URL = "http://192.168.3.102:4080";
+        //_URL = "http://192.168.3.99:4080";
+        _URL = "http://192.168.1.7:5080";
 
         loiginUsername = findViewById(R.id.input_usename);
         loginPassword=findViewById(R.id.input_password);
         loginButton = findViewById(R.id.button_dangnhap);
-
+        checkBoxMkLogin = findViewById(R.id.checkBoxMKLogin);
         TextView btn = findViewById(R.id.text_dangki);
+        //hiển thị mật khẩu
+        checkBoxMkLogin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(checkBoxMkLogin.isChecked()){
+                    loginPassword.setTransformationMethod(null);
+                }
+                else{
+                    loginPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,6 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                 } 
                 Log.d("K45","abc");
                 _usernameLogined = user;
+                _passwordnameLogined = pass;
                 Intent intent = new Intent(getApplicationContext(),PageUseActivity.class);
                 startActivity(intent);
 
