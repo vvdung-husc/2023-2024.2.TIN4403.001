@@ -1,4 +1,4 @@
-package com.ltdd.testing;
+package com.ltdd.testing1;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button register
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), com.ltdd.testing.RegisterActivity.class);
+            Intent i = new Intent(getApplicationContext(), com.ltdd.testing1.RegisterActivity.class);
             startActivity(i);
         }
     }//public class CButtonRegister implements View.OnClickListener {
