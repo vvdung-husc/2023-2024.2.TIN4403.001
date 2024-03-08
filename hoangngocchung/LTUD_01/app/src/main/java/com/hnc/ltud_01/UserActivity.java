@@ -1,12 +1,12 @@
-package com.example.ltdd_01;
+package com.hnc.ltud_01;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class UserActivity extends AppCompatActivity {
     TextView m_lblWelcome;
@@ -15,11 +15,11 @@ public class UserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_users);
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
-        m_lblWelcome = (TextView)findViewById(R.id.lblWelcome);
-        m_btnLogout = (Button) findViewById(R.id.btnLogout);
+        m_lblWelcome = (TextView)findViewById(R.id.wlcome);
+        m_btnLogout = (Button) findViewById(R.id.but_signout);
 
         String s = "Chào mừng : " + MainActivity._usernameLogined;
         m_lblWelcome.setText(s);
