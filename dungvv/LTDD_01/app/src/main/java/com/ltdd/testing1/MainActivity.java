@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ltdd.testing1.R;
+import com.ltdd.testing1.UserActivity;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -28,8 +31,8 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    public static String _usernameLogined;
     static String _URL;
-    static String   _usernameLogined;
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
     TextView m_lblRegister;//Biến điều khiển Đăng ký mới
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button register
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+            Intent i = new Intent(getApplicationContext(), com.ltdd.testing.RegisterActivity.class);
             startActivity(i);
         }
     }//public class CButtonRegister implements View.OnClickListener {
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
         if (bOk){
             _usernameLogined = "Võ Việt Dũng";
-            Intent intent = new Intent(getApplicationContext(),UserActivity.class);
+            Intent intent = new Intent(getApplicationContext(), UserActivity.class);
             startActivity(intent);
         }
         else{

@@ -1,4 +1,4 @@
-package com.ltdd.testing;
+package com.ltdd.testing1;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ltdd.testing1.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,12 +48,11 @@ public class RegisterActivity extends AppCompatActivity {
         m_btnRegister = (Button) findViewById(R.id.btnRegister);
         //Cài đặt sự kiện Click cho Button Register
         m_btnRegister.setOnClickListener(new RegisterActivity.CButtonRegister());
-
     }//protected void onCreate(Bundle savedInstanceState) {
 
     public class CButtonRegister implements View.OnClickListener {
         @Override
-        public void onClick(View v) {//Hàm sử lý sự kiện click button register
+        public void onClick(View v) {//Hàm sửSO lý sự kiện click button register
             String user = m_edtUser.getText().toString();
             String pass = m_edtPass.getText().toString();
             Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
