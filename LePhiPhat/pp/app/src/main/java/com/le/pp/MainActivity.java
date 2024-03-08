@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.inp_MatKhau);
         tvRegister = findViewById(R.id.btn_ctDangKi);
         btnLogIn =   findViewById(R.id.btn_DangNhap);
-        _URL = "http://192.168.3.128:4080";
+        _URL = "http://192.168.3.119:4080";
         btnLogIn.setOnClickListener(new CButtonLogin());
         tvRegister.setOnClickListener(new CButtonRegister());
     }
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url(_URL + "/login")
+                .url("http://192.168.3.128:4080/login")
                 .post(body)
                 .build();
 
