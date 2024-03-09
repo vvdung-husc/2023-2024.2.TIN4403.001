@@ -31,11 +31,11 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    static String _URL = "http://192.168.1.113:4080";
+    static String _URL = "http://192.168.104.73:4080";
     static String   _phonenumberLogined;
     private CheckBox hienthimatkhau;
-    private EditText matkhau;
-    private EditText sodienthoai;
+    private EditText password;
+    private EditText phonenumber;
     private Button btndangnhap;
     private ImageButton imgbtnback;
 
@@ -46,10 +46,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         hienthimatkhau = findViewById(R.id.hienthimatkhau);
-        matkhau = findViewById(R.id.matkhau);
+        password = findViewById(R.id.password);
         btndangnhap = findViewById(R.id.btndangnhap);
         imgbtnback = findViewById(R.id.imgbtnback);
-        sodienthoai = findViewById(R.id.sodienthoai);
+        phonenumber = findViewById(R.id.phonenumber);
 
 //        btndangnhap.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -65,10 +65,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (hienthimatkhau.isChecked()) {
                     // Hiển thị mật khẩu
-                    matkhau.setTransformationMethod(null);
+                    password.setTransformationMethod(null);
                 } else {
                     // Ẩn mật khẩu
-                    matkhau.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
             }
         });
@@ -76,17 +76,17 @@ public class LoginActivity extends AppCompatActivity {
         btndangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//Hàm sử lý sự kiện click button login
-                String sdt = sodienthoai.getText().toString();
-                String pass = matkhau.getText().toString();
-                Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + sdt + "/" + pass);
-                if (sdt.length() < 10 || pass.length() < 3){
+                String phone = phonenumber.getText().toString();
+                String pass = password.getText().toString();
+                Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + phone + "/" + pass);
+                if (phone.length() < 10 || pass.length() < 3){
                     ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
                     return;
                 }
                 try {
                     //Gọi hàm dịch vụ Login
                     //apiLogin(user,pass);
-                    okhttpApiLogin(sdt,pass);
+                    okhttpApiLogin(phone,pass);
 
                 } catch (IOException e) {
                     e.printStackTrace();

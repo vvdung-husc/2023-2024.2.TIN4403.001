@@ -18,8 +18,8 @@ app.get("/test", function (req, res) {
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "tvn1611";
-oUser.password = "161103";
+oUser.username = "tvn1611v";
+oUser.password = "16112003";
 oUser.fullname = "Trương Văn Nhật";
 oUser.email = "vannhat1975v@gmail.com";
 
@@ -72,7 +72,6 @@ function isExist(user,pass){
   return false;
 }
 function login(user,pass,res){
-  //if (user == "vvdung" && pass == "123456" )
   if (isExist(user,pass))
     res.status(200).send("API LOGIN - THANH CONG");
   else

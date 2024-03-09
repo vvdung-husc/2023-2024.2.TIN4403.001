@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var unidecode = require("unidecode");
 
 var app = express();
 app.use(bodyParser.json());
@@ -20,9 +21,9 @@ app.get("/test", function (req, res) {
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "vvdung";
-oUser.phonenumber = "123456789"; // Change this to your desired default phonenumber
-oUser.password = "123456";
+oUser.username = "nqhuy";
+oUser.phonenumber = "0832766413"; // Change this to your desired default phonenumber
+oUser.password = "nqhuy";
 
 arrUser.push(oUser);
 
@@ -36,7 +37,7 @@ app.post("/login", function (req, res) {
 
 // hàm đăng ký tài khoản
 app.post("/register", function (req, res) {
-  var username = req.body.username;
+  var username = unidecode(req.body.username);
   var phonenumber = req.body.phonenumber;
   var pass = req.body.password;
   var oUser = {
@@ -75,7 +76,7 @@ function isExist(phonenumber, pass) {
 }
 
 function login(phonenumber, pass, res) {
-  console.log("Attempting login for:", phonenumber, "/", pass);
+  console.log("Attempting login for:",phonenumber, "/", pass);
   if (isExist(phonenumber, pass))
     res.status(200).send("API LOGIN - THANH CONG");
   else res.status(503).send("API LOGIN - LOI TAI KHOAN");
@@ -85,11 +86,13 @@ function register(username, phonenumber, pass, res) {
   var u = getUserByPhonenumber(phonenumber);
   if (!u) {
     u = {};
-    u.username = username;
+    u.username = unidecode(username);
     u.phonenumber = phonenumber;
-    u.password = pass ? pass : "654321"; // mật khẩu mặt định nếu pass rỗng
+    u.password = pass; // mật khẩu mặt định nếu pass rỗng
     arrUser.push(u);
-    res.status(200).send("API REGISTER - THANH CONG [" + username + "]");
+    res
+      .status(200)
+      .send("API REGISTER - THANH CONG [" + username + "]");
   } else {
     if (getUserByPhonenumber(phonenumber))
       res
