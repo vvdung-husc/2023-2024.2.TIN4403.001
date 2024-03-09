@@ -50,6 +50,24 @@ app.post("/register", function (req, res) {
   //res.status(200).send("API REGISTER - POST");
 });
 
+//hàm đổi mật khẩu
+app.post("/changepassword", function (req, res) {
+  var pass = req.body.password;	
+  var name = req.body.fullname;
+  var email = req.body.email;
+  var oUser = {
+    username: user,
+    password: pass,
+    fullname: name,
+    email: email
+  }
+  console.log(oUser);
+  register(user,pass,name,email,res);
+  //res.status(200).send("API REGISTER - POST");
+});
+
+
+
 //hàm nhận thông tin tài khoản sau khi đã đăng nhập thành công
 app.post("/userinfo", function (req, res) {
   res.status(200).send("API USERINFO - POST");
@@ -86,6 +104,22 @@ function register(user,pass,name,email,res){
   //if (user == "vvdung" && pass == "123456" )
   var u = getUser(user);
   if (!u){
+    u = {};
+    u.username = user;
+    u.password = pass ? pass : "654321"; //mật khẩu mặt định nếu pass rỗng
+    u.fullname = name ? name : "";//mặt định rỗng
+    u.email = email ? email : "";//mặt định rỗng
+    arrUser.push(u);
+    res.status(200).send("API REGISTER - THANH CONG [" + user + "]");
+  }
+  else {
+    res.status(503).send("API REGISTER - TAI KHOAN [" + user + "] DA TON TAI");
+  }    
+}
+
+function changepassword(user,pass,name,email,res){
+  var u = getUser(user);
+  if (u){
     u = {};
     u.username = user;
     u.password = pass ? pass : "654321"; //mật khẩu mặt định nếu pass rỗng
