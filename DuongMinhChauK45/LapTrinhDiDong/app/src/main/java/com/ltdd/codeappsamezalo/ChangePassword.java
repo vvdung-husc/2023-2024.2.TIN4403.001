@@ -64,7 +64,7 @@ public class ChangePassword extends AppCompatActivity {
                 Log.d("TIN4403",oUser.toString());
                 String json = oUser.toString();
                 Log.d("TIN4403",json);
-                okhttpApiRegister(oUser);
+                okhttpApiChange(oUser);
 
             } catch (JSONException e) {
                 e.printStackTrace();

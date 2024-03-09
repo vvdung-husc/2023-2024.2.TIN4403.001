@@ -1,5 +1,6 @@
 package com.ltdd.codeappsamezalo;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 
