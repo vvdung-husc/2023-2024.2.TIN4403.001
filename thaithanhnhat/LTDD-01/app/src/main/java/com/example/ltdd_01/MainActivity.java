@@ -62,7 +62,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        btnregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),register.class);
+                startActivity(intent);
+            }
+        });
     }
     void okhttpLogin(String user,String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";

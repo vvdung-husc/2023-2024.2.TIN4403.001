@@ -9,16 +9,19 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
+        android:layout_width="410dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="4dp"
+        android:background="#107CD3"
         android:fontFamily="sans-serif-black"
         android:text="Đăng Nhập"
+        android:textAlignment="center"
+        android:textAllCaps="true"
         android:textColor="#ffffff"
         android:textSize="50sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
