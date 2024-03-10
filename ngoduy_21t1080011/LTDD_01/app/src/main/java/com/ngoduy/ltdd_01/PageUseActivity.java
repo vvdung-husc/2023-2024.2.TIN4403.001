@@ -9,27 +9,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class PageUseActivity extends AppCompatActivity {
-    Button btnlogin,btnsignup,btndangxuat;
+    Button btndangxuat;
     TextView textWellcome;
+    TextView btnThongTinUse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_use);
         textWellcome = findViewById(R.id.textviewUsename);
-        btndangxuat = findViewById(R.id.button_dangxuat_use);
-        btnlogin = findViewById(R.id.button_login_use);
-        btnsignup = findViewById(R.id.button_signup_use);
+        btnThongTinUse = findViewById(R.id.buttonThongTinUse);
+        btndangxuat = findViewById(R.id.button_dangxuat);
         String s = LoginActivity._usernameLogined;
         textWellcome.setText(s);
         btndangxuat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),PageUseActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
@@ -37,12 +29,10 @@ public class PageUseActivity extends AppCompatActivity {
                 finish();
             }
         });
-        btnsignup.setOnClickListener(new View.OnClickListener() {
+        btnThongTinUse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SingupActivity.class);
-                startActivity(intent);
-                finish();
+                startActivity(new Intent(PageUseActivity.this, ThongTinUseActivity.class));
             }
         });
     }
