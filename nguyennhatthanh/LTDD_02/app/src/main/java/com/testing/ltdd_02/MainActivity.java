@@ -29,7 +29,7 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    static String _URL ="http://192.168.3.118:4080";
+    static String _URL ="http://192.168.199.1";
 
     static String   _usernameLogined;
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
