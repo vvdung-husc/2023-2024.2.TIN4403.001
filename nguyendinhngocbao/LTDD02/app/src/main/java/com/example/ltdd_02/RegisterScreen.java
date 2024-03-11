@@ -56,8 +56,9 @@ public class RegisterScreen extends AppCompatActivity {
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
             String name = m_edtUserName.getText().toString();
             String pass = m_edtPass.getText().toString();
+            String rePass = m_edtRePass.getText().toString();
             Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + name + "/" + pass);
-            if((name.length() < 3 || pass.length() < 6)){
+            if((name.length() < 3 || pass.length() < 6)&& rePass != pass){
                 Toast toast = Toast.makeText(getApplicationContext(),"Không hợp lệ!",Toast.LENGTH_SHORT);
                 TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
                 toastMessage.setTextColor(Color.RED);

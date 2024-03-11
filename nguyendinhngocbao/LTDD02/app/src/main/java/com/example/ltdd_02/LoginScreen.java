@@ -27,7 +27,7 @@ import okhttp3.Response;
 
 public class LoginScreen extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    static String _URL = "https://192.168.3.114:4080";
+    static String _URL = "https://dev.husc.edu.vn/tin4403/api V1";"http://192.168.3.100:5080 V2"//;
     static String   _usernameLogined;
     EditText m_edtUserLog,m_edtPassLog; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
