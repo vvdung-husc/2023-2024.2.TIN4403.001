@@ -1,4 +1,4 @@
-package com.ltdd.testing1;
+package com.ltdd.testing;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
@@ -28,8 +28,9 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    static String _URL;
-    static String   _usernameLogined;
+    //thay đổi _URL đúng với IP đang chạy dịch vu WebService
+    static String _URL = "http://192.168.56.1:4080";//"https://dev.husc.edu.vn/tin4403/api";
+    static String   _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
     TextView m_lblRegister;//Biến điều khiển Đăng ký mới
@@ -37,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        _URL = "https://dev.husc.edu.vn/tin4403/api";
-        _URL = "http://192.168.3.112:4080";
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
         m_edtUser = (EditText)findViewById(R.id.edtUsername);
@@ -61,19 +59,16 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {//Hàm sử lý sự kiện click button login
             String user = m_edtUser.getText().toString();
             String pass = m_edtPass.getText().toString();
-            Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+            Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
-                //Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!",Toast.LENGTH_SHORT).show();
-                Toast toast = Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!",Toast.LENGTH_SHORT);
-                TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                toastMessage.setTextColor(Color.RED);
-                toast.show();
+                ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
                 return;
             }
             try {
                 //Gọi hàm dịch vụ Login
-               // apiLogin(user,pass);
-               okhttpApiLogin(user,pass);
+                //apiLogin(user,pass);
+                okhttpApiLogin(user,pass);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -94,11 +89,11 @@ public class MainActivity extends AppCompatActivity {
     void apiLogin(String user, String pass) throws IOException {
 
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
-        Log.d("K45",json);
+        Log.d("TIN4403",json);
 
-        boolean bOk = (user.equals("nhatnvh") && pass.equals("123456"));
+        boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
         if (bOk){
-            _usernameLogined = "Nguyễn Văn Hoàng Nhật";
+            _usernameLogined = "Võ Việt Dũng";
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             startActivity(intent);
         }
@@ -108,29 +103,22 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     //Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không chính xác.",Toast.LENGTH_SHORT).show();
                     String str = "Tài khoản hoặc mật khẩu không chính xác [" + user + "/" + pass + "]";
-                    Toast toast = Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT);
-                    View view = toast.getView();
-                    view.setBackgroundColor(Color.GREEN);
-                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                    toastMessage.setTextColor(Color.RED);
-                    toast.show();
+                    ShowToast(getApplicationContext(),str);
                 }
             });
         }
-    }
+    } //void apiLogin(String user, String pass) throws IOException {
+
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
-        Log.d("K45",json);
+        Log.d("TIN4403",json);
         RequestBody body = new FormBody.Builder()
                 .add("username", user)
                 .add("password", pass)
                 .build();
 
         Request request = new Request.Builder()
-               // .url("https://dev.husc.edu.vn/tin4403/api/login")
-               .url("http://192.168.3.112:4080/login")
-                //.url("http://192.168.1.11:4080/login")
-
+                .url(_URL + "/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -138,8 +126,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
-                Log.d("K45","onFailure\n" + errStr);
-                call.cancel();
+                Log.d("TIN4403","onFailure\n" + errStr);
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -147,12 +134,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                call.cancel();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + response.body().string();
-                Log.d("K45",errStr);
+                Log.d("TIN4403",errStr);
                 if (!response.isSuccessful()){
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
@@ -170,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });//client.newCall(request).enqueue(new Callback() {
     } //void okhttpApiLogin(String user, String pass) throws IOException{
+
     static public void ShowToast(Context ctx, String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_SHORT);
@@ -207,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         //txtString.setText(myResponse);
-                        Log.d("K45",myResponse);
+                        Log.d("TIN4403",myResponse);
                     }
                 });
             }
@@ -234,8 +223,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d("K45",response.body().string());
+                Log.d("TIN4403",response.body().string());
             }
         });
     }
+
 }//public class MainActivity extends AppCompatActivity {
