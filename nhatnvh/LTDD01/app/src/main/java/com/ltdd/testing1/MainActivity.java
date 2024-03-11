@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         _URL = "https://dev.husc.edu.vn/tin4403/api";
-       // _URL = "http://192.168.3.106:4080";
-        _URL = "http://192.168.1.11:4080";
+        _URL = "http://192.168.3.112:4080";
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
         m_edtUser = (EditText)findViewById(R.id.edtUsername);
@@ -129,8 +128,8 @@ public class MainActivity extends AppCompatActivity {
 
         Request request = new Request.Builder()
                // .url("https://dev.husc.edu.vn/tin4403/api/login")
-               //.url("http://192.168.3.112:4080/login")
-                .url("http://192.168.1.11:4080/login")
+               .url("http://192.168.3.112:4080/login")
+                //.url("http://192.168.1.11:4080/login")
 
                 .post(body)
                 .build();
