@@ -88,9 +88,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="Đăng kí tài khoản"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="91dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
