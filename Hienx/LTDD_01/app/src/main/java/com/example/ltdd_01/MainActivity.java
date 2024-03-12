@@ -2,6 +2,7 @@ package com.example.ltdd_01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -28,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
     TextView m_lblRegister;//Biến điều khiển Đăng ký mới
+
+    public static void ShowToast(Context applicationContext, String s) {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         Request request = new Request.Builder()
 
                // .url("https://dev.husc.edu.vn/tin4403/api/login")
-                .url("http://192.168.3.126:4080/login")
+                .url("http://192.168.3.121:4080/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
