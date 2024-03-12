@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -16,7 +16,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {

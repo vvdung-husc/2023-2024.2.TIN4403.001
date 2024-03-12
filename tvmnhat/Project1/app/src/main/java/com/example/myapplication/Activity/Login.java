@@ -1,9 +1,12 @@
-package com.example.myapplication;
+package com.example.myapplication.Activity;
 
 import android.content.Intent;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.myapplication.Database.DatabaseHelper;
+import com.example.myapplication.HomePage;
+import com.example.myapplication.R;
 
 public class Login extends AppCompatActivity {
     EditText username;
@@ -23,46 +26,34 @@ public class Login extends AppCompatActivity {
         signup_btn = findViewById(R.id.btnSignup);
 
         //admin and admin
-//        loginbutton.setOnClickListener(view -> {
-//            //correct
-//            if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
-//                Toast.makeText(Login.this, "LOGIN SUCCESSFULL", Toast.LENGTH_SHORT).show();
-//            }
-//            //incorrect
-//            else{
-//                Toast.makeText(Login.this, "LOGIN FAILED!!!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        signup_btn.setOnClickListener(view ->{
-//            startActivity(new Intent(Login.this, Register.class));
-//            finish();
-//        });
         AddData();
     }
-
     public void AddData(){
         loginbutton.setOnClickListener(view -> {
+            //incorrect
+            if(username.getText().toString().isEmpty() && password.getText().toString().isEmpty()){
+                Toast.makeText(Login.this, "LOGIN FAILED!!!", Toast.LENGTH_SHORT).show();
+            }
             //correct
-//            if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
-//                Toast.makeText(Login.this, "LOGIN SUCCESSFULL", Toast.LENGTH_SHORT).show();
-//            }
-//            //incorrect
-//            else{
-//                Toast.makeText(Login.this, "LOGIN FAILED!!!", Toast.LENGTH_SHORT).show();
-//            }
+            else{
+                Toast.makeText(Login.this, "LOGIN SUCCESSFULL", Toast.LENGTH_SHORT).show();
+            }
 
             boolean isInserted = myDb.insertedData(username.getText().toString(),
                     password.getText().toString());
-            if(isInserted){
+            if(isInserted) {
                 Toast.makeText(Login.this, "LOGIN SUCCESSFULL", Toast.LENGTH_SHORT).show();
-            }else {
+            } else {
                 Toast.makeText(Login.this, "LOGIN FAILED!!!", Toast.LENGTH_SHORT).show();
             }
+
+            startActivity(new Intent(Login.this, HomePage.class));
+//            finish();
         });
 
         signup_btn.setOnClickListener(view ->{
             startActivity(new Intent(Login.this, Register.class));
+//            finish();
         });
     }
 }
