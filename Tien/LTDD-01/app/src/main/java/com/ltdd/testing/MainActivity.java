@@ -73,12 +73,12 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-        }//public void onClick(View v) {//Hàm sử lý sự kiện click button login
+        }//public void onClick(View v) {//Hàm xử lý sự kiện click button login
     }//public class CButtonLogin  implements View.OnClickListener {
 
     public class CButtonRegister implements View.OnClickListener {
         @Override
-        public void onClick(View v) {//Hàm sử lý sự kiện click button register
+        public void onClick(View v) {//Hàm xử lý sự kiện click button register
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
             startActivity(i);
@@ -91,9 +91,9 @@ public class MainActivity extends AppCompatActivity {
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("TIN4403",json);
 
-        boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
+        boolean bOk = (user.equals("Tien") && pass.equals("123456"));
         if (bOk){
-            _usernameLogined = "Võ Việt Dũng";
+            _usernameLogined = "Nguyễn Hoàng Mỹ Tiên";
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             startActivity(intent);
         }
