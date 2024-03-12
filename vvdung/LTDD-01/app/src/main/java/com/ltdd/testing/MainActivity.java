@@ -29,7 +29,7 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    static String _URL = "http://192.168.56.1:4080";//"https://dev.husc.edu.vn/tin4403/api";
+    static String _URL = "http://192.168.3.125:5080";//"https://dev.husc.edu.vn/tin4403/api";
     static String   _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
