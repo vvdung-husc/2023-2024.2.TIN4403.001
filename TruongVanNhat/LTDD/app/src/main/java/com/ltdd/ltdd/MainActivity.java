@@ -30,43 +30,44 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    static String _URL = "http://192.168.1.9:4080";//"https://dev.husc.edu.vn/tin4403/api";
+    static String _URL = "http://192.168.3.109:4080";//"https://dev.husc.edu.vn/tin4403/api";
     static String   _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
-    EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
-    Button m_btnLogin; //Biến điều khiển Đăng nhập
-    TextView m_lblRegister;//Biến điều khiển Đăng ký mới
+    EditText edtUser,edtPass; //Biến điều khiển EditText
+    Button btnLogin; //Biến điều khiển Đăng nhập
+    TextView lblRegister;//Biến điều khiển Đăng ký mới
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //biến điều khiển tương ứng trong layout
-        m_edtUser = (EditText)findViewById(R.id.edtUsername);
-        m_edtPass = (EditText)findViewById(R.id.edtPassword);
-        m_btnLogin = (Button) findViewById(R.id.btnLogin);
+        //Khởi tạo các biến điều khiển tương ứng trong layout
+        edtUser = (EditText)findViewById(R.id.edtUsername);
+        edtPass = (EditText)findViewById(R.id.edtPassword);
+        btnLogin = (Button) findViewById(R.id.btnLogin);
 
-        m_lblRegister = (TextView) findViewById(R.id.lblRegister);
+        lblRegister = (TextView) findViewById(R.id.lblRegister);
 
-        // sự kiện Click cho Button Login
-        m_btnLogin.setOnClickListener(new CButtonLogin());
+        // Click cho Button Login
+        btnLogin.setOnClickListener(new CButtonLogin());
 
-        // sự kiện Click cho Button Register
-        m_lblRegister.setOnClickListener(new CButtonRegister());
+        // Click cho Button Register
+        lblRegister.setOnClickListener(new CButtonRegister());
 
     }
 
     public class CButtonLogin  implements View.OnClickListener {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button login
-            String user = m_edtUser.getText().toString();
-            String pass = m_edtPass.getText().toString();
-            Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+            String user = edtUser.getText().toString();
+            String pass = edtPass.getText().toString();
+            Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
                 ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không đúng!");
                 return;
             }
             try {
                 //Gọi hàm dịch vụ Login
+
                 okhttpApiLogin(user,pass);
 
             } catch (IOException e) {
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     public class CButtonRegister implements View.OnClickListener {
         @Override
-        public void onClick(View v) {//Hàm sử lý sự kiện click button register
+        public void onClick(View v) {//sự kiện click button register
             Intent i = new Intent(getApplicationContext(), activity_register.class);
             startActivity(i);
         }
@@ -88,10 +89,11 @@ public class MainActivity extends AppCompatActivity {
     void apiLogin(String user, String pass) throws IOException {
 
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
-        Log.d("K45",json);
+        Log.d("TIN4403",json);
 
         boolean bOk = (user.equals("tvn1611") && pass.equals("161103"));
         if (bOk){
+            Log.d("TIN4403", "ưtf");
             _usernameLogined = "Trương Văn Nhật";
             Intent intent = new Intent(getApplicationContext(),activity_user.class);
             startActivity(intent);
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
-        Log.d("K45",json);
+        Log.d("TIN4403",json);
         RequestBody body = new FormBody.Builder()
                 .add("username", user)
                 .add("password", pass)
@@ -123,12 +125,12 @@ public class MainActivity extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                String errStr = "Tài khoản hoặc mật khẩu không đúng.\n" + e.getMessage();
-                Log.d("K45","onFailure\n" + errStr);
+                String baoloi = "Tài khoản hoặc mật khẩu không đúng.\n" + e.getMessage();
+                Log.d("TIN4403","onFailure\n" + baoloi);
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),baoloi,Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -137,13 +139,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String errStr = "Tài khoản hoặc mật khẩu không đúng.\n" + response.body().string();
-                Log.d("K45",errStr);
+                String baoloi = "Tài khoản hoặc mật khẩu không đúng.\n" + response.body().string();
+                Log.d("TIN4403",baoloi);
                 if (!response.isSuccessful()){
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),baoloi,Toast.LENGTH_SHORT).show();
                         }
                     });
                     return;
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Hàm mẫu sử dụng phương thức GET - chỉ tham khảo
+    // ham get okhttp
     void doGet(String url) throws IOException {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
@@ -193,14 +195,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         //txtString.setText(myResponse);
-                        Log.d("K45",myResponse);
+                        Log.d("TIN4403",myResponse);
                     }
                 });
             }
         });
     }
 
-    //Hàm mẫu sử dụng phương thức POST - chỉ tham khảo
+    //post okhttp
     void doPost(String url,String key, String value) throws IOException {
         OkHttpClient client = new OkHttpClient();
         RequestBody body = new FormBody.Builder()
@@ -220,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d("K45",response.body().string());
+                Log.d("TIN4403",response.body().string());
             }
         });
     }

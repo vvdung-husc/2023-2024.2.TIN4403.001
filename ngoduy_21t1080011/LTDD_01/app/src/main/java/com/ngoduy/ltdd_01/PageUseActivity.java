@@ -9,17 +9,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class PageUseActivity extends AppCompatActivity {
-    Button btnsignup,btndangxuat;
+    Button btndangxuat;
     TextView textWellcome;
+    TextView btnThongTinUse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_use);
         textWellcome = findViewById(R.id.textviewUsename);
+        btnThongTinUse = findViewById(R.id.buttonThongTinUse);
         btndangxuat = findViewById(R.id.button_dangxuat);
-        btnsignup = findViewById(R.id.button_signup_use);
-        String s = LoginActivity._usernameLogined;
-        textWellcome.setText(s);
+//        m_lblUser.setText ("Tài khoản\t\t:\t" + User._username);
+//        m_lblName.setText ("Họ và tên\t\t:\t" + User._fullname);
+//        m_lblEmail.setText("Thư điện tử\t:\t" + User._email);
+//        String s = LoginActivity._usernameLogined;
+        textWellcome.setText(User._username);
         btndangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,12 +32,10 @@ public class PageUseActivity extends AppCompatActivity {
                 finish();
             }
         });
-        btnsignup.setOnClickListener(new View.OnClickListener() {
+        btnThongTinUse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SingupActivity.class);
-                startActivity(intent);
-                finish();
+                startActivity(new Intent(PageUseActivity.this, ThongTinUseActivity.class));
             }
         });
     }

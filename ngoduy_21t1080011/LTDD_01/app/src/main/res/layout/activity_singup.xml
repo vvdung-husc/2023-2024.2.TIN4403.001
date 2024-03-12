@@ -32,10 +32,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintTop_toBottomOf="@+id/input_fullname"
+        app:layout_constraintVertical_bias="0.036" />
 
     <EditText
         android:id="@+id/input_usename"
@@ -44,7 +44,6 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="38dp"
-        android:drawableEnd="@drawable/baseline_person_pin_24"
         android:ems="10"
         android:inputType="text"
         android:padding="6dp"
@@ -79,7 +78,6 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="38dp"
-        android:drawableEnd="@drawable/baseline_remove_red_eye_24"
         android:ems="10"
         android:inputType="textPassword"
         android:padding="6dp"
@@ -108,7 +106,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="48dp"
         android:backgroundTint="@color/zalo"
         android:text="Đăng Ký"
@@ -118,8 +115,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_fullname"
-        app:layout_constraintVertical_bias="0.049" />
+        app:layout_constraintTop_toBottomOf="@+id/input_repeatpass"
+        app:layout_constraintVertical_bias="0.448" />
 
     <TextView
         android:id="@+id/textView9"
@@ -139,7 +136,6 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="38dp"
-        android:drawableEnd="@drawable/baseline_phone_missed_24"
         android:ems="10"
         android:inputType="text"
         android:padding="6dp"
@@ -204,7 +200,6 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="38dp"
-        android:drawableEnd="@drawable/baseline_remove_red_eye_24"
         android:ems="10"
         android:inputType="text"
         android:padding="6dp"
@@ -219,12 +214,12 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="38dp"
-        android:text="Fullname"
+        android:text="Họ và Tên"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_repeatpass" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/input_fullname"
@@ -238,4 +233,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <CheckBox
+        android:id="@+id/checkBoxMK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Hiển thị mật khẩu"
+        app:layout_constraintEnd_toEndOf="@+id/input_repeatpass"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/input_repeatpass"
+        app:layout_constraintTop_toBottomOf="@+id/input_repeatpass" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

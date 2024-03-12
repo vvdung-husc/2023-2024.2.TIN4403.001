@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.myapplication"
@@ -14,6 +14,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+	   
     }
 
     buildTypes {
@@ -36,4 +38,6 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+  
 }
