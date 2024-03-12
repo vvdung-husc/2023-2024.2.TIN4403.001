@@ -12,15 +12,27 @@ app.get("/", function (req, res) {
   res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
 });
 app.get("/test", function (req, res) {
-  res.status(200).send(JSON.stringify(arrUser));
+  // Xuống hàng mỗi cặp key - value
+  var jsonString = JSON.stringify(arrUser, null, 2); // Thêm tùy chọn space ở đây
+  res.status(200).send(jsonString);
+
+  // var jsonString = JSON.stringify(arrUser); // Thêm tùy chọn space ở đây
+  // jsonString = jsonString.replace(/:/g, ": ");
+  // jsonString = jsonString.replace(/,/g, ", ");
+  // jsonString = jsonString.replace(/{/g, "{ ");
+  // jsonString = jsonString.replace(/},/g, "},\n");
+  // res.status(200).send(jsonString);
+
+  // res.status(200).send(JSON.stringify(arrUser));
+
   //res.status(200).send("ROUTE TEST ....");
 });
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "vvdung";
-oUser.password = "123456";
-oUser.fullname = "Võ Việt Dũng";
+oUser.username = "hmquan";
+oUser.password = "1234567";
+oUser.fullname = "Hồ Minh Quân";
 oUser.email = "vvdung@gmail.com";
 
 arrUser.push(oUser);
@@ -55,7 +67,7 @@ app.post("/userinfo", function (req, res) {
 });
 
 //dịch vụ WebService chạy tại cổng số n
-var server = app.listen(4060, function () {
+var server = app.listen(4080, function () {
   console.log("API Running on port.", server.address().port);
 });
 
@@ -82,7 +94,7 @@ function register(user, pass, name, email, res) {
   if (!u) {
     u = {};
     u.username = user;
-    u.password = pass ? pass : "654321"; //mật khẩu mặt định nếu pass rỗng
+    u.password = pass;
     u.fullname = name ? name : ""; //mặt định rỗng
     u.email = email ? email : ""; //mặt định rỗng
     arrUser.push(u);

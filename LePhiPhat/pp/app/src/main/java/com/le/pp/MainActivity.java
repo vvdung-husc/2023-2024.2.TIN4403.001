@@ -19,13 +19,15 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    static String _URL;
     static String userNameLogined;
     EditText etUserName, etPassword;
     TextView tvRegister;
@@ -36,11 +38,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etUserName = (EditText) findViewById(R.id.inp_TaiKhoan);
-        etPassword = (EditText) findViewById(R.id.inp_MatKhau);
-        tvRegister = (TextView) findViewById(R.id.btn_ctDangKi);
-        btnLogIn = (Button) findViewById(R.id.btn_DangNhap);
-
+        etUserName = findViewById(R.id.inp_TaiKhoan);
+        etPassword = findViewById(R.id.inp_MatKhau);
+        tvRegister = findViewById(R.id.btn_ctDangKi);
+        btnLogIn =   findViewById(R.id.btn_DangNhap);
+        _URL = "http://192.168.3.114:5080";
         btnLogIn.setOnClickListener(new CButtonLogin());
         tvRegister.setOnClickListener(new CButtonRegister());
     }
@@ -71,20 +73,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void apiLogin(String user, String pass) {
-        Boolean success = (user.equals("admin") && pass.equals("admin"));
-        if (success) {
-            userNameLogined = "Le Phi Phat";
-            Intent intent = new Intent(getApplicationContext(), UserActivity.class);
-            startActivity(intent);
-        } else {
-            String mess = "Tài khoản hoặc mật khẩu không chính xác\n";
-            Toast t = Toast.makeText(getApplicationContext(), mess, Toast.LENGTH_LONG);
-            t.show();
-        }
-    }
+//    public void apiLogin(String user, String pass) {
+//        Boolean success = (user.equals("admin") && pass.equals("admin"));
+//        if (success) {
+//            userNameLogined = "Le Phi Phat";
+//            Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+//            startActivity(intent);
+//        } else {
+//            String mess = "Tài khoản hoặc mật khẩu không chính xác\n";
+//            Toast t = Toast.makeText(getApplicationContext(), mess, Toast.LENGTH_LONG);
+//            t.show();
+//        }
+//    }
 
-    void okhttpApiLogin(String user, String pass) throws IOException {
+    void okhttpApiLogin(String user, String pass) {
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
 
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.43.139:4080/login")
+                .url("http://192.168.3.128:4080/login")
                 .post(body)
                 .build();
 

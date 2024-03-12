@@ -9,7 +9,7 @@ console.log("HELLO NODEJS")
 //sử dụng để kiểm tra API có đang hoạt động
 app.get("/", function (req, res) {
   console.log(arrUser);
-  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
+  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - NNTHI");
 });
 app.get("/test", function (req, res) {
   res.status(200).send(JSON.stringify(arrUser));
@@ -18,10 +18,10 @@ app.get("/test", function (req, res) {
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "vvdung";
+oUser.username = "nnthi";
 oUser.password = "123456";
-oUser.fullname = "Võ Việt Dũng";
-oUser.email = "vvdung@gmail.com";
+oUser.fullname = "Nguyen Nhat Thi";
+oUser.email = "nnthi@gmail.com";
 
 arrUser.push(oUser);
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
@@ -72,14 +72,14 @@ function isExist(user,pass){
   return false;
 }
 function login(user,pass,res){
-  //if (user == "vvdung" && pass == "123456" )
+  //if (user == "nnthi" && pass == "123456" )
   if (isExist(user,pass))
     res.status(200).send("API LOGIN - THANH CONG");
   else
     res.status(503).send("API LOGIN - LOI TAI KHOAN");
 }
 function register(user,pass,name,email,res){
-  //if (user == "vvdung" && pass == "123456" )
+  //if (user == "nnthi" && pass == "123456" )
   var u = getUser(user);
   if (!u){
     u = {};

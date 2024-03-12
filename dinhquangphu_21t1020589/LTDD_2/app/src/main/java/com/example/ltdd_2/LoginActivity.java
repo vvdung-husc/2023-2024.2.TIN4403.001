@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url(" http://192.168.223.195:4080/login")
+                .url(" http://192.168.1.7:4080/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
