@@ -1,4 +1,4 @@
-package com.ngoduy.ltdd_01;
+package com.example.ltdd_01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
