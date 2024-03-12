@@ -64,7 +64,7 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(), com.ltdd.testing1.MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), com.ltdd.codeappsamezalo.MainActivity.class);
                 startActivity(intent);
                 finish();
             }
