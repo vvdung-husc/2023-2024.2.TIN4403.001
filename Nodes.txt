@@ -1,9 +1,13 @@
 
 Tài khoản test login - POST https://dev.husc.edu.vn/tin4403/api/login
-username: tin4403
-password: 1234321
+username: admin
+password: 123456
+
+CHÚ Ý: NETWORK KHÔNG CHO PHÉP TẠI UI THREAD
+   
 
 OKHTTP - https://square.github.io/okhttp
+
 
 Thêm thư viện okhttp vào dự án
 

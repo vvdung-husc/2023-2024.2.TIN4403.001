@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("http://192.168.3.110:4050/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -150,6 +150,26 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
+    }
+
+//    public class CTvForget implements View.OnClickListener {
+//        @Override
+//        public void onClick(View v) {
+//            // Finish the registration screen and return to the Login activity
+//            Intent myIntent = new Intent(LoginActivity.this, ForgetActivity.class);
+//            LoginActivity.this.startActivity(myIntent);
+//            finish();
+//        }
+//    }
+
+    public class CTvReg implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            // Finish the registration screen and return to the Login activity
+            Intent myIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+            LoginActivity.this.startActivity(myIntent);
+            finish();
+        }
     }
 
     ///////////// CÁCH SỬ DỤNG OKHTTP GET/POST ///////////////

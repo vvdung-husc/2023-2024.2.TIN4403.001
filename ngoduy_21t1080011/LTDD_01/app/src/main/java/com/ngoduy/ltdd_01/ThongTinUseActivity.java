@@ -24,7 +24,10 @@ public class ThongTinUseActivity extends AppCompatActivity {
         useName = findViewById(R.id.textTenTaiKhoan);
         passWord = findViewById(R.id.textMatKhau);
         email = findViewById(R.id.textEmail);
-        btnUpdate= findViewById(R.id.btnChinhSua);
+        useName.setText (User._username);
+        fullName.setText (User._fullname);
+        passWord.setText(User._password);
+        email.setText(User._email);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

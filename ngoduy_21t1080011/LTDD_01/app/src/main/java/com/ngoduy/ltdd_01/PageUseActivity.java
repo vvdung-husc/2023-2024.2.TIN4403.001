@@ -19,8 +19,11 @@ public class PageUseActivity extends AppCompatActivity {
         textWellcome = findViewById(R.id.textviewUsename);
         btnThongTinUse = findViewById(R.id.buttonThongTinUse);
         btndangxuat = findViewById(R.id.button_dangxuat);
-        String s = LoginActivity._usernameLogined;
-        textWellcome.setText(s);
+//        m_lblUser.setText ("Tài khoản\t\t:\t" + User._username);
+//        m_lblName.setText ("Họ và tên\t\t:\t" + User._fullname);
+//        m_lblEmail.setText("Thư điện tử\t:\t" + User._email);
+//        String s = LoginActivity._usernameLogined;
+        textWellcome.setText(User._username);
         btndangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
