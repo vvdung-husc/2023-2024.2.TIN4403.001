@@ -61,4 +61,6 @@
     <string name="price">30$</string>
     <string name="book_1">Book 1</string>
     <string name="favorite_products">Favorite products</string>
+    <string name="textview">TextView</string>
+    <string name="dangxuat">Đăng xuất</string>
 </resources>
