@@ -12,7 +12,7 @@ public class PageUseActivity extends AppCompatActivity {
     Button btndangxuat;
     TextView textWellcome;
     TextView btnThongTinUse;
-    @Override
+    @Overridea
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_use);
