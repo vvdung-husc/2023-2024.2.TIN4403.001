@@ -20,10 +20,10 @@ app.get("/test", function (req, res) {
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "admin";
-oUser.password = "123456";
-oUser.fullname = "Administrator";
-oUser.email = "admin@tin4403.com";
+oUser.username = "mchau";
+oUser.password = "123456789";
+oUser.fullname = "Minh Chau";
+oUser.email = "mchau0221@gmail.com";
 
 arrUser.push(oUser);
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
