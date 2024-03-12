@@ -1,14 +1,2 @@
-package com.ltdd.testing;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-public class RegisterActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.sigup);
-    }
+package com.example.ltdd_01;public class RegisterActivity {
 }
