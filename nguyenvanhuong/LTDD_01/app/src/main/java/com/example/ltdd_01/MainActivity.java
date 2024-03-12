@@ -1,7 +1,4 @@
-package com.ltdd.testing;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.text.HtmlCompat;
+package com.example.ltdd_01;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.text.HtmlCompat;
 
 import java.io.IOException;
 
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button register
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+            Intent i = new Intent(getApplicationContext(), com.example.ltdd_01.RegisterActivity.class);
             startActivity(i);
         }
     }//public class CButtonRegister implements View.OnClickListener {
