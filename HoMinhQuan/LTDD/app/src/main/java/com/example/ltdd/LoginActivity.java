@@ -31,6 +31,9 @@ public class LoginActivity extends AppCompatActivity {
     EditText edtUser;
     EditText edtPass;
     Button btnLogin;
+    TextView tvForgetPass;
+    TextView tvRegister;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,13 @@ public class LoginActivity extends AppCompatActivity {
         edtUser = findViewById(R.id.edtUser);
         edtPass = findViewById(R.id.edtPass);
         btnLogin = findViewById(R.id.btnLogin);
+        tvForgetPass = findViewById(R.id.lblForgetPass);
+        tvRegister = findViewById(R.id.lblRegister);
+
 
         btnLogin.setOnClickListener(new CButtonLogin());
+        tvForgetPass.setOnClickListener(new CTvForget());
+        tvRegister.setOnClickListener(new CTvReg());
 
     }
 
@@ -57,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
             }
             try {
                 //Gọi hàm dịch vụ Login
-                apiLogin(user,pass);
-                //okhttpApiLogin(user,pass);
+//                apiLogin(user,pass);
+                okhttpApiLogin(user,pass);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -78,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intent);
         }
-        else{
+        else {
             LoginActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -99,7 +107,8 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://dev.husc.edu.vn/tin4403/api/login")
+                //.url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("http://192.168.3.101:4060/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -108,7 +117,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
                 Log.d("K45","onFailure\n" + errStr);
-                Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                LoginActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 call.cancel();
             }
 
@@ -127,12 +142,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 _usernameLogined = user;
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
 
             }
         });//client.newCall(request).enqueue(new Callback() {
     } //void okhttpApiLogin(String user, String pass) throws IOException{
+
 
     void ShowToast(String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
@@ -148,59 +164,77 @@ public class LoginActivity extends AppCompatActivity {
                     HtmlCompat.fromHtml("<font color='red'>" + msg +"</font>" , HtmlCompat.FROM_HTML_MODE_LEGACY),
                     Toast.LENGTH_LONG).show();
         }
+    }
 
+    public class CTvForget implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            // Finish the registration screen and return to the Login activity
+//            Intent myIntent = new Intent(LoginActivity.this, Send_OTP_Activity.class);
+//            LoginActivity.this.startActivity(myIntent);
+//            finish();
+        }
+    }
 
+    public class CTvReg implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            // Finish the registration screen and return to the Login activity
+            Intent myIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+            LoginActivity.this.startActivity(myIntent);
+            finish();
+        }
     }
 
     ///////////// CÁCH SỬ DỤNG OKHTTP GET/POST ///////////////
     //Hàm mẫu sử dụng phương thức GET - chỉ tham khảo
-    void doGet(String url) throws IOException {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                call.cancel();
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                final String myResponse = response.body().string();
-                LoginActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //txtString.setText(myResponse);
-                        Log.d("K45",myResponse);
-                    }
-                });
-            }
-        });
-    }
+//    void doGet(String url) throws IOException {
+//        OkHttpClient client = new OkHttpClient();
+//        Request request = new Request.Builder()
+//                .url(url)
+//                .build();
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                call.cancel();
+//            }
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                final String myResponse = response.body().string();
+//                LoginActivity.this.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        //txtString.setText(myResponse);
+//                        Log.d("K45",myResponse);
+//                    }
+//                });
+//            }
+//        });
+//    }
 
     //Hàm mẫu sử dụng phương thức POST - chỉ tham khảo
-    void doPost(String url,String key, String value) throws IOException {
-        OkHttpClient client = new OkHttpClient();
-        RequestBody body = new FormBody.Builder()
-                .add(key,value)
-                .build();
-
-        Request request = new Request.Builder()
-                .url(url)
-                .post(body)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                call.cancel();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.d("K45",response.body().string());
-            }
-        });
-    }
-
+//    void doPost(String url,String key, String value) throws IOException {
+//        OkHttpClient client = new OkHttpClient();
+//        RequestBody body = new FormBody.Builder()
+//                .add(key,value)
+//                .build();
+//
+//        Request request = new Request.Builder()
+//                .url(url)
+//                .post(body)
+//                .build();
+//
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                call.cancel();
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                Log.d("K45",response.body().string());
+//            }
+//        });
+//    }
+//
 }//public class LoginActivity extends AppCompatActivity {
