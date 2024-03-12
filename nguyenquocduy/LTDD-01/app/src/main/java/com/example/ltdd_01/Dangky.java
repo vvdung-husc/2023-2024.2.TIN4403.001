@@ -14,6 +14,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONStringer;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -24,125 +28,116 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Dangky extends AppCompatActivity {
 
-    EditText edttaikhoan,edtmatkhau,edthoten,edtemail;
-    Button btndangky;
-    TextView btndangnhap;
+public class Dangky extends AppCompatActivity {
+    EditText m_edtUser,m_edtPass,m_edtRePass,m_edtName,m_edtEmail; //Biến điều khiển EditText
+    Button m_btnRegister; //Biến điều khiển Đăng nhập
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dangky);
 
-        edttaikhoan=(EditText) findViewById(R.id.edtdktk);
-        edtmatkhau=(EditText) findViewById(R.id.edtdkmk);
-        edthoten=(EditText) findViewById(R.id.edtdkht);
-        edtemail=(EditText) findViewById(R.id.edtdkemail);
+        //Khởi tạo các biến điều khiển tương ứng trong layout
+        m_edtUser = (EditText)findViewById(R.id.edtdktk);
+        m_edtPass = (EditText)findViewById(R.id.edtdkmk);
+        m_edtRePass = (EditText)findViewById(R.id.edtdklmk);
+        m_edtName = (EditText)findViewById(R.id.edtdkht);
+        m_edtEmail = (EditText)findViewById(R.id.edtdkemail);
+        m_btnRegister = (Button) findViewById(R.id.btndk);
+        //Cài đặt sự kiện Click cho Button Register
+        m_btnRegister.setOnClickListener(new Dangky.CButtonRegister());
 
-        btndangnhap=(TextView) findViewById(R.id.btndangnhap);
+    }//protected void onCreate(Bundle savedInstanceState) {
 
-        btndangky.setOnClickListener(new ButtonDangKy());
-        btndangnhap.setOnClickListener(new ButtonDangNhap());
-    }
-
-    public class ButtonDangNhap implements View.OnClickListener{
-        public void onClick(View v) {
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(i);
-        }
-    }
-    public class ButtonDangKy  implements View.OnClickListener {
+    public class CButtonRegister implements View.OnClickListener {
         @Override
-        public void onClick(View v) {//Hàm sử lý sự kiện click button login
-            String user = edttaikhoan.getText().toString();
-            String pass = edtmatkhau.getText().toString();
-            String hoten = edthoten.getText().toString();
-            String email = edtemail.getText().toString();
-            Log.d("K45","CLICK BUTTON DANG KY " + user + "/" + pass + "/" + hoten + "/" +email);
-            if (user.length() < 3 || pass.length() < 6 || hoten.length() < 3 || email.length() < 10){
-                ShowToast("Thông tin không hợp lệ!");
+        public void onClick(View v) {//Hàm sử lý sự kiện click button register
+            String user = m_edtUser.getText().toString();
+            String pass = m_edtPass.getText().toString();
+            Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+            if (user.length() < 3 || pass.length() < 6){
+                MainActivity.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
+                return;
+            }
+            String repass = m_edtRePass.getText().toString();
+            if (pass.compareTo(repass) != 0){
+                MainActivity.ShowToast(getApplicationContext(),"Mật khẩu không chính xác!");
                 return;
             }
             try {
-                //Gọi hàm dịch vụ Login
-                //apiLogin(user,pass);
-                okhttpRegister(user,pass,hoten,email);
+                //Gọi hàm dịch vụ Register
 
+                JSONObject oUser = new JSONObject();
+                oUser.put("username",user);
+                oUser.put("password",pass);
+                oUser.put("fullname",m_edtName.getText().toString());
+                oUser.put("email",m_edtEmail.getText().toString());
+                Log.d("TIN4403",oUser.toString());
+                String json = oUser.toString();
+                Log.d("TIN4403",json);
+                okhttpApiRegister(oUser);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }//public class CButtonRegister implements View.OnClickListener {
 
-        }//public void onClick(View v) {//Hàm sử lý sự kiện click button login
-    }
-
-
-
-    void okhttpRegister(String user,String pass,String fullname,String email) throws IOException {
-        String json = "{\"username\":\"" + user
-                + "\",\"password\":\"" + pass
-                +"\" ,\"fullname\":\""+fullname
-                +"\",\"email\":\""+email+"\"}";
-        Log.d("K45",json);
-        RequestBody body = new FormBody.Builder()
-                .add("username",user)
-                .add("password",pass)
-                .add("fullname",fullname)
-                .add("email",email)
-                .build();
+    void okhttpApiRegister(JSONObject oUser) throws IOException {
+        OkHttpClient client = new OkHttpClient();
+        String json = oUser.toString();
+        RequestBody body = RequestBody.create(json, MainActivity.JSON);
 
         Request request = new Request.Builder()
-                //.url("https://dev.husc.edu.vn/tin4403/api/login")
-                .url("http://192.168.3.104:4080/Dangky/register")
+                .url(MainActivity._URL + "/register")
                 .post(body)
                 .build();
-        OkHttpClient client = new OkHttpClient();
+
 
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                String errStr = "Tài khoản đã tồn tại.\n" + e.getMessage();
-                Log.d("K45","onFailure\n" + errStr);
-                Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                String errStr = "Đăng ký lỗi.\n" + e.getMessage();
+                Log.d("TIN4403","onFailure\n" + errStr);
+                Dangky.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                    }
+                });
                 call.cancel();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String errStr = "Tài Khoản đã tồn tại 1.\n" + response.body().string();
-                Log.d("K45",errStr);
+
                 if (!response.isSuccessful()){
+                    String strMsg = "Đăng ký lỗi.\n" + response.body().string();
+                    Log.d("TIN4403",strMsg);
                     Dangky.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), strMsg,Toast.LENGTH_SHORT).show();
                         }
                     });
                     return;
                 }
+                String strMsg = "Đăng ký thành công tài khoản [ " + m_edtUser.getText().toString() + " ]";
+                Log.d("TIN4403",strMsg);
+                Dangky.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),strMsg,Toast.LENGTH_SHORT).show();
+                    }
+                });
 
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
-
             }
         });
     }
-    void ShowToast(String msg){
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            Toast toast = Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            view.setBackgroundColor(Color.GREEN);
-            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-            toastMessage.setTextColor(Color.RED);
-            toast.show();
-        }
-        else {
-            Toast.makeText(getApplicationContext(),
-                    HtmlCompat.fromHtml("<font color='red'>" + msg +"</font>" , HtmlCompat.FROM_HTML_MODE_LEGACY),
-                    Toast.LENGTH_LONG).show();
-        }
 
-
-    }
-
-}
+}//public class RegisterActivity
