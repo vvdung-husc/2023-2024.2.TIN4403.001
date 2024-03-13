@@ -1,6 +1,4 @@
-package com.example.myapplication;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.a1;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dangnhap);
+        setContentView(R.layout.activity_main);
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
         m_edtUser = (EditText) findViewById(R.id.editTentk);
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button register
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), dangki.class);
+            Intent i = new Intent(getApplicationContext(), DangKy.class);
             startActivity(i);
         }
     }//public class CButtonRegister implements View.OnClickListener {
