@@ -28,6 +28,7 @@ public class yeh extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Finish the registration screen and return to the Login activity
+                new User().reset();
                 Intent intent = new Intent(getApplicationContext(), com.example.a1.MainActivity.class);
                 startActivity(intent);
                 finish();
