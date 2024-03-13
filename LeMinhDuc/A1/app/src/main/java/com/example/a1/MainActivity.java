@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
         m_lblRegister = (TextView) findViewById(R.id.button2);
 
-        m_edtUser.setText("admin");
-        m_edtPass.setText("123456");
+        m_edtUser.setText("a123");
+        m_edtPass.setText("123123");
 
         //Cài đặt sự kiện Click cho Button Login
         m_btnLogin.setOnClickListener(new CButtonLogin());
