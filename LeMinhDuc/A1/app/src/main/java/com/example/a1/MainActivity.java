@@ -43,8 +43,8 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
-    Button m_btnLogin; //Biến điều khiển Đăng nhập
-    TextView m_lblRegister;//Biến điều khiển Đăng ký mới
+    Button m_btnLogin,  m_lblRegister; //Biến điều khiển Đăng nhập
+    TextView viewID;//Biến điều khiển Đăng ký mới
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +57,16 @@ public class MainActivity extends AppCompatActivity {
         m_edtPass = (EditText)findViewById(R.id.editTextTextPassword);
         m_btnLogin = (Button) findViewById(R.id.button1);
 
-        m_lblRegister = (TextView) findViewById(R.id.button2);
-
+        m_lblRegister = (Button) findViewById(R.id.button2);
+        viewID = (TextView) findViewById(R.id.textView2);
+        viewID.setText(User._username!=null?User._username:"null");
+        viewID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
         m_edtUser.setText("a123");
         m_edtPass.setText("123123");
 

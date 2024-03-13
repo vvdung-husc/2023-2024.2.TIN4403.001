@@ -24,7 +24,7 @@ import okhttp3.Response;
 
 public class DangKy extends AppCompatActivity {
     EditText m_edtUser,m_edtPass,m_edtRePass,m_edtName,m_edtEmail; //Biến điều khiển EditText
-    Button m_btnRegister; //Biến điều khiển Đăng nhập
+    Button m_btnRegister, m_backbtn; //Biến điều khiển Đăng nhập
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +36,19 @@ public class DangKy extends AppCompatActivity {
         m_edtName = (EditText)findViewById(R.id.edtName);
         m_edtEmail = (EditText)findViewById(R.id.edtEmail);
         m_btnRegister = (Button) findViewById(R.id.btnRegister);
+        m_backbtn = (Button) findViewById(R.id.backbtn);
         //Cài đặt sự kiện Click cho Button Register
         m_btnRegister.setOnClickListener(new DangKy.CButtonRegister());
+        m_backbtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                onBackPressed();
+
+            }
+        });
     }
+
     public class CButtonRegister implements View.OnClickListener {
         @Override
         public void onClick(View v) {//Hàm sửSO lý sự kiện click button register
