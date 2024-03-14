@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class yeh extends AppCompatActivity {
-    TextView m_lblWelcome, m_lblUser, m_lblName, m_lblEmail;
+    TextView m_lblWelcome, m_lblName, m_lblEmail;
+    EditText m_edtName,m_edtEmail,m_edtPassOld,m_edtPassNew1,m_edtPassNew2;
     Button m_btnLogout, m_btnChange;
+    boolean i = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +38,9 @@ public class yeh extends AppCompatActivity {
                 finish();
             }
         });
+
+
+        m_btnChange = (Button) findViewById(R.id.button_edit);
+        m_btnChange.setEnabled(false);
     }
 }
