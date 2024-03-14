@@ -31,7 +31,7 @@ import androidx.core.text.HtmlCompat;
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    static String _URL = "http://192.168.3.116:5080";//
+    static String _URL = "http://192.168.1.5:5080";//
     static String   _usernameLogined;
     EditText usernameInput; //Biến điều khiển EditText
     EditText passwordInput; //Biến điều khiển EditText
