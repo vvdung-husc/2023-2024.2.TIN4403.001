@@ -1,4 +1,4 @@
-package com.example.ltdd_01;
+package com.nqhuy.ltdd_01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,15 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.IOException;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import com.example.ltdd_01.R;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -63,7 +58,7 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(), com.example.ltdd_01.LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

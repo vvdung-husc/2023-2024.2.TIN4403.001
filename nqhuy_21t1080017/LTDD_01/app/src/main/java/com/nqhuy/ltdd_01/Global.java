@@ -1,4 +1,4 @@
-package com.example.ltdd_01;
+package com.nqhuy.ltdd_01;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -9,9 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.text.HtmlCompat;
-
-import org.json.JSONObject;
-
 
 
 public class Global {

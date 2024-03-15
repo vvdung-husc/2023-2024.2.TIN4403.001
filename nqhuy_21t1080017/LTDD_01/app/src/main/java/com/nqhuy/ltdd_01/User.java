@@ -1,4 +1,4 @@
-package com.example.ltdd_01;
+package com.nqhuy.ltdd_01;
 
 public class User {
     public static String _username;
