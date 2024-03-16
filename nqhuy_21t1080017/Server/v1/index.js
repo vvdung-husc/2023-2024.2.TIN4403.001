@@ -1,106 +1,93 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var unidecode = require("unidecode");
 
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 console.log("HELLO NODEJS");
-
-// sử dụng để kiểm tra API có đang hoạt động
+//sử dụng để kiểm tra API có đang hoạt động
 app.get("/", function (req, res) {
   console.log(arrUser);
   res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - NQHUY");
 });
-
 app.get("/test", function (req, res) {
   res.status(200).send(JSON.stringify(arrUser));
-  // res.status(200).send("ROUTE TEST ....");
+  //res.status(200).send("ROUTE TEST ....");
 });
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "nqhuy";
-oUser.phonenumber = "0832766413"; // Change this to your desired default phonenumber
-oUser.password = "nqhuy";
+oUser.username = "vvdung";
+oUser.password = "123456";
+oUser.fullname = "Võ Việt Dũng";
+oUser.email = "vvdung@gmail.com";
 
 arrUser.push(oUser);
-
-// hàm đăng nhập - nhận thông tin tài khoản từ Android App
+//hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
-  var phonenumber = req.body.phonenumber;
+  var user = req.body.username;
   var pass = req.body.password;
-  console.log("ACCOUNT:", phonenumber, "/", pass);
-  login(phonenumber, pass, res);
+  console.log("ACCOUNT:", user, "/", pass);
+  login(user, pass, res);
 });
 
-// hàm đăng ký tài khoản
+//hàm đăng ký tài khoản
 app.post("/register", function (req, res) {
-  var username = unidecode(req.body.username);
-  var phonenumber = req.body.phonenumber;
+  var user = req.body.username;
   var pass = req.body.password;
+  var name = req.body.fullname;
+  var email = req.body.email;
   var oUser = {
-    username: username,
-    phonenumber: phonenumber,
+    username: user,
     password: pass,
+    fullname: name,
+    email: email,
   };
   console.log(oUser);
-  register(username, phonenumber, pass, res);
+  register(user, pass, name, email, res);
+  //res.status(200).send("API REGISTER - POST");
 });
 
-// hàm nhận thông tin tài khoản sau khi đã đăng nhập thành công
+//hàm nhận thông tin tài khoản sau khi đã đăng nhập thành công
 app.post("/userinfo", function (req, res) {
   res.status(200).send("API USERINFO - POST");
 });
 
-// dịch vụ WebService chạy tại cổng số n
+//dịch vụ WebService chạy tại cổng số n
 var server = app.listen(4080, function () {
   console.log("API Running on port.", server.address().port);
 });
 
-function getUserByPhonenumber(phonenumber) {
+function getUser(user) {
   var n = arrUser.length;
   for (var i = 0; i < n; ++i) {
-    if (arrUser[i].phonenumber == phonenumber) {
-      return arrUser[i];
-    }
+    if (arrUser[i].username == user) return arrUser[i];
   }
   return null;
 }
-
-function isExist(phonenumber, pass) {
-  var oUser = getUserByPhonenumber(phonenumber);
+function isExist(user, pass) {
+  var oUser = getUser(user);
   if (oUser && oUser.password == pass) return true;
   return false;
 }
-
-function login(phonenumber, pass, res) {
-  console.log("Attempting login for:",phonenumber, "/", pass);
-  if (isExist(phonenumber, pass))
-    res.status(200).send("API LOGIN - THANH CONG");
+function login(user, pass, res) {
+  //if (user == "vvdung" && pass == "123456" )
+  if (isExist(user, pass)) res.status(200).send("API LOGIN - THANH CONG");
   else res.status(503).send("API LOGIN - LOI TAI KHOAN");
 }
-
-function register(username, phonenumber, pass, res) {
-  var u = getUserByPhonenumber(phonenumber);
+function register(user, pass, name, email, res) {
+  //if (user == "vvdung" && pass == "123456" )
+  var u = getUser(user);
   if (!u) {
     u = {};
-    u.username = unidecode(username);
-    u.phonenumber = phonenumber;
-    u.password = pass; // mật khẩu mặt định nếu pass rỗng
+    u.username = user;
+    u.password = pass ? pass : "654321"; //mật khẩu mặt định nếu pass rỗng
+    u.fullname = name ? name : ""; //mặt định rỗng
+    u.email = email ? email : ""; //mặt định rỗng
     arrUser.push(u);
-    res
-      .status(200)
-      .send("API REGISTER - THANH CONG [" + username + "]");
+    res.status(200).send("API REGISTER - THANH CONG [" + user + "]");
   } else {
-    if (getUserByPhonenumber(phonenumber))
-      res
-        .status(503)
-        .send("API REGISTER - TAI KHOAN [" + phonenumber + "] DA TON TAI");
-    else if (getUserByPhonenumber(username))
-      res
-        .status(503)
-        .send("API REGISTER - TAI KHOAN [" + username + "] DA TON TAI");
+    res.status(503).send("API REGISTER - TAI KHOAN [" + user + "] DA TON TAI");
   }
 }

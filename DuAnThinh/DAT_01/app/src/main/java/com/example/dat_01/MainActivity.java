@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         Request request = new Request.Builder()
                // .url("https://dev.husc.edu.vn/tin4403/api/login")
-                .url("192.168.3.126:4080/login")
+                .url("192.168.1.217:4080/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
