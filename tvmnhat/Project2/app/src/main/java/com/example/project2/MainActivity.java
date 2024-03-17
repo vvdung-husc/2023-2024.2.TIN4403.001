@@ -1,55 +1,50 @@
 package com.example.project2;
 
-import Book.Book;
-import Category.Category;
-import Category.CategoryAdapter;
 import android.annotation.SuppressLint;
-
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
+import static android.app.ProgressDialog.show;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView rcvCategory;
-    private CategoryAdapter categoryAdapter;
+    DatabaseHelper myDb;
+    EditText edit_id, edit_book_title, edit_book_author, edit_book_pages;
+    Button btnAddData;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myDb = new DatabaseHelper(this);
 
-        rcvCategory = findViewById(R.id.rcv_category);
-        categoryAdapter = new CategoryAdapter(this);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL,
-                false);
-        rcvCategory.setLayoutManager(linearLayoutManager);
-
-        categoryAdapter.setData(getListCategory());
-        rcvCategory.setAdapter(categoryAdapter);
+        edit_id = findViewById(R.id.edit_id);
+        edit_book_title = findViewById(R.id.edit_title);
+        edit_book_author = findViewById(R.id.edit_author);
+        edit_book_pages = findViewById(R.id.edit_pages);
+        btnAddData = findViewById(R.id.button);
+        AddData();
     }
 
-    public List<Category> getListCategory(){
-        List<Category> listCategory = new ArrayList<>();
-
-        List<Book> listBook = new ArrayList<>();
-        listBook.add(new Book(R.drawable.dacnhantam, "Book 1"));
-        listBook.add(new Book(R.drawable.dacnhantam, "Book 2"));
-        listBook.add(new Book(R.drawable.dacnhantam, "Book 3"));
-        listBook.add(new Book(R.drawable.dacnhantam, "Book 4"));
-        listBook.add(new Book(R.drawable.dacnhantam, "Book 5"));
-
-        listCategory.add(new Category("Catelogy 1", listBook));
-        listCategory.add(new Category("Catelogy 2", listBook));
-        listCategory.add(new Category("Catelogy 3", listBook));
-        listCategory.add(new Category("Catelogy 4", listBook));
-        listCategory.add(new Category("Catelogy 5", listBook));
-
-        return  listCategory;
+    public void AddData(){
+        btnAddData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isInserted = myDb.insertData(edit_id.getText().toString(), edit_book_title.getText().toString(),
+                        edit_book_author.getText().toString(), edit_book_pages.getText().toString());
+                if(isInserted){
+                    Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Data not Inserted", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

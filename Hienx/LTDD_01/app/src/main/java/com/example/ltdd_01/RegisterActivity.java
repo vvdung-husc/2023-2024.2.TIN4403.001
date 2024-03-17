@@ -132,4 +132,4 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-}
+}//public class RegisterActivity

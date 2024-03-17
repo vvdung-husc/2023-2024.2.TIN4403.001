@@ -1,17 +1,12 @@
 package com.testing.ltdd_01;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.telecom.PhoneAccountSuggestion;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,27 +14,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.testing.ltdd_01.R;
-import com.testing.ltdd_01.Activity_user;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
 
 public class Activity_regisrer extends AppCompatActivity {
     EditText m_edtUser,m_edtPass,m_edtRePass,m_edtName,m_edtEmail; //Biến điều khiển EditText
@@ -69,12 +56,12 @@ public class Activity_regisrer extends AppCompatActivity {
             String pass = m_edtPass.getText().toString();
             Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
-                Global.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
+                MainActivity.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
                 return;
             }
             String repass = m_edtRePass.getText().toString();
             if (pass.compareTo(repass) != 0){
-                Global.ShowToast(getApplicationContext(),"Mật khẩu không chính xác!");
+                MainActivity.ShowToast(getApplicationContext(),"Mật khẩu không chính xác!");
                 return;
             }
             try {
@@ -101,10 +88,10 @@ public class Activity_regisrer extends AppCompatActivity {
     void okhttpApiRegister(JSONObject oUser) throws IOException {
         OkHttpClient client = new OkHttpClient();
         String json = oUser.toString();
-        RequestBody body = RequestBody.create(json, API.JSON);
+        RequestBody body = RequestBody.create(json, MainActivity.JSON);
 
         Request request = new Request.Builder()
-                .url(Global._URL + "/register")
+                .url(MainActivity._URL + "/register")
                 .post(body)
                 .build();
 
