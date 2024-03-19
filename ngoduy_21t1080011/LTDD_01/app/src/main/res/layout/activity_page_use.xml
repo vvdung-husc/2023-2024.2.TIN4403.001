@@ -59,17 +59,28 @@
         android:id="@+id/buttonThongTinUse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="40dp"
-        android:drawableStart="@drawable/baseline_person_pin_24"
-        android:drawableEnd="@drawable/baseline_chevron_right_24"
-        android:text="Thông tin cá nhân"
-        android:textSize="25dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="60dp"
+        android:text="Xem thông tin cá nhân"
+        android:textSize="20dp"
         android:textStyle="bold"
+        app:drawableEndCompat="@drawable/baseline_chevron_right_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/btnThayDoiMatKhau"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/baseline_chevron_right_24"
+        android:text="Thay đổi mật khẩu"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/buttonThongTinUse"
+        app:layout_constraintStart_toStartOf="@+id/buttonThongTinUse"
+        tools:layout_editor_absoluteY="352dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
