@@ -15,7 +15,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.nqhuy.ltdd_01.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,15 +24,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.nqhuy.ltdd_01.LoginActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.nqhuy.ltdd_01.RegisterActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".UserActivity"
+            android:name="com.nqhuy.ltdd_01.UserActivity"
             android:exported="false">
         </activity>
     </application>

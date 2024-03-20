@@ -29,7 +29,7 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    static String _URL ="http://192.168.3.118:4080";
+    static String _URL ;
 
     static String   _usernameLogined;
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //_URL="https://dev.husc.edu.vn/tin4403/api";
+         _URL="http://192.168.3.142:5080";
         //Khởi tạo các biến điều khiển tương ứng trong layout
         m_edtUser = (EditText)findViewById(R.id.edtUsername);
         m_edtPass = (EditText)findViewById(R.id.edtPassword);
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
         Request request = new Request.Builder()
                // .url("https://dev.husc.edu.vn/tin4403/api/login")
-        .url("http://192.168.3.118:4080/login")
+        .url(_URL + "/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
