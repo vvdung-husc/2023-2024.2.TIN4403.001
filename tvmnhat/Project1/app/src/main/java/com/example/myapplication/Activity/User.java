@@ -17,8 +17,8 @@ public class User extends AppCompatActivity {
         setContentView(R.layout.activity_user);
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
-        m_lblWelcome = (TextView)findViewById(R.id.lblWelcome);
-        m_btnLogout = (Button) findViewById(R.id.btnLogout);
+        m_lblWelcome = (TextView)findViewById(R.id.Welcome);
+        m_btnLogout = (Button) findViewById(R.id.buttonnLogout);
 
         String s = "Chào mừng : " + Login._usernameLogined;
         m_lblWelcome.setText(s);

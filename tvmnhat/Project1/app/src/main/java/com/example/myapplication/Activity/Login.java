@@ -1,14 +1,11 @@
 package com.example.myapplication.Activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.util.Log;
-import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.myapplication.Database.DatabaseHelper;
-import com.example.myapplication.HomePage;
 import com.example.myapplication.R;
 
 
