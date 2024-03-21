@@ -1,4 +1,4 @@
-package com.example.ltdd_01;
+package com.ltdd.testing1;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class Global {
     public static Handler _Handler;
     public static String _token;
-    public static String _URL ="http://192.168.1.84:5080";// "https://dev.husc.edu.vn/tin4403/api";
+    public static String _URL ="http://192.168.3.136:5080";//"https://dev.husc.edu.vn/tin4403/api";
     public static API _HTTP = new API(_URL);
 
     public static void ShowToast(Context ctx, String msg){

@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Buffer = require('buffer/').Buffer;
-var UTILS = require('./utils').default;
+var UTILS = require('./utils');
 
 var app = express();
 app.use(bodyParser.json());
@@ -125,7 +125,7 @@ function decodeToken(token){
   }
 
   //kiểm tra thời gian đã logined, tính theo seconds
-  var curSeconds = Date.now()/1000;
+  var curSeconds = ~~(Date.now()/1000);
   if (curSeconds - user_.t > (60 * 5)){ //5phut
     oResult['error'] = -3;
     oResult['message'] = "Hết thời gian, yêu cầu đăng nhập lại để lấy token";
@@ -156,7 +156,7 @@ function login(user,pass,res){
   //Chuyển object thành chuổi Base64 - sử dụng cho các hàm sau khi đã login thành công
   var user_ = {};
   user_["u"] = user;       //tên tài khoản đã đăng nhập
-  user_["t"] = Date.now()/1000; //thời gian đăng nhập (epoch second) - có thể dùng để yêu cầu đăng nhập lại nếu vượt quá thời gian xxx
+  user_["t"] = ~~(Date.now()/1000); //thời gian đăng nhập (epoch second) - có thể dùng để yêu cầu đăng nhập lại nếu vượt quá thời gian xxx
   var token = Buffer.from(JSON.stringify(user_), 'utf8').toString('base64');
   console.log(token);
   UTILS.apiResult(1,token,res);
