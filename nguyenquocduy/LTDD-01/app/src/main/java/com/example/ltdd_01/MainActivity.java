@@ -29,22 +29,27 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
+<<<<<<< HEAD
     static String _URL = "http://192.168.1.18:4080";//"https://dev.husc.edu.vn/tin4403/api";
     static String   _usernameLogined;
+=======
+    static String _URL = "http://192.168.100.8:4080";//"https://dev.husc.edu.vn/tin4403/api";
+    static String   _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
+>>>>>>> origin/main
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
     TextView m_lblRegister;//Biến điều khiển Đăng ký mới
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
-        m_edtUser = (EditText)findViewById(R.id.edttk);
-        m_edtPass = (EditText)findViewById(R.id.edtmk);
-        m_btnLogin = (Button) findViewById(R.id.btndn);
+        m_edtUser = (EditText)findViewById(R.id.edtUsername);
+        m_edtPass = (EditText)findViewById(R.id.edtPassword);
+        m_btnLogin = (Button) findViewById(R.id.btnLogin);
 
-        m_lblRegister = (TextView) findViewById(R.id.btndkm);
+        m_lblRegister = (TextView) findViewById(R.id.lblRegister);
 
         //Cài đặt sự kiện Click cho Button Login
         m_btnLogin.setOnClickListener(new CButtonLogin());
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {//Hàm sử lý sự kiện click button login
             String user = m_edtUser.getText().toString();
             String pass = m_edtPass.getText().toString();
-            Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+            Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
                 ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
                 return;
@@ -80,23 +85,30 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button register
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), Dangky.class);
+            Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
             startActivity(i);
         }
     }//public class CButtonRegister implements View.OnClickListener {
 
+<<<<<<< HEAD
     //Hàm dịch vụ Login
 
+=======
+>>>>>>> origin/main
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
-        Log.d("K45",json);
+        Log.d("TIN4403",json);
         RequestBody body = new FormBody.Builder()
                 .add("username", user)
                 .add("password", pass)
                 .build();
 
         Request request = new Request.Builder()
+<<<<<<< HEAD
                 .url("http://192.168.1.18:4080/login")
+=======
+                .url(_URL + "/login")
+>>>>>>> origin/main
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -104,15 +116,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
-                Log.d("K45","onFailure\n" + errStr);
-                Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                Log.d("TIN4403","onFailure\n" + errStr);
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 call.cancel();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + response.body().string();
-                Log.d("K45",errStr);
+                Log.d("TIN4403",errStr);
                 if (!response.isSuccessful()){
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
@@ -124,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 _usernameLogined = user;
-                Intent intent = new Intent(getApplicationContext(),LoginTrue.class);
+                Intent intent = new Intent(getApplicationContext(),UserActivity.class);
                 startActivity(intent);
 
             }
@@ -133,7 +151,11 @@ public class MainActivity extends AppCompatActivity {
 
     static public void ShowToast(Context ctx, String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+<<<<<<< HEAD
             Toast toast = Toast.makeText(ctx.getApplicationContext(), msg,Toast.LENGTH_SHORT);
+=======
+            Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_SHORT);
+>>>>>>> origin/main
             View view = toast.getView();
             view.setBackgroundColor(Color.GREEN);
             TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
@@ -168,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         //txtString.setText(myResponse);
-                        Log.d("K45",myResponse);
+                        Log.d("TIN4403",myResponse);
                     }
                 });
             }
@@ -195,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d("K45",response.body().string());
+                Log.d("TIN4403",response.body().string());
             }
         });
     }

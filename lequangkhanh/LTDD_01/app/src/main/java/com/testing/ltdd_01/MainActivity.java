@@ -195,7 +195,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Chuyển UserActivity Form
+<<<<<<< HEAD
         Intent intent = new Intent(getApplicationContext(),Activity_user.class);
+=======
+        Intent intent = new Intent(getApplicationContext(), Activity_user.class);
+>>>>>>> origin/main
         startActivity(intent);
 
     }//void threadUserInfo() {

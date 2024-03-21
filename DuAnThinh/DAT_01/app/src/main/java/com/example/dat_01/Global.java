@@ -17,7 +17,11 @@ import org.json.JSONObject;
 public class Global {
     public static Handler _Handler;
     public static String _token;
+<<<<<<< HEAD
     public static String _URL = "http://192.168.160.1:5080";//"https://dev.husc.edu.vn/tin4403/api";
+=======
+    public static String _URL ="https://dev.husc.edu.vn/tin4403/api";//"http://192.168.1.217:5080";
+>>>>>>> origin/main
     public static API _HTTP = new API(_URL);
 
     public static void ShowToast(Context ctx, String msg){
@@ -45,4 +49,8 @@ public class Global {
             }
         });
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main

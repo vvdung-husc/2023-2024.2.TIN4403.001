@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".UserActivity">
 
+<<<<<<< HEAD
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -188,6 +189,8 @@
             app:layout_constraintTop_toBottomOf="@+id/edtEmail2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+=======
+>>>>>>> origin/main
     <TextView
         android:id="@+id/lblWelcome"
         android:layout_width="wrap_content"
