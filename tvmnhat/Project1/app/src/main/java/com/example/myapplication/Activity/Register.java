@@ -1,6 +1,5 @@
 package com.example.myapplication.Activity;
 
-<<<<<<< HEAD:tvmnhat/Project1/app/src/main/java/com/example/myapplication/Activity/Register.java
 package com.example.myapplication.Activity;
 
 import android.content.Intent;
