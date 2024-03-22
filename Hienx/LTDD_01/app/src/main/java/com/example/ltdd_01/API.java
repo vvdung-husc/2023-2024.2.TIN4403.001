@@ -84,8 +84,4 @@ public class API {
             return response.body().string();
         }
     }
-<<<<<<< HEAD
-}
-=======
 }//public class API {
->>>>>>> origin/main

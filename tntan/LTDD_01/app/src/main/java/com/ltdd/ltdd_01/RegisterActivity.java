@@ -46,21 +46,22 @@ public class RegisterActivity extends AppCompatActivity {
         m_btnRegister = (Button) findViewById(R.id.btnRegister);
         //Cài đặt sự kiện Click cho Button Register
         m_btnRegister.setOnClickListener(new RegisterActivity.CButtonRegister());
+
     }//protected void onCreate(Bundle savedInstanceState) {
 
     public class CButtonRegister implements View.OnClickListener {
         @Override
-        public void onClick(View v) {//Hàm sửSO lý sự kiện click button register
+        public void onClick(View v) {//Hàm sử lý sự kiện click button register
             String user = m_edtUser.getText().toString();
             String pass = m_edtPass.getText().toString();
-            Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+            Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
-                Global.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
+                MainActivity.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
                 return;
             }
             String repass = m_edtRePass.getText().toString();
             if (pass.compareTo(repass) != 0){
-                Global.ShowToast(getApplicationContext(),"Mật khẩu không chính xác!");
+                MainActivity.ShowToast(getApplicationContext(),"Mật khẩu không chính xác!");
                 return;
             }
             try {
@@ -71,9 +72,9 @@ public class RegisterActivity extends AppCompatActivity {
                 oUser.put("password",pass);
                 oUser.put("fullname",m_edtName.getText().toString());
                 oUser.put("email",m_edtEmail.getText().toString());
-                Log.d("K45",oUser.toString());
+                Log.d("TIN4403",oUser.toString());
                 String json = oUser.toString();
-                Log.d("K45",json);
+                Log.d("TIN4403",json);
                 okhttpApiRegister(oUser);
 
             } catch (JSONException e) {
@@ -87,10 +88,10 @@ public class RegisterActivity extends AppCompatActivity {
     void okhttpApiRegister(JSONObject oUser) throws IOException {
         OkHttpClient client = new OkHttpClient();
         String json = oUser.toString();
-        RequestBody body = RequestBody.create(json, API.JSON);
+        RequestBody body = RequestBody.create(json, MainActivity.JSON);
 
         Request request = new Request.Builder()
-                .url(Global._URL + "/register")
+                .url(MainActivity._URL + "/register")
                 .post(body)
                 .build();
 
@@ -99,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 String errStr = "Đăng ký lỗi.\n" + e.getMessage();
-                Log.d("K45","onFailure\n" + errStr);
+                Log.d("TIN4403","onFailure\n" + errStr);
                 RegisterActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -114,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (!response.isSuccessful()){
                     String strMsg = "Đăng ký lỗi.\n" + response.body().string();
-                    Log.d("K45",strMsg);
+                    Log.d("TIN4403",strMsg);
                     RegisterActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -124,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
                 String strMsg = "Đăng ký thành công tài khoản [ " + m_edtUser.getText().toString() + " ]";
-                Log.d("K45",strMsg);
+                Log.d("TIN4403",strMsg);
                 RegisterActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
