@@ -12,7 +12,7 @@
         android:layout_height="49dp"
         android:layout_centerHorizontal="true"
         android:background="#3456FA"
-        android:text="*** Chào mừng ***"
+        android:text="Chào mừng "
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
