@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn_DangNhap.setOnClickListener(new ButtonLogin());
 
-        m_Register= (TextView) findViewById(R.id.btnRegisters);
+        //m_Register= (TextView) findViewById(R.id.btnRegisters);
 
         m_Register.setOnClickListener(new CButtonRegister());
 
