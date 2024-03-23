@@ -211,6 +211,7 @@ function userUpdate(token,info,res){
   for (var i = 0; i < n; ++i){
     if (arrUser[i].username == oToken.u){
       var count = 0;
+      
       if (!(info.password == undefined || !info.password || info.password.length < 6)){
         count++;
         arrUser[i].password = info.password;
