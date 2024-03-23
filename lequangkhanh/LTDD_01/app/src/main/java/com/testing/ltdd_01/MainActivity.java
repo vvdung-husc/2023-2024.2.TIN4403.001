@@ -15,9 +15,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.testing.ltdd_01.Activity_regisrer;
-import com.testing.ltdd_01.Activity_user;
-
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -42,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         _URL = "https://dev.husc.edu.vn/tin4403/api";
-        _URL = "http://192.168.3.132:4080";
-
+       // _URL = "http://192.168.3.112:4080";
+        _URL = "http://10.12.135.97:5080";
         //Khởi tạo các biến điều khiển tương ứng trong layout
         m_edtUser = (EditText)findViewById(R.id.edtUsername);
         m_edtPass = (EditText)findViewById(R.id.edtPassword);
@@ -75,9 +72,8 @@ public class MainActivity extends AppCompatActivity {
             }
             try {
                 //Gọi hàm dịch vụ Login
-                //apiLogin(user,pass);
+                // apiLogin(user,pass);
                 okhttpApiLogin(user,pass);
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -100,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
 
-        boolean bOk = (user.equals("KaiKNIGHT") && pass.equals("0123456"));
+        boolean bOk = (user.equals("khanhlq") && pass.equals("123456"));
         if (bOk){
-            _usernameLogined = "Lê Quang Khánh";
-            Intent intent = new Intent(getApplicationContext(), Activity_user.class);
+            _usernameLogined = "Lê QUang Khánh";
+            Intent intent = new Intent(getApplicationContext(),Activity_user.class);
             startActivity(intent);
         }
         else{
@@ -121,8 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-    }//void apiLogin(String user, String pass) throws IOException {
-
+    }
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
@@ -132,12 +127,13 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                //.url("https://dev.husc.edu.vn/tin4403/api/login")
-                //.url("http://192.168.3.125:4080/login")
-                .url("http://192.168.3.132:4080/login")
+                // .url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("http://10.12.135.97:5080/login")
+                //.url("http://192.168.1.11:4080/login")
+
                 .post(body)
                 .build();
-        OkHttpClient client = new OkHttpClient();   
+        OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -174,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });//client.newCall(request).enqueue(new Callback() {
     } //void okhttpApiLogin(String user, String pass) throws IOException{
-
     static public void ShowToast(Context ctx, String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_SHORT);

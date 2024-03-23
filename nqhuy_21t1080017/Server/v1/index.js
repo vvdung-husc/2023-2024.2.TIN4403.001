@@ -38,7 +38,7 @@ app.post("/login", function (req, res) {
 // hàm đăng ký tài khoản
 app.post("/register", function (req, res) {
   var username = unidecode(req.body.username);
-  var phonenumber = unidecode(req.body.phonenumber);
+  var phonenumber = req.body.phonenumber;
   var pass = req.body.password;
   var oUser = {
     username: username,
@@ -76,7 +76,7 @@ function isExist(phonenumber, pass) {
 }
 
 function login(phonenumber, pass, res) {
-  console.log("Attempting login for:", phonenumber, "/", pass);
+  console.log("Attempting login for:",phonenumber, "/", pass);
   if (isExist(phonenumber, pass))
     res.status(200).send("API LOGIN - THANH CONG");
   else res.status(503).send("API LOGIN - LOI TAI KHOAN");
@@ -92,7 +92,7 @@ function register(username, phonenumber, pass, res) {
     arrUser.push(u);
     res
       .status(200)
-      .send("API REGISTER - THANH CONG [" + unidecode(username) + "]");
+      .send("API REGISTER - THANH CONG [" + username + "]");
   } else {
     if (getUserByPhonenumber(phonenumber))
       res

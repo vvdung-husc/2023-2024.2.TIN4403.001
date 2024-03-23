@@ -54,9 +54,9 @@ public class Activity_regisrer extends AppCompatActivity {
         public void onClick(View v) {//Hàm sử lý sự kiện click button register
             String user = m_edtUser.getText().toString();
             String pass = m_edtPass.getText().toString();
-            Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+            Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
-                MainActivity.ShowToast(getApplicationContext(),"Tài khoản or mật khẩu không hợp lệ!");
+                MainActivity.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
                 return;
             }
             String repass = m_edtRePass.getText().toString();
@@ -72,9 +72,9 @@ public class Activity_regisrer extends AppCompatActivity {
                 oUser.put("password",pass);
                 oUser.put("fullname",m_edtName.getText().toString());
                 oUser.put("email",m_edtEmail.getText().toString());
-                Log.d("K45",oUser.toString());
+                Log.d("TIN4403",oUser.toString());
                 String json = oUser.toString();
-                Log.d("K45",json);
+                Log.d("TIN4403",json);
                 okhttpApiRegister(oUser);
 
             } catch (JSONException e) {
@@ -100,7 +100,7 @@ public class Activity_regisrer extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 String errStr = "Đăng ký lỗi.\n" + e.getMessage();
-                Log.d("K45","onFailure\n" + errStr);
+                Log.d("TIN4403","onFailure\n" + errStr);
                 Activity_regisrer.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -115,7 +115,7 @@ public class Activity_regisrer extends AppCompatActivity {
 
                 if (!response.isSuccessful()){
                     String strMsg = "Đăng ký lỗi.\n" + response.body().string();
-                    Log.d("K45",strMsg);
+                    Log.d("TIN4403",strMsg);
                     Activity_regisrer.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -125,7 +125,7 @@ public class Activity_regisrer extends AppCompatActivity {
                     return;
                 }
                 String strMsg = "Đăng ký thành công tài khoản [ " + m_edtUser.getText().toString() + " ]";
-                Log.d("K45",strMsg);
+                Log.d("TIN4403",strMsg);
                 Activity_regisrer.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

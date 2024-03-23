@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_background"
     tools:context=".RegisterActivity"
     tools:layout_editor_absoluteX="3dp"
     tools:layout_editor_absoluteY="-36dp">
@@ -156,13 +157,14 @@
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="330dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="16dp"
         android:text="Đăng ký mới"
+        android:backgroundTint="@color/white"
+        android:textColor="#3884F1"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edtEmail"
         app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

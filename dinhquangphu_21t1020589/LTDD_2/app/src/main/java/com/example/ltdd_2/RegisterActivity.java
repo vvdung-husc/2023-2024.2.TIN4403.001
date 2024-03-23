@@ -31,6 +31,7 @@ import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText m_edtUser,m_edtPass,m_edtRePass,m_edtName,m_edtEmail; //Biến điều khiển EditText
+
     Button m_btnRegister; //Biến điều khiển Đăng nhập
     @Override
     protected void onCreate(Bundle savedInstanceState) {

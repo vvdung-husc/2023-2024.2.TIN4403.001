@@ -31,7 +31,7 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    static String _URL = "http://192.168.1.113:4080";
+    static String _URL = "http://192.168.104.73:4080";
     static String   _phonenumberLogined;
     private CheckBox hienthimatkhau;
     private EditText password;
