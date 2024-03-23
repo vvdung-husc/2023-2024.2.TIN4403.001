@@ -4,11 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 
 public class User extends AppCompatActivity {
     TextView m_lblWelcome;
+    TextView m_account;
+    TextView m_fullname;
+    TextView m_email;
+    Button m_btnUpdate;
     Button m_btnLogout;
 
     @Override
@@ -17,11 +22,39 @@ public class User extends AppCompatActivity {
         setContentView(R.layout.activity_user);
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
-        m_lblWelcome = (TextView)findViewById(R.id.Welcome);
-        m_btnLogout = (Button) findViewById(R.id.buttonnLogout);
+        m_lblWelcome = findViewById(R.id.lable_welcome);
+        m_account = findViewById(R.id.account);
+        m_fullname = findViewById(R.id.fullname);
+        m_email = findViewById(R.id.email);
+        m_btnUpdate = findViewById(R.id.buttonUpdate);
+        m_btnLogout = findViewById(R.id.buttonnLogout);
 
-        String s = "Chào mừng : " + Login._usernameLogined;
-        m_lblWelcome.setText(s);
+        Login();
+//        Register();
+        AppData();
+    }//protected void onCreate(Bundle savedInstanceState) {
+
+    public void Login(){
+        String account = "Account    : " + Login._usernameLogined;
+        String fullname = "Full name    : " + Login._fullnameLogined;
+        String email = "Email   : " + Login._emailLogined;
+
+        m_account.setText(account);
+        m_fullname.setText(fullname);
+        m_email.setText(email);
+    }
+
+    public void Register(){
+        String account = "Account    : " + Register._usernameRegistered;
+        String fullname = "Full name    : " + Register._fullnameRegistered;
+        String email = "Email   : " + Register._emailRegistered;
+
+        m_account.setText(account);
+        m_fullname.setText(fullname);
+        m_email.setText(email);
+    }
+
+    public void AppData(){
         m_btnLogout.setOnClickListener(v -> {
             // Finish the registration screen and return to the Login activity
             Intent intent = new Intent(User.this, Login.class);
@@ -29,5 +62,9 @@ public class User extends AppCompatActivity {
             finish();
         });
 
-    }//protected void onCreate(Bundle savedInstanceState) {
+        m_btnUpdate.setOnClickListener(v -> {
+
+            Toast.makeText(User.this, "UPDATE SUCCESSFULLY", Toast.LENGTH_SHORT).show();
+        });
+    }
 }

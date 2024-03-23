@@ -6,6 +6,7 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.myapplication.Database.DatabaseHelper;
+import com.example.myapplication.HomePage;
 import com.example.myapplication.R;
 
 
@@ -17,12 +18,14 @@ import java.io.IOException;
 public class Login extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    static String _URL = "http://192.168.3.125:4080";//"https://dev.husc.edu.vn/tin4403/api";
+    static String _URL = "https://dev.husc.edu.vn/tin4403/api";//http://192.168.3.125:4080
     EditText username;
     EditText password;
     Button loginbutton;
     TextView signup_btn;
     static  String _usernameLogined;
+    static  String _fullnameLogined = "Trần Văn Minh Nhật";
+    static  String _emailLogined = "minhnhat6403@gmail.com";
     DatabaseHelper myDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +49,13 @@ public class Login extends AppCompatActivity {
 //            }
 //            //correct
 //            else{
-//                Toast.makeText(Login.this, "LOGIN SUCCESSFULL", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Login.this, "LOGIN SUCCESSFULLY", Toast.LENGTH_SHORT).show();
 //            }
 //
 //            boolean isInserted = myDb.insertedData(username.getText().toString(),
 //                    password.getText().toString());
 //            if(isInserted) {
-//                Toast.makeText(Login.this, "LOGIN SUCCESSFULL", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Login.this, "LOGIN SUCCESSFULLY", Toast.LENGTH_SHORT).show();
 //            } else {
 //                Toast.makeText(Login.this, "LOGIN FAILED!!!", Toast.LENGTH_SHORT).show();
 //            }
@@ -62,8 +65,8 @@ public class Login extends AppCompatActivity {
 
             try {
                 //Gọi hàm dịch vụ Login
-                apiLogin(user,pass);
-//                okhttpApiLogin(user, pass);
+//                apiLogin(user,pass);
+                okhttpApiLogin(user, pass);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -80,7 +83,6 @@ public class Login extends AppCompatActivity {
     }
 
     void apiLogin(String user, String pass) throws IOException {
-
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Toast.makeText(Login.this, json, Toast.LENGTH_SHORT).show();
         Log.d("K45",json);
@@ -132,7 +134,7 @@ public class Login extends AppCompatActivity {
                 }
 
                 _usernameLogined = user;
-                Intent intent = new Intent(Login.this, User.class);
+                Intent intent = new Intent(Login.this, HomePage.class);
                 startActivity(intent);
             }
         });
