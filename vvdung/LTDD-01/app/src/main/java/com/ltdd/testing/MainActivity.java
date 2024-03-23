@@ -25,12 +25,13 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    static String _URL = "http://192.168.56.1:4080";//"https://dev.husc.edu.vn/tin4403/api";
-    static String   _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
+    static String _URL = "https://dev.husc.edu.vn/tin4403/api/login";//"https://dev.husc.edu.vn/tin4403/api";//http://192.168.3.125:4080
+    static String _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
     TextView m_lblRegister;//Biến điều khiển Đăng ký mới
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
             try {
                 //Gọi hàm dịch vụ Login
-                //apiLogin(user,pass);
+                apiLogin(user,pass);
                 okhttpApiLogin(user,pass);
 
             } catch (IOException e) {
@@ -91,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("TIN4403",json);
 
-        boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
+        boolean bOk = (user.equals("tvmnhat") && pass.equals("123456"));
         if (bOk){
-            _usernameLogined = "Võ Việt Dũng";
+            _usernameLogined = "Trần Văn Minh Nhật";
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             startActivity(intent);
         }
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(@NotNull Call call, IOException e) {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
                 Log.d("TIN4403","onFailure\n" + errStr);
                 MainActivity.this.runOnUiThread(new Runnable() {
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + response.body().string();
                 Log.d("TIN4403",errStr);
                 if (!response.isSuccessful()){
@@ -173,8 +174,6 @@ public class MainActivity extends AppCompatActivity {
                     HtmlCompat.fromHtml("<font color='red'>" + msg +"</font>" , HtmlCompat.FROM_HTML_MODE_LEGACY),
                     Toast.LENGTH_LONG).show();
         }
-
-
     }
 
     ///////////// CÁCH SỬ DỤNG OKHTTP GET/POST ///////////////
@@ -186,11 +185,12 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(@NotNull Call call, IOException e) {
                 call.cancel();
             }
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                assert response.body() != null;
                 final String myResponse = response.body().string();
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
@@ -217,12 +217,13 @@ public class MainActivity extends AppCompatActivity {
 
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(@NotNull Call call, IOException e) {
                 call.cancel();
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                assert response.body() != null;
                 Log.d("TIN4403",response.body().string());
             }
         });

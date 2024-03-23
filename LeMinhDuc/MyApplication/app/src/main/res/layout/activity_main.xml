@@ -30,8 +30,10 @@
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.753"
         app:layout_constraintStart_toStartOf="@+id/tentk"
-        app:layout_constraintTop_toBottomOf="@+id/tentk" />
+        app:layout_constraintTop_toBottomOf="@+id/tentk"
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/textView2"
