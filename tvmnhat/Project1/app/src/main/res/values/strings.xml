@@ -62,5 +62,24 @@
     <string name="book_1">Book 1</string>
     <string name="favorite_products">Favorite products</string>
     <string name="textview">TextView</string>
-    <string name="dangxuat">Đăng xuất</string>
+    <string name="dangxuat">Logout</string>
+    <string name="welcome">***WelCome***</string>
+    <string name="change_fullname">Change fullname</string>
+    <string name="fullname">New fullname</string>
+    <string name="change_email">Change email</string>
+    <string name="new_email">New email</string>
+    <string name="change_password">Change password</string>
+    <string name="old_password">Old password</string>
+    <string name="new_password">New password</string>
+    <string name="accept_password">Accept password</string>
+    <string name="update_information">Update information</string>
+    <string name="create_account">Create Account</string>
+    <string name="enter_your_user_name">Enter your user name</string>
+    <string name="enter_your_full_name">Enter your full name</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="confirm_your_password">Confirm your password</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_1">Login</string>
 </resources>

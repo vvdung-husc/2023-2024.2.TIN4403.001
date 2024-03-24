@@ -29,8 +29,8 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    static String _URL;
-    static String   _usernameLogined;
+    static String _URL = "https://dev.husc.edu.vn/tin4403/api";
+    static String _usernameLogined;
     EditText username,password;
     Button loginButton;
     TextView signupBtn;
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        _URL = "http://192.168.3.106:4080";
+        _URL = "https://dev.husc.edu.vn/tin4403/api";
         //Khởi tạo các biến điều khiển tương ứng trong layout
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
@@ -54,19 +54,20 @@ public class MainActivity extends AppCompatActivity {
 
     }//protected void onCreate(Bundle savedInstanceState) {
 
-    public class CButtonLogin  implements View.OnClickListener {
+    public class CButtonLogin implements View.OnClickListener {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button login
             String user = username.getText().toString();
             String pass = password.getText().toString();
-            Log.d("K44","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
-            if (user.length() < 3 || pass.length() < 6){
-                Toast toast = Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!",Toast.LENGTH_SHORT);
-                TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                toastMessage.setTextColor(Color.RED);
-                toast.show();
-                return;
-            }
+//            Log.d("K44","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+//            if (user.length() < 3 || pass.length() < 6){
+//                Toast toast = Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!",
+//                        Toast.LENGTH_SHORT);
+//                TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+//                toastMessage.setTextColor(Color.RED);
+//                toast.show();
+//                return;
+//            }
             try {
                 //Gọi hàm dịch vụ Login
                 okhttpApiLogin(user,pass);
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Toast.makeText(getApplicationContext(),json, Toast.LENGTH_SHORT).show();
-        Log.d("K44",json);
+        Log.d("K45",json);
 
         boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
         if (bOk){

@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/fmt_image"
-        android:layout_width="162dp"
-        android:layout_height="110dp"
+        android:layout_width="155dp"
+        android:layout_height="75dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:src="@drawable/fmt" />
@@ -19,14 +19,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/fmt_image"
         android:id="@+id/taotaikhoan"
-        android:text="Create Account"
+        android:text="@string/create_account"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:textSize="30dp"
+        android:textSize="20sp"
         android:textColor="@color/white"
-        android:layout_marginLeft="12dp"
-        />
+        android:layout_marginStart="12dp" />
 
     <EditText
         android:id="@+id/username"
@@ -39,14 +37,14 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:hint="Enter your full name"
+        android:hint="@string/enter_your_user_name"
         android:padding="20dp"
         android:textStyle="bold"
         android:drawableStart="@drawable/baseline_person_outline_24"
         android:drawablePadding="10dp" />
 
     <EditText
-        android:id="@+id/email_toggle"
+        android:id="@+id/fullname"
         android:layout_width="387dp"
         android:layout_height="59dp"
         android:layout_below="@id/username"
@@ -56,7 +54,24 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:hint="Enter your email"
+        android:hint="@string/enter_your_full_name"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:drawableStart="@drawable/baseline_person_outline_24"
+        android:drawablePadding="10dp" />
+
+    <EditText
+        android:id="@+id/email_toggle"
+        android:layout_width="387dp"
+        android:layout_height="59dp"
+        android:layout_below="@id/fullname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:hint="@string/enter_your_email"
         android:padding="20dp"
         android:textStyle="bold"
         android:drawableStart="@drawable/baseline_email_24"
@@ -73,7 +88,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:hint="Enter your password"
+        android:hint="@string/enter_your_password"
         android:padding="20dp"
         android:textStyle="bold"
         android:drawableStart="@drawable/baseline_lock_24"
@@ -91,7 +106,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:hint="Confirm your password"
+        android:hint="@string/confirm_your_password"
         android:padding="20dp"
         android:textStyle="bold"
         android:drawableStart="@drawable/baseline_chevron_right_24"
@@ -100,7 +115,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="14dp"
+        android:layout_height="20dp"
         android:id="@+id/quenmatkhau"
         android:layout_below="@+id/password_toggle3"
         android:text="@string/forgot_password"
@@ -115,9 +130,8 @@
         android:layout_below="@+id/quenmatkhau"
         android:layout_centerHorizontal="true"
         android:id="@+id/registerButton"
-        android:text="Register"
+        android:text="@string/register"
         android:textSize="18sp"
-        android:layout_marginTop="10dp"
         android:backgroundTint="#FED36A"
         app:cornerRadius="5dp"/>
 
@@ -126,9 +140,9 @@
         android:layout_height="20dp"
         android:id="@+id/alreadyaccount"
         android:layout_below="@+id/registerButton"
-        android:text="Already have an account?"
+        android:text="@string/already_have_an_account"
         android:layout_marginTop="10dp"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:gravity="center"
         android:textColor="#8CAAB9"
         />
@@ -139,7 +153,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/alreadyaccount"
         android:layout_centerHorizontal="true"
-        android:text="Login"
+        android:text="@string/login_1"
         android:textColor="#FED36A"
         android:textStyle="bold" />
 </RelativeLayout>
