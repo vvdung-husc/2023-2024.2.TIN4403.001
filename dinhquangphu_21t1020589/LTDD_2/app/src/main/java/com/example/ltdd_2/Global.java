@@ -1,4 +1,4 @@
-package com.example.ltdd_02;
+package com.example.ltdd_2;
 
 import android.content.Context;
 import android.graphics.Color;
