@@ -110,7 +110,7 @@ public class Login extends AppCompatActivity {
                 .build();
         // đưa dữ liệu của body theo api dưới đây để post lên server xem username và password có khớp không
         Request request = new Request.Builder()
-                .url(_URL)
+                .url(_URL + "/login")
                 .post(body)//method post, data đẩy lên dưới dạng JSON là body
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -134,7 +134,7 @@ public class Login extends AppCompatActivity {
                 }
 
                 _usernameLogined = user;
-                Intent intent = new Intent(Login.this, HomePage.class);
+                Intent intent = new Intent(Login.this, User.class);
                 startActivity(intent);
             }
         });
