@@ -1,34 +1,16 @@
 package com.example.giakhanh_ltdd;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import java.io.IOException;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
 public class UserActivity extends AppCompatActivity {
-
-    TextView m_lblWelcome,m_lblUser,m_lblName,m_lblEmail;
-    EditText m_edtName,m_edtEmail,m_edtPassOld,m_edtPassNew1,m_edtPassNew2;
-    CheckBox m_chkName,m_chkEmail,m_chkPass;
-    Button m_btnLogout,m_btnChange;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+<<<<<<< HEAD:nqhuy_21t1080017/LTDD_01/app/src/main/java/com/example/ltdd_01/UserActivity.java
+=======
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
         m_lblWelcome = (TextView)findViewById(R.id.lblWelcome);
@@ -143,12 +125,6 @@ public class UserActivity extends AppCompatActivity {
     void enableButtonChange(){
         if (m_btnChange.isEnabled()) return;
         m_btnChange.setEnabled(true);
+>>>>>>> origin/main:NgoGiaKhanh/GiaKhanh_ltdd/app/src/main/java/com/example/giakhanh_ltdd/UserActivity.java
     }
-    void disableButtonChange(){
-        if (!m_btnChange.isEnabled()) return;
-        if (m_chkName.isChecked()) return;
-        if (m_chkEmail.isChecked()) return;
-        if (m_chkPass.isChecked()) return;
-        m_btnChange.setEnabled(false);
-    }
-}//public class UserActivity extends AppCompatActivity {
+}

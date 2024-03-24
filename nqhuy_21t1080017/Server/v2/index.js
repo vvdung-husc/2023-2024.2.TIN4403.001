@@ -18,37 +18,34 @@ app.get("/test", function (req, res) {
   UTILS.apiResult(1, arrUser, res);
 });
 
+
 var arrUser = [];
 var oUser = {};
-oUser.username = "admin";
-oUser.password = "123456";
-oUser.fullname = "Administrator";
-oUser.email = "admin@tin4403.com";
+oUser.username = "nqhuy";
+oUser.phonenumber = "0832766413"; // Change this to your desired default phonenumber
+oUser.password = "nqhuy123";
 
 arrUser.push(oUser);
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
 app.post("/login", function (req, res) {
-  var user = req.body.username;
+  var phonenumber = req.body.phonenumber;
   var pass = req.body.password;
-  console.log("ACCOUNT:", user, "/", pass);
-  login(user, pass, res);
+  console.log("ACCOUNT:", phonenumber, "/", pass);
+  login(phonenumber, pass, res);
 });
 
 //hàm đăng ký tài khoản
 app.post("/register", function (req, res) {
-  var user = req.body.username;
+  var username = unidecode(req.body.username);
+  var phonenumber = req.body.phonenumber;
   var pass = req.body.password;
-  var name = req.body.fullname;
-  var email = req.body.email;
   var oUser = {
-    username: user,
+    username: username,
+    phonenumber: phonenumber,
     password: pass,
-    fullname: name,
-    email: email,
   };
   console.log(oUser);
-  register(user, pass, name, email, res);
-  //res.status(200).send("API REGISTER - POST");
+  register(username, phonenumber, pass, res);
 });
 
 //hàm nhận thông tin tài khoản sau khi đã đăng nhập thành công
@@ -60,17 +57,17 @@ app.post("/userinfo", function (req, res) {
 //hàm nhận thông tin tài khoản sau khi đã đăng nhập thành công
 app.post("/userupdate", function (req, res) {
   var token = req.headers.token;
+  var username = req.body.username;
+  var phonenumber = req.body.phonenumber;
   var pass = req.body.password;
-  var name = req.body.fullname;
-  var email = req.body.email;
   console.log("PASS", pass);
-  console.log("NAME", name);
-  console.log("EMAIL", email, "=>", email ? 1 : 0);
+  console.log("NAME", username);
+  console.log("PHONENUMBER", phonenumber);
 
   var info = {
     password: pass ? pass.toString() : null,
-    fullname: name ? name.toString() : null,
-    email: email ? email.toString() : null,
+    username: username ? username.toString() : null,
+    phonenumber: phonenumber ? phonenumber.toString() : null,
   };
   console.log(info);
   userUpdate(token, info, res);
@@ -81,15 +78,18 @@ var server = app.listen(5080, function () {
   console.log("API Running on port.", server.address().port);
 });
 
-function getUser(user) {
+function getUserByPhonenumber(phonenumber) {
   var n = arrUser.length;
   for (var i = 0; i < n; ++i) {
-    if (arrUser[i].username == user) return arrUser[i];
+    if (arrUser[i].phonenumber == phonenumber) {
+      return arrUser[i];
+    }
   }
   return null;
 }
-function isExist(user, pass) {
-  var oUser = getUser(user);
+
+function isExist(phonenumber, pass) {
+  var oUser = getUserByPhonenumber(phonenumber);
   if (oUser && oUser.password == pass) return true;
   return false;
 }
@@ -116,14 +116,14 @@ function decodeToken(token) {
     return oResult;
   }
 
-  if (user_.u == undefined || !user_.u || user_.t == undefined || !user_.t) {
+  if (user_.p == undefined || !user_.p || user_.t == undefined || !user_.t) {
     oResult["error"] = -2;
     oResult["message"] = "JSON không hợp lệ";
     return oResult;
   }
 
   //kiểm tra thời gian đã logined, tính theo seconds
-  var curSeconds = ~~(Date.now() / 1000);
+  var curSeconds = Date.now() / 1000;
   if (curSeconds - user_.t > 60 * 5) {
     //5phut
     oResult["error"] = -3;
@@ -137,9 +137,9 @@ function decodeToken(token) {
   return oResult;
 }
 
-function login(user, pass, res) {
-  if (user == undefined || !user || user.length < 3) {
-    UTILS.apiResult(-1, "Tài khoản không hợp lệ", res);
+function login(phonenumber, pass, res) {
+  if (phonenumber == undefined || !phonenumber || phonenumber.length < 10) {
+    UTILS.apiResult(-1, "Số điện thoại không hợp lệ", res);
     return;
   }
   if (pass == undefined || !pass || pass.length < 6) {
@@ -147,32 +147,40 @@ function login(user, pass, res) {
     return;
   }
 
-  if (!isExist(user, pass)) {
+  if (!isExist(phonenumber, pass)) {
     UTILS.apiResult(-3, "Thông tin tài khoản không chính xác", res);
     return;
   }
 
   //Chuyển object thành chuổi Base64 - sử dụng cho các hàm sau khi đã login thành công
   var user_ = {};
-  user_["u"] = user; //tên tài khoản đã đăng nhập
-  user_["t"] = ~~(Date.now() / 1000); //thời gian đăng nhập (epoch second) - có thể dùng để yêu cầu đăng nhập lại nếu vượt quá thời gian xxx
+  user_["p"] = phonenumber; //tên tài khoản đã đăng nhập
+  user_["t"] = Date.now() / 1000; //thời gian đăng nhập (epoch second) - có thể dùng để yêu cầu đăng nhập lại nếu vượt quá thời gian xxx
   var token = Buffer.from(JSON.stringify(user_), "utf8").toString("base64");
   console.log(token);
   UTILS.apiResult(1, token, res);
 }
-function register(user, pass, name, email, res) {
-  //if (user == "vvdung" && pass == "123456" )
-  var u = getUser(user);
+
+function register(username, phonenumber, pass, res) {
+  var u = getUserByPhonenumber(phonenumber);
   if (!u) {
     u = {};
-    u.username = user;
-    u.password = pass ? pass : "654321"; //mật khẩu mặt định nếu pass rỗng
-    u.fullname = name ? name : ""; //mặt định rỗng
-    u.email = email ? email : ""; //mặt định rỗng
+    u.username = username;
+    u.phonenumber = phonenumber;
+    u.password = pass; 
     arrUser.push(u);
-    res.status(200).send("API REGISTER - THANH CONG [" + user + "]");
+    res
+      .status(200)
+      .send("API REGISTER - THANH CONG [" + username + "]");
   } else {
-    res.status(503).send("API REGISTER - TAI KHOAN [" + user + "] DA TON TAI");
+    if (getUserByPhonenumber(phonenumber))
+      res
+        .status(503)
+        .send("API REGISTER - TAI KHOAN [" + phonenumber + "] DA TON TAI");
+    else if (getUserByPhonenumber(username))
+      res
+        .status(503)
+        .send("API REGISTER - TAI KHOAN [" + username + "] DA TON TAI");
   }
 }
 
@@ -186,7 +194,7 @@ function userinfo(token, res) {
   }
 
   var oToken = oResult.message;
-  var u = getUser(oToken.u);
+  var u = getUserByPhonenumber(oToken.u);
   if (!u) {
     UTILS.apiResult(-4, "Không tìm thấy tài khoản - Token không hợp lệ", res);
     return;
@@ -219,14 +227,7 @@ function userUpdate(token, info, res) {
         count++;
         arrUser[i].password = info.password;
       }
-      if (!(info.fullname == undefined || !info.fullname)) {
-        count++;
-        arrUser[i].fullname = info.fullname;
-      }
-      if (!(info.email == undefined || !info.email)) {
-        count++;
-        arrUser[i].email = info.email;
-      }
+      
       if (count == 0)
         UTILS.apiResult(-5, "[" + oToken.u + "] Không có gì để cập nhật", res);
       else UTILS.apiResult(1, "[" + oToken.u + "] Cập nhật thành công", res);

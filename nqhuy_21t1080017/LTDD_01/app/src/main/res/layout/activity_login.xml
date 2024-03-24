@@ -10,13 +10,13 @@
     <TextView
         android:id="@+id/titledangnhap"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:background="#3F51B5"
         android:paddingLeft="35dp"
         android:paddingTop="5dp"
         android:text="Đăng nhập"
         android:textColor="#FEFEFE"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +24,10 @@
 
     <ImageButton
         android:id="@+id/imgbtnback"
-        android:layout_width="36dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
         android:background="#00FFFFFF"
         android:rotation="90"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,97 +50,86 @@
         app:layout_constraintTop_toBottomOf="@+id/titledangnhap" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/phonenumber"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Username"
-        android:inputType="text"
+        android:hint="Số điện thoại"
+        android:inputType="number"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thongbaodangnhap" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Mật khẩu"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/username"
-        app:layout_constraintStart_toStartOf="@+id/username"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
 
     <CheckBox
         android:id="@+id/hienthimatkhau"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="hiển thị mật khẩu"
         android:textColor="#3F51B5"
-        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
         android:id="@+id/quenmatkhau"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="182dp"
         android:text="Quên mật khẩu"
         android:textColor="#3F51B4"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/hienthimatkhau"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
         android:id="@+id/btndangnhap"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="72dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="32dp"
         android:text="Đăng nhập"
-        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="250dp"
+        android:layout_width="263dp"
         android:layout_height="298dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="144dp"
         android:src="@mipmap/iconapp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btndangnhap" />
-
-    <TextView
-        android:id="@+id/register_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Bạn chưa có tài khoảng!"
-        android:textColor="#3F51B5"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,13 @@
 package com.example.ltdd_01;
 
+<<<<<<< HEAD
+public class User {
+    public static String _username;
+    public static String _fullname = "<rỗng>";
+    public static String _email = "<chưa có>";
+
+}
+=======
     public class User {
         public static String _username;
         public static String _fullname = "<rỗng>";
@@ -7,3 +15,4 @@ package com.example.ltdd_01;
 
     }
 
+>>>>>>> origin/main

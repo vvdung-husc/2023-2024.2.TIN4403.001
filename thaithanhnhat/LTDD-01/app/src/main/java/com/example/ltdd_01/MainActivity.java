@@ -2,7 +2,6 @@ package com.example.ltdd_01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
