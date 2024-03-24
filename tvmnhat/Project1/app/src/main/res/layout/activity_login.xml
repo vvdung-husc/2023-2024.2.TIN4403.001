@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0E79C9"
-    tools:context=".Login">
+    android:background="#0E79C9">
 
     <ImageView
         android:layout_width="176dp"
@@ -47,7 +46,7 @@
         android:hint="@string/password"
         android:padding="20dp"
         android:textStyle="bold"
-        android:drawableStart="@drawable/baseline_chevron_right_24"
+        android:drawableStart="@drawable/baseline_lock_24"
         android:drawablePadding="10dp"
         android:inputType="textPassword"/>
 
@@ -68,7 +67,7 @@
         android:layout_below="@+id/quenmatkhau"
         android:layout_centerHorizontal="true"
         android:id="@+id/loginButton"
-        android:text="Login"
+        android:text="@string/login1"
         android:textSize="18sp"
         android:layout_marginTop="30dp"
         android:backgroundTint="#FED36A"
@@ -80,10 +79,10 @@
         android:layout_height="20dp"
         android:layout_below="@+id/loginButton"
         android:layout_marginTop="32dp"
-        android:text="Don't have an account?"
+        android:text="@string/don_t_have_an_account"
         android:gravity="center"
         android:textColor="#8CAAB9"
-        android:textSize="15dp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/btnSignup"
@@ -93,7 +92,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-2dp"
         android:gravity="center"
-        android:text="Sign up"
+        android:text="@string/sign_up"
         android:textColor="#FED36A"
         android:textStyle="bold" />
 </RelativeLayout>

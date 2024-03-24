@@ -132,4 +132,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+<<<<<<< HEAD
+}
+=======
 }//public class RegisterActivity
+>>>>>>> origin/main

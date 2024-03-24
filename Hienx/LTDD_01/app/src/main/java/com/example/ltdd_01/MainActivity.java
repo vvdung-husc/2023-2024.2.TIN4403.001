@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
     TextView m_lblRegister;//Biến điều khiển Đăng ký mới
+
+    public static void ShowToast(Context applicationContext, String s) {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -214,7 +218,13 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
+<<<<<<< HEAD
+
+               // .url("https://dev.husc.edu.vn/tin4403/api/login")
+                .url("http://192.168.3.121:4080/login")
+=======
                 .url(Global._URL + "/login")
+>>>>>>> origin/main
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
