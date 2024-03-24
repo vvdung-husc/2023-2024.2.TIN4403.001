@@ -8,8 +8,20 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -127,6 +139,100 @@ public class UserActivity extends AppCompatActivity {
                     m_edtPassNew2.setEnabled(false);
 
                 }
+            }
+        });
+        m_btnChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String token = Global._token;
+                String password = m_edtPassOld.getText().toString();
+                String fullname = m_edtName.getText().toString();
+                String email = m_edtEmail.getText().toString();
+                String passwordnew1= m_edtPassNew1.getText().toString();
+                String passwordnew2= m_edtPassNew2.getText().toString();
+                String upass = User._password;
+                try {
+                    JSONObject jsonInput = new JSONObject();
+                    if(password!=null) {
+                        if (password.equals(User._password)) {
+                            if (passwordnew1.equals(passwordnew2)) {
+
+                                jsonInput.put("password", passwordnew1);
+                                jsonInput.put("fullname", fullname);
+                                jsonInput.put("email", email);
+                                Global.uiShowToast(getApplicationContext(), "Cập nhật thành công!");
+
+                            } else {
+                                Global.uiShowToast(getApplicationContext(), "Mật khẩu không khớp");
+
+                            }
+
+                        } else {
+                            Global.uiShowToast(getApplicationContext(), "Mật khầu cũ không chính xác");
+                        }
+                    }
+                    else{
+
+                        jsonInput.put("fullname", fullname);
+                        jsonInput.put("email", email);
+                    }
+
+                    OkHttpClient client = new OkHttpClient();
+                    String json = jsonInput.toString();
+                    RequestBody body = RequestBody.create(json, API.JSON);
+                    Request request = new Request.Builder()
+                            .url(Global._URL + "/userupdate")
+                            .post(body)
+                            .addHeader("token",token)
+                            .build();
+
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            String errStr = "Cập nhật lỗi.\n" + e.getMessage();
+                            Log.d("K45","onFailure\n" + errStr);
+                            UserActivity.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            call.cancel();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+
+                            if (!response.isSuccessful()){
+                                String strMsg = "Cập nhật lỗi.\n" + response.body().string();
+                                Log.d("K45",strMsg);
+                                UserActivity.this.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(), strMsg,Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                return;
+                            }
+                            String strMsg = "Cập nhật thành công tài khoản";
+                            Log.d("K45",strMsg);
+                            UserActivity.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(),strMsg,Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
             }
         });
 

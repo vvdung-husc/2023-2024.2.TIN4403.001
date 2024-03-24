@@ -9,20 +9,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.text.HtmlCompat;
-
-
-
 public class Global {
     public static Handler _Handler;
     public static String _token;
-    public static String _URL ="http://192.168.1.10:5080";//"https://dev.husc.edu.vn/tin4403/api";
+    public static String _URL ="http://192.168.1.6:5080";//"https://dev.husc.edu.vn/tin4403/api";
     public static API _HTTP = new API(_URL);
 
     public static void ShowToast(Context ctx, String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_LONG);
             View view = toast.getView();
-            assert view != null;
             view.setBackgroundColor(Color.GREEN);
             TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
             toastMessage.setTextColor(Color.RED);
