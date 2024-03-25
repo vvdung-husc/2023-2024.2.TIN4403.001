@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean bOk = (user.equals("tvn1611") && pass.equals("161103"));
         if (bOk){
-            Log.d("TIN4403", "Loi");
+            Log.d("TIN4403", "loi");
             _usernameLogined = "Trương Văn Nhật";
             Intent intent = new Intent(getApplicationContext(),activity_user.class);
             startActivity(intent);

@@ -3,121 +3,54 @@ package com.nqhuy.ltdd_01;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.ltdd_01.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.example.ltdd_01.R;
 
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class RegisterActivity extends AppCompatActivity{
-    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+public class RegisterActivity extends AppCompatActivity {
+    EditText m_edtUser,m_edtPass,m_edtRePass,m_edtName,m_edtEmail; //Biến điều khiển EditText
+    Button m_btnRegister; //Biến điều khiển Đăng nhập
 
-    private EditText username, phonenumber, password, configpassword;
-    private Button btndangky;
-    private ImageButton imgbtnback;
-    private CheckBox hienthimatkhau;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        hienthimatkhau = findViewById(R.id.hienthimatkhau);
-        btndangky = findViewById(R.id.btndangky);
-        imgbtnback = findViewById(R.id.imgbtnback);
-        username = findViewById(R.id.username);
-        phonenumber = findViewById(R.id.phonenumber);
-        password = findViewById(R.id.password);
-        configpassword = findViewById(R.id.configpassword);
-        btndangky.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String phone = phonenumber.getText().toString();
-                String pass = password.getText().toString();
-
-                Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + phone + "/" + pass);
-                if (phone.length() < 10 || pass.length() < 3){
-                    RegisterActivity.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
-                    return;
-                }
-                String repass = configpassword.getText().toString();
-                if (pass.compareTo(repass) != 0){
-                    RegisterActivity.ShowToast(getApplicationContext(),"Mật khẩu không chính xác!");
-                    return;
-                }
-                try {
-                    //Gọi hàm dịch vụ Register
-
-                    JSONObject oUser = new JSONObject();
-                    oUser.put("username",username);
-                    oUser.put("password",pass);
-                    oUser.put("phonenumber",phone);
-                    oUser.put("fullname",username.getText().toString());
-                    Log.d("TIN4403",oUser.toString());
-                    String json = oUser.toString();
-                    Log.d("TIN4403",json);
-                    okhttpApiRegister(oUser);
-
-<<<<<<< HEAD:nqhuy_21t1080017/LTDD_01/app/src/main/java/com/example/ltdd_01/RegisterActivity.java
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        hienthimatkhau.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (hienthimatkhau.isChecked()) {
-                    // Hiển thị mật khẩu
-                    password.setTransformationMethod(null);
-                    configpassword.setTransformationMethod(null);
-                } else {
-                    // Ẩn mật khẩu
-                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    configpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
-=======
-        //Cài đặt sự kiện Click cho CheckBox hienthimatkhau
-        hienthimatkhau.setOnClickListener(new RegisterActivity.CheckBoxHienThiMatKhau());
-
-        //Cài đặt sự kiện Click cho ImageButton imgbtnback
-        imgbtnback.setOnClickListener(new RegisterActivity.ImageButtonBack());
+        //Khởi tạo các biến điều khiển tương ứng trong layout
+        m_edtUser = (EditText)findViewById(R.id.username);
+        m_edtPass = (EditText)findViewById(R.id.pass);
+        m_edtRePass = (EditText)findViewById(R.id.confirmpass);
+        m_edtName = (EditText)findViewById(R.id.fullname);
+        m_edtEmail = (EditText)findViewById(R.id.email);
+        m_btnRegister = (Button) findViewById(R.id.btnRegister);
+        //Cài đặt sự kiện Click cho Button Register
+        m_btnRegister.setOnClickListener(new RegisterActivity.CButtonRegister());
 
     }//protected void onCreate(Bundle savedInstanceState) {
 
     public class CButtonRegister implements View.OnClickListener {
         @Override
-        public void onClick(View v) {//Hàm sửSO lý sự kiện click button register
+        public void onClick(View v) {//Hàm sử lý sự kiện click button register
             String user = m_edtUser.getText().toString();
             String pass = m_edtPass.getText().toString();
-            Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+            Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
                 Global.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
                 return;
@@ -135,68 +68,26 @@ public class RegisterActivity extends AppCompatActivity{
                 oUser.put("password",pass);
                 oUser.put("fullname",m_edtName.getText().toString());
                 oUser.put("email",m_edtEmail.getText().toString());
-                Log.d("K45",oUser.toString());
+                Log.d("TIN4403",oUser.toString());
                 String json = oUser.toString();
-                Log.d("K45",json);
+                Log.d("TIN4403",json);
                 okhttpApiRegister(oUser);
 
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
->>>>>>> origin/main:nqhuy_21t1080017/LTDD_01/app/src/main/java/com/nqhuy/ltdd_01/RegisterActivity.java
             }
-        });
-        imgbtnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressedAction();
-            }
-        });
-    }
-
-    public void onBackPressedAction() {
-        // Xử lý sự kiện khi icon quay lại được nhấn
-        finish(); // hoặc thực hiện logic quay lại khác tùy thuộc vào yêu cầu của bạn
-    }
-
-    private void saveCredentials(String phone, String pass) {
-        // Lưu thông tin đăng ký vào SharedPreferences hoặc Database
-        // Ví dụ sử dụng SharedPreferences
-        SharedPreferences preferences = getSharedPreferences("user_credentials", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("phone_number", phone);
-        editor.putString("password", pass);
-        editor.apply();
-    }
-
-    static public void ShowToast(Context ctx, String msg){
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            view.setBackgroundColor(Color.GREEN);
-            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-            toastMessage.setTextColor(Color.RED);
-            toast.show();
         }
-        else {
-            Toast.makeText(ctx,
-                    HtmlCompat.fromHtml("<font color='red'>" + msg +"</font>" , HtmlCompat.FROM_HTML_MODE_LEGACY),
-                    Toast.LENGTH_LONG).show();
-        }
-    }
+    }//public class CButtonRegister implements View.OnClickListener {
 
     void okhttpApiRegister(JSONObject oUser) throws IOException {
         OkHttpClient client = new OkHttpClient();
         String json = oUser.toString();
-<<<<<<< HEAD:nqhuy_21t1080017/LTDD_01/app/src/main/java/com/example/ltdd_01/RegisterActivity.java
-        RequestBody body = RequestBody.create(json, RegisterActivity.JSON);
-=======
-        RequestBody body = RequestBody.create(json, API.JSON);
->>>>>>> origin/main:nqhuy_21t1080017/LTDD_01/app/src/main/java/com/nqhuy/ltdd_01/RegisterActivity.java
+        RequestBody body = RequestBody.create(json, LoginActivity.JSON);
 
         Request request = new Request.Builder()
-                .url(Global._URL + "/register")
+                .url(LoginActivity._URL + "/register")
                 .post(body)
                 .build();
 
@@ -205,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity{
             @Override
             public void onFailure(Call call, IOException e) {
                 String errStr = "Đăng ký lỗi.\n" + e.getMessage();
-                Log.d("K45","onFailure\n" + errStr);
+                Log.d("TIN4403","onFailure\n" + errStr);
                 RegisterActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -220,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity{
 
                 if (!response.isSuccessful()){
                     String strMsg = "Đăng ký lỗi.\n" + response.body().string();
-                    Log.d("K45",strMsg);
+                    Log.d("TIN4403",strMsg);
                     RegisterActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -229,13 +120,8 @@ public class RegisterActivity extends AppCompatActivity{
                     });
                     return;
                 }
-<<<<<<< HEAD:nqhuy_21t1080017/LTDD_01/app/src/main/java/com/example/ltdd_01/RegisterActivity.java
-                String strMsg = "Đăng ký thành công tài khoản [ " + username.getText().toString() + " ]";
-                Log.d("TIN4403",strMsg);
-=======
                 String strMsg = "Đăng ký thành công tài khoản [ " + m_edtUser.getText().toString() + " ]";
-                Log.d("K45",strMsg);
->>>>>>> origin/main:nqhuy_21t1080017/LTDD_01/app/src/main/java/com/nqhuy/ltdd_01/RegisterActivity.java
+                Log.d("TIN4403",strMsg);
                 RegisterActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -243,9 +129,10 @@ public class RegisterActivity extends AppCompatActivity{
                     }
                 });
 
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
             }
         });
     }
-}
+
+}//public class RegisterActivity
