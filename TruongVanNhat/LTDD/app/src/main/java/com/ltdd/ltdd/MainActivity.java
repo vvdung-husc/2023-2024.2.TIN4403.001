@@ -30,7 +30,7 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    static String _URL = "http://192.168.3.109:4080";//"https://dev.husc.edu.vn/tin4403/api";
+    static String _URL = "http://192.168.1.10:5080";//"https://dev.husc.edu.vn/tin4403/api";
     static String   _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
     EditText edtUser,edtPass; //Biến điều khiển EditText
     Button btnLogin; //Biến điều khiển Đăng nhập
@@ -85,25 +85,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Hàm dịch vụ Login
+//Hàm dịch vụ
+         //Login
     void apiLogin(String user, String pass) throws IOException {
 
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
-        Log.d("TIN4403",json);
+       Log.d("TIN4403",json);
 
         boolean bOk = (user.equals("tvn1611") && pass.equals("161103"));
         if (bOk){
-            Log.d("TIN4403", "ưtf");
-            _usernameLogined = "Trương Văn Nhật";
+           Log.d("TIN4403", "Loi");
+           _usernameLogined = "Trương Văn Nhật";
             Intent intent = new Intent(getApplicationContext(),activity_user.class);
-            startActivity(intent);
-        }
-        else{
+           startActivity(intent);
+       }
+       else{
             MainActivity.this.runOnUiThread(new Runnable() {
                 @Override
-                public void run() {
+               public void run() {
                     String str = "Tài khoản hoặc mật khẩu không đúng [" + user + "/" + pass + "]";
-                    ShowToast(getApplicationContext(),str);
+                   ShowToast(getApplicationContext(),str);
                 }
             });
         }
@@ -111,16 +112,16 @@ public class MainActivity extends AppCompatActivity {
 
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
-        Log.d("TIN4403",json);
+       Log.d("TIN4403",json);
         RequestBody body = new FormBody.Builder()
                 .add("username", user)
                 .add("password", pass)
-                .build();
+               .build();
 
         Request request = new Request.Builder()
                 .url(_URL + "/login")
                 .post(body)
-                .build();
+               .build();
         OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -130,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getApplicationContext(),baoloi,Toast.LENGTH_SHORT).show();
+                       Toast.makeText(getApplicationContext(),baoloi,Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -139,92 +140,91 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String baoloi = "Tài khoản hoặc mật khẩu không đúng.\n" + response.body().string();
-                Log.d("TIN4403",baoloi);
+               String baoloi = "Tài khoản hoặc mật khẩu không đúng.\n" + response.body().string();
+               Log.d("TIN4403",baoloi);
                 if (!response.isSuccessful()){
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(),baoloi,Toast.LENGTH_SHORT).show();
-                        }
+                       }
                     });
                     return;
-                }
+               }
 
-                _usernameLogined = user;
+               _usernameLogined = user;
                 Intent intent = new Intent(getApplicationContext(),activity_user.class);
                 startActivity(intent);
 
             }
-        });
-    }
+       });
+   }
 
-    static public void ShowToast(Context ctx, String msg){
+   static public void ShowToast(Context ctx, String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_SHORT);
-            View view = toast.getView();
+Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_SHORT);
+    View view = toast.getView();
             view.setBackgroundColor(Color.GREEN);
-            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
             toastMessage.setTextColor(Color.RED);
             toast.show();
-        }
+}
         else {
-            Toast.makeText(ctx,
-                    HtmlCompat.fromHtml("<font color='red'>" + msg +"</font>" , HtmlCompat.FROM_HTML_MODE_LEGACY),
-                    Toast.LENGTH_LONG).show();
-        }
+                Toast.makeText(ctx,
+                HtmlCompat.fromHtml("<font color='red'>" + msg +"</font>" , HtmlCompat.FROM_HTML_MODE_LEGACY),
+                Toast.LENGTH_LONG).show();
+                }
 
 
-    }
+                }
 
-    // ham get okhttp
-    void doGet(String url) throws IOException {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
+                // ham get okhttp
+                void doGet(String url) throws IOException {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
                 .url(url)
                 .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                call.cancel();
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                final String myResponse = response.body().string();
-                MainActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //txtString.setText(myResponse);
-                        Log.d("TIN4403",myResponse);
-                    }
-                });
-            }
+                client.newCall(request).enqueue(new Callback() {
+@Override
+public void onFailure(Call call, IOException e) {
+        call.cancel();
+        }
+@Override
+public void onResponse(Call call, Response response) throws IOException {
+final String myResponse = response.body().string();
+        MainActivity.this.runOnUiThread(new Runnable() {
+@Override
+public void run() {
+        //txtString.setText(myResponse);
+        Log.d("TIN4403",myResponse);
+        }
         });
-    }
+        }
+        });
+        }
 
-    //post okhttp
-    void doPost(String url,String key, String value) throws IOException {
+        //post okhttp
+        void doPost(String url,String key, String value) throws IOException {
         OkHttpClient client = new OkHttpClient();
         RequestBody body = new FormBody.Builder()
-                .add(key,value)
-                .build();
+        .add(key,value)
+        .build();
 
         Request request = new Request.Builder()
-                .url(url)
-                .post(body)
-                .build();
+        .url(url)
+        .post(body)
+        .build();
 
         client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                call.cancel();
-            }
+@Override
+public void onFailure(Call call, IOException e) {
+        call.cancel();
+        }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.d("TIN4403",response.body().string());
+@Override
+public void onResponse(Call call, Response response) throws IOException {
+        Log.d("TIN4403",response.body().string());
             }
         });
     }
-
-}
+ }
