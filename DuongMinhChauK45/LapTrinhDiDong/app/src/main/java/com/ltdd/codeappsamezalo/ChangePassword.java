@@ -53,24 +53,7 @@ public class ChangePassword extends AppCompatActivity {
             }
 
 
-            try {
-                //Gọi hàm dịch vụ Register
 
-                JSONObject oUser = new JSONObject();
-                oUser.put("username",user);
-                oUser.put("password",pass);
-                oUser.put("fullname",m_edtName.getText().toString());
-                oUser.put("email",m_edtEmail.getText().toString());
-                Log.d("TIN4403",oUser.toString());
-                String json = oUser.toString();
-                Log.d("TIN4403",json);
-                okhttpApiChange(oUser);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 

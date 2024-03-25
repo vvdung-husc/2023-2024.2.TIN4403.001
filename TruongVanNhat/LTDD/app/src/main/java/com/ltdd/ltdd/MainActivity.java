@@ -30,7 +30,7 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    static String _URL = "http://192.168.1.10:4080";//"https://dev.husc.edu.vn/tin4403/api";
+    static String _URL = "http://192.168.3.109:4080";//"https://dev.husc.edu.vn/tin4403/api";
     static String   _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
     EditText edtUser,edtPass; //Biến điều khiển EditText
     Button btnLogin; //Biến điều khiển Đăng nhập
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         boolean bOk = (user.equals("tvn1611") && pass.equals("161103"));
         if (bOk){
-            Log.d("TIN4403", "Loi");
+            Log.d("TIN4403", "ưtf");
             _usernameLogined = "Trương Văn Nhật";
             Intent intent = new Intent(getApplicationContext(),activity_user.class);
             startActivity(intent);

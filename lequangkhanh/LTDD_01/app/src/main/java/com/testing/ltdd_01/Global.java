@@ -10,12 +10,6 @@ import android.widget.Toast;
 
 import androidx.core.text.HtmlCompat;
 
-<<<<<<< HEAD
-public class Global {
-    public static Handler _Handler;
-    public static String _token;
-    public static String _URL ="http://192.168.3.137:5080";//"https://dev.husc.edu.vn/tin4403/api";//
-=======
 import org.json.JSONObject;
 
 
@@ -24,7 +18,6 @@ public class Global {
     public static Handler _Handler;
     public static String _token;
     public static String _URL ="https://dev.husc.edu.vn/tin4403/api";//"http://192.168.1.190:5080";;
->>>>>>> origin/main
     public static API _HTTP = new API(_URL);
 
     public static void ShowToast(Context ctx, String msg){
@@ -53,8 +46,3 @@ public class Global {
         });
     }
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/main
