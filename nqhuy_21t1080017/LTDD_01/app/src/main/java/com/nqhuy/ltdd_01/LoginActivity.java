@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,9 +17,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ltdd_01.R;
-
 import java.io.IOException;
+import com.example.ltdd_01.R;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -33,117 +31,120 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    static String _URL = "http://192.168.104.73:4080";
-    static String   _phonenumberLogined;
-    private CheckBox hienthimatkhau;
-    private EditText password;
-    private EditText phonenumber;
-    private Button btndangnhap;
-    private ImageButton imgbtnback;
+    //thay đổi _URL đúng với IP đang chạy dịch vu WebService
+    //static String _URL = "http://192.168.3.101:4080";
+    static String _URL = "https://dev.husc.edu.vn/tin4403/api";
+    static String _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
+    EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
+    Button m_btnLogin; //Biến điều khiển Đăng nhập
+    TextView m_lblRegister;//Biến điều khiển Đăng ký mới
+    CheckBox m_cbhienthimatkhau;//Biến điều hien thi mat khau
 
+    ImageButton m_btnback;//Biến điều khiển quay lại
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        hienthimatkhau = findViewById(R.id.hienthimatkhau);
-        password = findViewById(R.id.password);
-        btndangnhap = findViewById(R.id.btndangnhap);
-        imgbtnback = findViewById(R.id.imgbtnback);
-        phonenumber = findViewById(R.id.phonenumber);
+        //Khởi tạo các biến điều khiển tương ứng trong layout
+        m_edtUser = findViewById(R.id.username);
+        m_edtPass = findViewById(R.id.pass);
+        m_btnLogin = findViewById(R.id.btnLogin);
 
-//        btndangnhap.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Tạo Intent để chuyển từ LoginActivity sang RegisterActivity
-//                Intent intent = new Intent(LoginActivity.this, UserActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        m_lblRegister = findViewById(R.id.lblRegister);
+        m_cbhienthimatkhau = findViewById(R.id. hienmatkhau);
 
-        hienthimatkhau.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (hienthimatkhau.isChecked()) {
-                    // Hiển thị mật khẩu
-                    password.setTransformationMethod(null);
-                } else {
-                    // Ẩn mật khẩu
-                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
+        //Cài đặt sự kiện Click cho Button Login
+        m_btnLogin.setOnClickListener(new CButtonLogin());
+
+        //Cài đặt sự kiện Click cho Button Register
+        m_lblRegister.setOnClickListener(new CButtonRegister());
+
+        //Cài đặt sự kiện Click cho Button Back
+        m_btnback.setOnClickListener(new CButtonBack());
+
+    }//protected void onCreate(Bundle savedInstanceState) {
+
+    public class CButtonLogin  implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {//Hàm sử lý sự kiện click button login
+            String user = m_edtUser.getText().toString();
+            String pass = m_edtPass.getText().toString();
+            Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
+            if (user.length() < 3 || pass.length() < 6){
+                ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
+                return;
             }
-        });
+            try {
+                //Gọi hàm dịch vụ Login
+                //apiLogin(user,pass);
+                okhttpApiLogin(user,pass);
 
-        btndangnhap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {//Hàm sử lý sự kiện click button login
-                String phone = phonenumber.getText().toString();
-                String pass = password.getText().toString();
-                Log.d("K45","CLICK BUTTON LOGIN ACCOUNT " + phone + "/" + pass);
-                if (phone.length() < 10 || pass.length() < 3){
-                    ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
-                    return;
-                }
-                try {
-                    //Gọi hàm dịch vụ Login
-                    //apiLogin(user,pass);
-                    okhttpApiLogin(phone,pass);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
 
-        imgbtnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Xử lý sự kiện khi icon quay lại được nhấn
-                onBackPressedAction();
+        }//public void onClick(View v) {//Hàm sử lý sự kiện click button login
+    }//public class CButtonLogin  implements View.OnClickListener {
+
+    public class CButtonRegister implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {//Hàm sử lý sự kiện click button register
+            //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+            startActivity(i);
+        }
+    }//public class CButtonRegister implements View.OnClickListener {
+
+    public class CShowPassword implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (m_cbhienthimatkhau.isChecked()){
+                m_edtPass.setTransformationMethod(null);
             }
-        });
+            else{
+                m_edtPass.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance());
+            }
+        }
     }
 
-    public void onBackPressedAction() {
-        // Xử lý sự kiện khi icon quay lại được nhấn
-        finish(); // hoặc thực hiện logic quay lại khác tùy thuộc vào yêu cầu của bạn
+    public class CButtonBack implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            // Xử lý sự kiện khi icon quay lại được nhấn
+            finish();
+        }
     }
 
-//    public void apiLogin(String sdt, String pass) throws IOException {
-//
-//        String json = "{\"Phone number\":\"" + sdt + "\",\"password\":\"" + pass +"\"}";
-//        Toast.makeText(getApplicationContext(),json, Toast.LENGTH_SHORT).show();
-//        Log.d("K44",json);
-//
-//        boolean bOk = (sdt.equals("0987654321") && pass.equals("123456"));
-//        if (bOk){
-//            _phonenumberLogined = "Nguyễn Quốc Huy";
-//            Intent intent = new Intent(getApplicationContext(), UserActivity.class);
-//            startActivity(intent);
-//        }
-//        else{
-//            LoginActivity.this.runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    String str = "Tài khoản hoặc mật khẩu không chính xác [" + sdt + "/" + pass + "]";
-//                    Toast toast = Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT);
-//                    View view = toast.getView();
-//                    view.setBackgroundColor(Color.GREEN);
-//                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-//                    toastMessage.setTextColor(Color.RED);
-//                    toast.show();                }
-//            });
-//        }
-//    }//void apiLogin(String user, String pass) throws IOException {
+    //Hàm dịch vụ Login
+    void apiLogin(String user, String pass) throws IOException {
 
-    void okhttpApiLogin(String phone, String pass) throws IOException{
-        String json = "{\"phonenumber\":\"" + phone + "\",\"password\":\"" + pass +"\"}";
-        Log.d("K45",json);
+        String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
+        Log.d("TIN4403",json);
 
+        boolean bOk = (user.equals("vvdung") && pass.equals("123456"));
+        if (bOk){
+            _usernameLogined = "Võ Việt Dũng";
+            Intent intent = new Intent(getApplicationContext(),UserActivity.class);
+            startActivity(intent);
+        }
+        else{
+            LoginActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    //Toast.makeText(getApplicationContext(),"Tài khoản hoặc mật khẩu không chính xác.",Toast.LENGTH_SHORT).show();
+                    String str = "Tài khoản hoặc mật khẩu không chính xác [" + user + "/" + pass + "]";
+                    ShowToast(getApplicationContext(),str);
+                }
+            });
+        }
+    } //void apiLogin(String user, String pass) throws IOException {
+
+    void okhttpApiLogin(String user, String pass) throws IOException{
+        String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
+        Log.d("TIN4403",json);
         RequestBody body = new FormBody.Builder()
-                .add("phonenumber", phone)
+                .add("username", user)
                 .add("password", pass)
                 .build();
 
@@ -155,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                String errStr = "Số điện thoại hoặc mật khẩu không chính xác.\n" + e.getMessage();
+                String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
                 Log.d("TIN4403","onFailure\n" + errStr);
                 LoginActivity.this.runOnUiThread(new Runnable() {
                     @Override
@@ -181,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                _phonenumberLogined = phone;
+                _usernameLogined = user;
                 Intent intent = new Intent(getApplicationContext(),UserActivity.class);
                 startActivity(intent);
 
@@ -203,6 +204,8 @@ public class LoginActivity extends AppCompatActivity {
                     HtmlCompat.fromHtml("<font color='red'>" + msg +"</font>" , HtmlCompat.FROM_HTML_MODE_LEGACY),
                     Toast.LENGTH_LONG).show();
         }
+
+
     }
 
     ///////////// CÁCH SỬ DỤNG OKHTTP GET/POST ///////////////
@@ -255,4 +258,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-}
+
+}//public class MainActivity extends AppCompatActivity {

@@ -85,8 +85,3 @@ public class API {
         }
     }
 }//public class API {
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/main

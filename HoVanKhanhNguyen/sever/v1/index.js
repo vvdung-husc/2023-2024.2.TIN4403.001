@@ -16,10 +16,10 @@ app.get("/test", function (req, res) {
   });
   var arrUser = [];
   var oUser = {};
-  oUser.username = "vvdung";
+  oUser.username = "iam2nguyen";
   oUser.password = "123456";
-  oUser.fullname = "Võ Việt Dũng";
-  oUser.email = "vvdung@gmail.com";
+  oUser.fullname = "Hồ Văn Khánh Nguyên";
+  oUser.email = "hvknguyen.164@gmail.com";
   
   arrUser.push(oUser);
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App
@@ -80,7 +80,7 @@ app.post("/login", function (req, res) {
       res.status(503).send("API LOGIN - LOI TAI KHOAN");
   }
   function register(user,pass,name,email,res){
-    //if (user == "vvdung" && pass == "123456" )
+    //if (user == "iam2nguyen" && pass == "123456" )
     var u = getUser(user);
     if (!u){
       u = {};

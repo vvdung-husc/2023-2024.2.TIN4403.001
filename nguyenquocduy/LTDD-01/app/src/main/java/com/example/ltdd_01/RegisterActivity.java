@@ -83,7 +83,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
     }//public class CButtonRegister implements View.OnClickListener {
-
     void okhttpApiRegister(JSONObject oUser) throws IOException {
         OkHttpClient client = new OkHttpClient();
         String json = oUser.toString();

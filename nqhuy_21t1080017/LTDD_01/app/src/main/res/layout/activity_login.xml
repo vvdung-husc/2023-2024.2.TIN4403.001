@@ -10,10 +10,10 @@
     <TextView
         android:id="@+id/titledangnhap"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:background="#3F51B5"
         android:paddingLeft="35dp"
-        android:paddingTop="5dp"
+        android:paddingTop="10dp"
         android:text="Đăng nhập"
         android:textColor="#FEFEFE"
         android:textSize="16sp"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="#00FFFFFF"
         android:rotation="90"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,66 +50,62 @@
         app:layout_constraintTop_toBottomOf="@+id/titledangnhap" />
 
     <EditText
-        android:id="@+id/phonenumber"
+        android:id="@+id/username"
         android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Số điện thoại"
-        android:inputType="number"
-        android:textSize="14sp"
+        android:hint="Tên đăng nhập"
+        android:inputType="text"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thongbaodangnhap" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/pass"
         android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Mật khẩu"
         android:inputType="textPassword"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
+        android:textColorHint="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/username"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <CheckBox
-        android:id="@+id/hienthimatkhau"
+        android:id="@+id/hienmatkhau"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="hiển thị mật khẩu"
+        android:layout_marginTop="16dp"
+        android:text="Hiển thị mật khẩu"
         android:textColor="#3F51B5"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintEnd_toEndOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
 
     <TextView
         android:id="@+id/quenmatkhau"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="182dp"
         android:text="Quên mật khẩu"
         android:textColor="#3F51B4"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/hienthimatkhau"
+        app:layout_constraintEnd_toStartOf="@+id/hienmatkhau"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintStart_toStartOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
 
     <Button
-        android:id="@+id/btndangnhap"
+        android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -119,17 +115,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="263dp"
-        android:layout_height="298dp"
-        android:layout_marginBottom="144dp"
-        android:src="@mipmap/iconapp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/lblRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Đăng ký mới"
+        android:textColor="#3F51B5"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="@+id/quenmatkhau"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

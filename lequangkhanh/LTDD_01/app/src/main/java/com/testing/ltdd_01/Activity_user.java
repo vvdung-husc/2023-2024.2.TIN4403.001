@@ -18,15 +18,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-<<<<<<< HEAD
-
 public class Activity_user extends AppCompatActivity {
 
-
-=======
-public class Activity_user extends AppCompatActivity {
-
->>>>>>> origin/main
     TextView m_lblWelcome,m_lblUser,m_lblName,m_lblEmail;
     EditText m_edtName,m_edtEmail,m_edtPassOld,m_edtPassNew1,m_edtPassNew2;
     CheckBox m_chkName,m_chkEmail,m_chkPass;
