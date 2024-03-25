@@ -19,33 +19,9 @@
         android:textStyle="bold"
         android:gravity="center"/>
 
-    <TextView
-        android:id="@+id/txtUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:text="TextView"
-        android:layout_marginTop="30dp"/>
-
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:textSize="30dp"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/txtGmail"
-        android:layout_width="wrap_content"
-        android:textSize="30dp"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
     <Button
         android:id="@+id/btnDoiMK"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ĐỔI MẬT KHẨU"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"/>
+        android:text="ĐỔI MẬT KHẨU" />
 </LinearLayout>

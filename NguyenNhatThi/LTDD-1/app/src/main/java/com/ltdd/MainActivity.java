@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         m_lblRegister = (TextView) findViewById(R.id.lblRegister);
 
         m_edtUser.setText("admin");
-        m_edtPass.setText("1020720");
+        m_edtPass.setText("123456");
 
         //Cài đặt sự kiện Click cho Button Login
         m_btnLogin.setOnClickListener(new CButtonLogin());
@@ -167,9 +167,6 @@ public class MainActivity extends AppCompatActivity {
                 String email = oUser.getString("email");
                 if (email.length() > 0) User._email = email;
 
-                String password = oUser.getString("password");
-                if (password.length() > 0) User._password = password;
-
             } catch (JSONException e) {
                 strError = "JSON.m không đúng cấu trúc " + jsonResponse;
             }
@@ -239,8 +236,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-
-
         Log.d("JSON",json);
         JSONObject oResult = null;
         try {
@@ -269,7 +264,6 @@ public class MainActivity extends AppCompatActivity {
             if (name.length() > 0) User._fullname = name;
             String email = oUser.get("email").toString();
             if (email.length() > 0) User._email = email;
-
         } catch (JSONException e) {
             Log.e("K45", "Could not parse malformed JSON: \"" + json + "\"");
             return;
