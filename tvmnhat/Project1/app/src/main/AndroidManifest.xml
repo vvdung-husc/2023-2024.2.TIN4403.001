@@ -20,7 +20,7 @@
             android:exported="false"/>
 
         <activity
-            android:name=".HomePage"
+            android:name=".Fraggment.HomePage"
             android:exported="false"/>
 
         <activity

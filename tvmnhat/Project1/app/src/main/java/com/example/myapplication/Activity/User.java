@@ -36,8 +36,8 @@ public class User extends AppCompatActivity {
 
     public void Login(){
         String account = "Account    : " + Login._usernameLogined;
-        String fullname = "Full name    : " + Login._fullnameLogined;
-        String email = "Email   : " + Login._emailLogined;
+        String fullname = "Full name    : " + Login._fullnameRegistered;
+        String email = "Email   : " + Login._emailRegistered;
 
         m_account.setText(account);
         m_fullname.setText(fullname);
@@ -45,13 +45,13 @@ public class User extends AppCompatActivity {
     }
 
     public void Register(){
-        String account = "Account    : " + Register._usernameRegistered;
-        String fullname = "Full name    : " + Register._fullnameRegistered;
-        String email = "Email   : " + Register._emailRegistered;
-
-        m_account.setText(account);
-        m_fullname.setText(fullname);
-        m_email.setText(email);
+//        String account = "Account    : " + Login._usernameRegistered;
+//        String fullname = "Full name    : " + Login._fullnameRegistered;
+//        String email = "Email   : " + Login._emailRegistered;
+//
+//        m_account.setText(account);
+//        m_fullname.setText(fullname);
+//        m_email.setText(email);
     }
 
     public void AppData(){

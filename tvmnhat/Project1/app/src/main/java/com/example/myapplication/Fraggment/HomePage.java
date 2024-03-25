@@ -1,12 +1,14 @@
-package com.example.myapplication;
+package com.example.myapplication.Fraggment;
 
 import android.widget.ViewFlipper;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Object.Button;
 import com.example.myapplication.Object.Product;
+import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewAdapter.ButtonAdapter;
 import com.example.myapplication.RecyclerViewAdapter.Product_Featured_Adapter;
 
@@ -23,7 +25,7 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.fraggment_home_page);
 
         viewFlipper = findViewById(R.id.viewFlipper);
         viewFlipper.setFlipInterval(3000);
@@ -44,6 +46,11 @@ public class HomePage extends AppCompatActivity {
         productAdapter.setData(getListProduct());
         recyclerView_product.setLayoutManager(linearLayoutManager1);
         recyclerView_product.setAdapter(productAdapter);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        recyclerView_product = findViewById(R.id.home_product_yeuthich);
+        recyclerView_product.setAdapter(productAdapter);
+        recyclerView_product.setLayoutManager(gridLayoutManager);
     }
 
     public List<Button> getListButton(){

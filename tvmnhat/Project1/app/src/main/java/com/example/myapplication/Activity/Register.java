@@ -11,15 +11,15 @@ import android.os.Bundle;
 import com.example.myapplication.R;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
 public class Register extends AppCompatActivity {
     static String _URL = "https://dev.husc.edu.vn/tin4403/api";//http://192.168.3.125:4080
-    static  String _usernameRegistered;
     static  String _fullnameRegistered;
     static  String _emailRegistered;
-    static  String _passwordRegistered;
     EditText username_register;
     EditText fullname_register;
     EditText email_register;
@@ -56,10 +56,19 @@ public class Register extends AppCompatActivity {
             }
 
             try {
-                okhttpApiRegister(username_register_str, confirm_password_register_str, fullname_register_str
-                        , email_register_str);
+                JSONObject oUser = new JSONObject();
+                oUser.put("username",username_register_str);
+                oUser.put("password",password_register_str);
+                oUser.put("fullname",fullname_register.getText().toString());
+                oUser.put("email",email_register.getText().toString());
+                Log.d("K45",oUser.toString());
+                String json = oUser.toString();
+                Log.d("K45",json);
+                okhttpApiRegister(oUser);
             } catch (IOException e){
                 e.printStackTrace();
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
             }
         });
 
@@ -69,45 +78,58 @@ public class Register extends AppCompatActivity {
         });
     }
 
-    void okhttpApiRegister(String user, String pass, String fullname, String email) throws IOException {
-        String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
-        Log.d("K45",json);
-        RequestBody body = new FormBody.Builder()
-                .add("username", user)
-                .add("password", pass)
-                .add("fullname", fullname)
-                .add("email", email)
-                .build();
-        // đưa dữ liệu của body theo api dưới đây để post lên server xem username và password có khớp không
-        Request request = new Request.Builder()
-                .url(_URL)
-                .post(body)//method post, data đẩy lên dưới dạng JSON là body
-                .build();
+    void okhttpApiRegister(JSONObject oUser) throws IOException {
         OkHttpClient client = new OkHttpClient();
+        String json = oUser.toString();
+        RequestBody body = RequestBody.create(json, Login.JSON);
+
+        Request request = new Request.Builder()
+                .url(Login._URL + "/register")
+                .post(body)
+                .build();
+
+
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + e.getMessage();
-                Log.d("K45", "onFailure\n" + errStr);
-                Toast.makeText(getApplicationContext(), errStr, Toast.LENGTH_SHORT).show();
+            public void onFailure(Call call, IOException e) {
+                String errStr = "Đăng ký lỗi.\n" + e.getMessage();
+                Log.d("K45","onFailure\n" + errStr);
+                Register.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),errStr,Toast.LENGTH_SHORT).show();
+                    }
+                });
                 call.cancel();
             }
 
             @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                assert response.body() != null;
-                String errStr = "Tài khoản hoặc mật khẩu không chính xác.\n" + response.body().string();
-                Log.d("K45", errStr);
-                if (!response.isSuccessful()) {
-                    Register.this.runOnUiThread(() -> Toast.makeText(Register.this, errStr, Toast.LENGTH_SHORT).show());
+            public void onResponse(Call call, Response response) throws IOException {
+
+                if (!response.isSuccessful()){
+                    String strMsg = "Đăng ký lỗi.\n" + response.body().string();
+                    Log.d("K45",strMsg);
+                    Register.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), strMsg,Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     return;
                 }
+                String strMsg = "Đăng ký thành công tài khoản [ " + username_register.getText().toString() + " ]";
+                Log.d("K45",strMsg);
+                Register.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),strMsg,Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-                _usernameRegistered = user;
-                _fullnameRegistered = fullname;
-                _emailRegistered = email;
-                _passwordRegistered = pass;
-                Intent intent = new Intent(Register.this, User.class);
+                _fullnameRegistered = String.valueOf(fullname_register);
+               _emailRegistered = String.valueOf(email_register);
+
+                Intent intent = new Intent(getApplicationContext(), User.class);
                 startActivity(intent);
             }
         });

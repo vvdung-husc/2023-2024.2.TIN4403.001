@@ -182,11 +182,9 @@
             android:text="@string/featured_products"
             android:textColor="@color/white"
             android:textSize="25sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/xemthem"
             android:layout_width="173dp"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -211,11 +209,40 @@
         android:background="@color/white"
         android:layout_below="@+id/home_btn_noibat"/>
 
+    <LinearLayout
+        android:id="@+id/sanphamyeuthich"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:background="#0E79C9"
+        android:layout_below="@+id/home_product_noibat"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/samphamyeuthich"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Favorite products"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="173dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/see_more"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_product_yeuthich"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/home_product_noibat" />
+        android:background="@color/white"
+        android:layout_below="@+id/sanphamyeuthich"/>
 </RelativeLayout>
 
