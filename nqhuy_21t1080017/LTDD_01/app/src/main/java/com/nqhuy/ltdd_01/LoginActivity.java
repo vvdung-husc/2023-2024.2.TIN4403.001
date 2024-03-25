@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,10 +38,13 @@ public class LoginActivity extends AppCompatActivity {
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
     TextView m_lblRegister;//Biến điều khiển Đăng ký mới
+    CheckBox m_cbhienthimatkhau;//Biến điều hien thi mat khau
+
+    ImageButton m_btnback;//Biến điều khiển quay lại
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
         m_edtUser = findViewById(R.id.username);
@@ -47,12 +52,16 @@ public class LoginActivity extends AppCompatActivity {
         m_btnLogin = findViewById(R.id.btnLogin);
 
         m_lblRegister = findViewById(R.id.lblRegister);
+        m_cbhienthimatkhau = findViewById(R.id. hienmatkhau);
 
         //Cài đặt sự kiện Click cho Button Login
         m_btnLogin.setOnClickListener(new CButtonLogin());
 
         //Cài đặt sự kiện Click cho Button Register
         m_lblRegister.setOnClickListener(new CButtonRegister());
+
+        //Cài đặt sự kiện Click cho Button Back
+        m_btnback.setOnClickListener(new CButtonBack());
 
     }//protected void onCreate(Bundle savedInstanceState) {
 
@@ -86,6 +95,26 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(i);
         }
     }//public class CButtonRegister implements View.OnClickListener {
+
+    public class CShowPassword implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (m_cbhienthimatkhau.isChecked()){
+                m_edtPass.setTransformationMethod(null);
+            }
+            else{
+                m_edtPass.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance());
+            }
+        }
+    }
+
+    public class CButtonBack implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            // Xử lý sự kiện khi icon quay lại được nhấn
+            finish();
+        }
+    }
 
     //Hàm dịch vụ Login
     void apiLogin(String user, String pass) throws IOException {

@@ -116,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <CheckBox
-        android:id="@+id/hienthimatkhau"
+        android:id="@+id/hienmatkhau"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginTop="24dp"
@@ -140,7 +140,7 @@
         app:layout_constraintEnd_toEndOf="@+id/confirmpass"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/confirmpass"
-        app:layout_constraintTop_toBottomOf="@+id/hienthimatkhau" />
+        app:layout_constraintTop_toBottomOf="@+id/hienmatkhau" />
 
     <TextView
         android:id="@+id/lblLogin"
@@ -153,7 +153,7 @@
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="@+id/confirmpass"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/hienthimatkhau"
+        app:layout_constraintStart_toEndOf="@+id/hienmatkhau"
         app:layout_constraintTop_toBottomOf="@+id/confirmpass" />
 
 

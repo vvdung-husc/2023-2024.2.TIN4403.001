@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -27,6 +29,8 @@ import okhttp3.Response;
 public class RegisterActivity extends AppCompatActivity {
     EditText m_edtUser,m_edtPass,m_edtRePass,m_edtName,m_edtEmail; //Biến điều khiển EditText
     Button m_btnRegister; //Biến điều khiển Đăng nhập
+    CheckBox m_cbhienthimatkhau;//Biến điều hien thi mat khau
+    ImageButton m_btnback;//Biến điều khiển quay lại
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +44,13 @@ public class RegisterActivity extends AppCompatActivity {
         m_edtName = (EditText)findViewById(R.id.fullname);
         m_edtEmail = (EditText)findViewById(R.id.email);
         m_btnRegister = (Button) findViewById(R.id.btnRegister);
+        m_cbhienthimatkhau = findViewById(R.id. hienmatkhau);
+
         //Cài đặt sự kiện Click cho Button Register
         m_btnRegister.setOnClickListener(new RegisterActivity.CButtonRegister());
+
+        //Cài đặt sự kiện Click cho Button Back
+        m_btnback.setOnClickListener(new CButtonBack());
 
     }//protected void onCreate(Bundle savedInstanceState) {
 
@@ -80,6 +89,28 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
     }//public class CButtonRegister implements View.OnClickListener {
+
+    public class CShowPassword implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (m_cbhienthimatkhau.isChecked()){
+                m_edtPass.setTransformationMethod(null);
+                m_edtRePass.setTransformationMethod(null);
+            }
+            else{
+                m_edtPass.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance());
+                m_edtRePass.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance());
+            }
+        }
+    }
+
+    public class CButtonBack implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            // Xử lý sự kiện khi icon quay lại được nhấn
+            finish();
+        }
+    }
 
     void okhttpApiRegister(JSONObject oUser) throws IOException {
         OkHttpClient client = new OkHttpClient();
