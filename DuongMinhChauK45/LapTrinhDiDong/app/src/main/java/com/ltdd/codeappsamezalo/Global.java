@@ -19,7 +19,7 @@ import org.json.JSONObject;
 public class Global {
     public static Handler _Handler;
     public static String _token;
-    public static String _URL = "http://192.168.160.1:5080";//"https://dev.husc.edu.vn/tin4403/api";
+    public static String _URL = "http://192.168.2.147:5080";//"https://dev.husc.edu.vn/tin4403/api";
     public static API _HTTP = new API(_URL);
 
     public static void ShowToast(Context ctx, String msg){

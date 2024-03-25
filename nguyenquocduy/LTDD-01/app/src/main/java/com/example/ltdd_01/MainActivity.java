@@ -29,13 +29,8 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-<<<<<<< HEAD
-    static String _URL = "http://192.168.1.18:4080";//"https://dev.husc.edu.vn/tin4403/api";
-    static String   _usernameLogined;
-=======
-    static String _URL = "http://192.168.100.8:4080";//"https://dev.husc.edu.vn/tin4403/api";
+    static String _URL = "http://192.168.100.8:5080";//"https://dev.husc.edu.vn/tin4403/api";
     static String   _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
->>>>>>> origin/main
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
     TextView m_lblRegister;//Biến điều khiển Đăng ký mới
@@ -90,11 +85,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }//public class CButtonRegister implements View.OnClickListener {
 
-<<<<<<< HEAD
-    //Hàm dịch vụ Login
-
-=======
->>>>>>> origin/main
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("TIN4403",json);
@@ -104,11 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-<<<<<<< HEAD
-                .url("http://192.168.1.18:4080/login")
-=======
                 .url(_URL + "/login")
->>>>>>> origin/main
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
@@ -151,11 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
     static public void ShowToast(Context ctx, String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-<<<<<<< HEAD
-            Toast toast = Toast.makeText(ctx.getApplicationContext(), msg,Toast.LENGTH_SHORT);
-=======
             Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_SHORT);
->>>>>>> origin/main
             View view = toast.getView();
             view.setBackgroundColor(Color.GREEN);
             TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);

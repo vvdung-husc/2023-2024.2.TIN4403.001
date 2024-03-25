@@ -50,7 +50,7 @@ app.post("/register", function (req, res) {
   register(user,pass,name,email,res);
   //res.status(200).send("API REGISTER - POST");
 });
-
+///
 //hàm nhận thông tin tài khoản sau khi đã đăng nhập thành công
 app.post("/userinfo", function (req, res) {
   var token = req.headers.token;  
