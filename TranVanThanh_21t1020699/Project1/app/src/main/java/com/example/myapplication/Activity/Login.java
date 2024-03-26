@@ -37,44 +37,23 @@ public class Login extends AppCompatActivity {
         //admin and admin
         AddData();
     }
+
     public void AddData(){
         loginbutton.setOnClickListener(view -> {
-            //incorrect
-//            if(username.getText().toString().isEmpty() && password.getText().toString().isEmpty()){
-//                Toast.makeText(Login.this, "LOGIN FAILED!!!", Toast.LENGTH_SHORT).show();
-//            }
-//            //correct
-//            else{
-//                Toast.makeText(Login.this, "LOGIN SUCCESSFULLY", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            boolean isInserted = myDb.insertedData(username.getText().toString(),
-//                    password.getText().toString());
-//            if(isInserted) {
-//                Toast.makeText(Login.this, "LOGIN SUCCESSFULLY", Toast.LENGTH_SHORT).show();
-//            } else {
-//                Toast.makeText(Login.this, "LOGIN FAILED!!!", Toast.LENGTH_SHORT).show();
-//            }
 
             String user = username.getText().toString();
             String pass = password.getText().toString();
 
             try {
-                //Gọi hàm dịch vụ Login
-//                apiLogin(user,pass);
                 okhttpApiLogin(user, pass);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            startActivity(new Intent(Login.this, User.class));
-//            finish();
         });
 
         signup_btn.setOnClickListener(view ->{
             startActivity(new Intent(Login.this, Register.class));
-//            finish();
         });
     }
 
@@ -97,6 +76,7 @@ public class Login extends AppCompatActivity {
             });
         }
     }//void apiLogin(String user, String pass) throws IOException {
+
     void okhttpApiLogin(String user, String pass) throws IOException{
         String json = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
         Log.d("K45",json);
