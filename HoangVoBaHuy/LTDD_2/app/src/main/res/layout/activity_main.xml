@@ -33,11 +33,11 @@
 
     <TextView
         android:id="@+id/txt_myname"
-        android:layout_width="match_parent"
+        android:layout_width="272dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="HOÀNG VÕ BÁ HUY"
         android:layout_marginTop="10dp"
+        android:text="HOÀNG VÕ BÁ HUY"
         android:textColor="@color/white"
         android:textSize="22dp" />
 
@@ -94,22 +94,13 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/txt_quenmk"
+            android:id="@+id/txtRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:text="Quên mật khẩu?"
-            android:textColor="@color/white" />
-
-        <TextView
-            android:id="@+id/txt_dnhapbagtaikhoankhac"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="Đăng nhập bằng tài khoản khác"
+            android:text="Đăng ký"
+            android:textSize="24sp"
             android:textColor="@color/white" />
     </LinearLayout>
 
