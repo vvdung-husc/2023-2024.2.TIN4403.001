@@ -1,4 +1,4 @@
-package com.example.myapplication.Fraggment;
+package com.example.myapplication.Fragment;
 
 import android.widget.ViewFlipper;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,9 +6,10 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.application.R;
 import com.example.myapplication.Object.Button;
 import com.example.myapplication.Object.Product;
-import com.example.myapplication.R;
+
 import com.example.myapplication.RecyclerViewAdapter.ButtonAdapter;
 import com.example.myapplication.RecyclerViewAdapter.Product_Featured_Adapter;
 

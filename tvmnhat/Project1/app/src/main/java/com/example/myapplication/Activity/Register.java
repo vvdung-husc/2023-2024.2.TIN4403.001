@@ -1,5 +1,6 @@
 package com.example.myapplication.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Button;
@@ -8,9 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.myapplication.R;
+
+import com.example.application.R;
 import okhttp3.*;
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,7 +35,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         username_register = findViewById(R.id.username);
-        fullname_register = findViewById(R.id.fullname);
+        fullname_register = findViewById(R.id.fullname_register);
         email_register = findViewById(R.id.email_toggle);
         password_register = findViewById(R.id.password_toggle2);
         confirm_password_register = findViewById(R.id.password_toggle3);
@@ -50,9 +51,9 @@ public class Register extends AppCompatActivity {
             String confirm_password_register_str = confirm_password_register.getText().toString();
 
             if (password_register_str.equals(confirm_password_register_str)) {
-                Toast.makeText(Register.this, "REGISTER SUCCESSFULL", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, "REGISTER SUCCESSFULL!!! Return to the login page", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(Register.this, "REGISTER FAILED", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, "REGISTER FAILED!!!", Toast.LENGTH_SHORT).show();
             }
 
             try {
@@ -128,9 +129,6 @@ public class Register extends AppCompatActivity {
 
                 _fullnameRegistered = String.valueOf(fullname_register);
                _emailRegistered = String.valueOf(email_register);
-
-                Intent intent = new Intent(getApplicationContext(), User.class);
-                startActivity(intent);
             }
         });
     }
