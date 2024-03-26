@@ -18,7 +18,8 @@
         android:layout_width="179dp"
         android:layout_height="203dp"
         android:src="@drawable/logozalo"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
