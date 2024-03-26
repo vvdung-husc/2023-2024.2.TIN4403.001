@@ -52,7 +52,7 @@ public class LoginScreen extends AppCompatActivity {
         //Cài đặt sự kiện Click cho Button Login
         m_btnLogin.setOnClickListener(new CButtonLogin());
 
-        m_edtUserLog.setText("admin");
+        m_edtUserLog.setText("baondn_k45");
         m_edtPassLog.setText("123456");
     }
 
