@@ -1,4 +1,3 @@
-
 module.exports = new CUtils();
 
 function CUtils() {

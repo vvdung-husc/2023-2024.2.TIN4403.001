@@ -214,12 +214,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-<<<<<<< HEAD
-               // .url("https://dev.husc.edu.vn/tin4403/api/login")
-                .url("192.168.3.126:4080/login")
-=======
                 .url(Global._URL + "/login")
->>>>>>> origin/main
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
