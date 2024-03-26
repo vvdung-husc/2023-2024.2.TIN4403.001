@@ -1,15 +1,15 @@
 package com.example.myapplication.Activity;
 
 import android.content.Intent;
-import android.util.Log;
-import android.widget.*;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import com.example.application.R;
 import com.example.myapplication.Database.DatabaseHelper;
-import com.example.myapplication.HomePage;
-import com.example.myapplication.R;
-
-
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,8 +24,8 @@ public class Login extends AppCompatActivity {
     Button loginbutton;
     TextView signup_btn;
     static  String _usernameLogined;
-    static  String _fullnameLogined = "Trần Văn Minh Nhật";
-    static  String _emailLogined = "minhnhat6403@gmail.com";
+    static  String _fullnameRegistered = "Trần Văn Minh Nhật";
+    static  String _emailRegistered = "minhnhat6403@gmail.com";
     DatabaseHelper myDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +44,9 @@ public class Login extends AppCompatActivity {
     public void AddData(){
         loginbutton.setOnClickListener(view -> {
             //incorrect
-//            if(username.getText().toString().isEmpty() && password.getText().toString().isEmpty()){
-//                Toast.makeText(Login.this, "LOGIN FAILED!!!", Toast.LENGTH_SHORT).show();
-//            }
+            if(username.getText().toString().isEmpty() && password.getText().toString().isEmpty()){
+                Toast.makeText(Login.this, "LOGIN FAILED!!!", Toast.LENGTH_SHORT).show();
+            }
 //            //correct
 //            else{
 //                Toast.makeText(Login.this, "LOGIN SUCCESSFULLY", Toast.LENGTH_SHORT).show();
