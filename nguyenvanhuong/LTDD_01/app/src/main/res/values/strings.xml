@@ -1,11 +1,5 @@
 <resources>
     <string name="app_name">LTDD_01</string>
-    <string name="tendangnhap">Số di động hoặc email</string>
-    <string name="nhapmatkhau">Mật khẩu</string>
-    <string name="dangnhap">Đăng nhập</string>
-    <string name="fogotpass">Quên mật khẩu?</string>
-    <string name="createaccount">Tạo tài khoản </string>
-    <string name="name">Họ và tên</string>
-    <string name="sex">Giới tính</string>
+    <string name="matkhau">Nhập mật khẩu</string>
 
 </resources>
