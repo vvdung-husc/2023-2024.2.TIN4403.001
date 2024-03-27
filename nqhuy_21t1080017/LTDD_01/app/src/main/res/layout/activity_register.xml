@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:foregroundTint="#FDFCFC">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/titledangky"
@@ -12,10 +11,10 @@
         android:layout_height="40dp"
         android:background="#3F51B5"
         android:paddingLeft="35dp"
-        android:paddingTop="5dp"
+        android:paddingTop="10dp"
         android:text="Đăng ký"
         android:textColor="#FEFEFE"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,8 +23,10 @@
 
     <ImageButton
         android:id="@+id/imgbtnback"
-        android:layout_width="37dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
         android:background="#00FFFFFF"
         android:rotation="90"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,117 +48,113 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titledangky" />
 
-    <Button
-        android:id="@+id/btndangky"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="32dp"
-        android:text="Đăng ký"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hienthimatkhau" />
-
-    <CheckBox
-        android:id="@+id/hienthimatkhau"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="16dp"
-        android:text="Hiển thị mật khẩu."
-        android:textColor="#3F51B5"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/configpassword"
-        app:layout_constraintTop_toBottomOf="@+id/configpassword" />
-
     <EditText
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Tên đăng nhập *"
         android:inputType="text"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thongbaodangky" />
 
     <EditText
-        android:id="@+id/fullname"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Full name"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/username"
-        app:layout_constraintStart_toStartOf="@+id/username"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
-
-    <EditText
         android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="@+id/fullname"
         app:layout_constraintStart_toStartOf="@+id/fullname"
         app:layout_constraintTop_toBottomOf="@+id/fullname" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/pass"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Mật khẩu *"
         android:inputType="textPassword"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="@+id/email"
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
-        android:id="@+id/configpassword"
+        android:id="@+id/confirmpass"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Confirm password"
+        android:hint="Xác nhận mật khẩu *"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        android:textColorHint="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/pass"
+        app:layout_constraintStart_toStartOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
 
-    <TextView
-        android:id="@+id/login_account"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/fullname"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Bạn đã có tài khoảng!"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Họ và tên"
+        android:inputType="text"
+        android:textColorHint="#040404"
+        app:layout_constraintEnd_toEndOf="@+id/username"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <CheckBox
+        android:id="@+id/hienmatkhau"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="24dp"
+        android:text="Hiển thị mật khẩu"
         android:textColor="#3F51B5"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/configpassword"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/configpassword" />
+        app:layout_constraintEnd_toEndOf="@+id/pass"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/confirmpass"
+        app:layout_constraintTop_toBottomOf="@+id/confirmpass" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="241dp"
-        android:layout_height="160dp"
-        android:layout_marginBottom="16dp"
-        android:src="@mipmap/iconapp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btndangnhap" />
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Đăng ký"
+        app:layout_constraintEnd_toEndOf="@+id/confirmpass"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/confirmpass"
+        app:layout_constraintTop_toBottomOf="@+id/hienmatkhau" />
+
+    <TextView
+        android:id="@+id/lblLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="đã có tài khoảng"
+        android:textColor="#3F51B5"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="@+id/confirmpass"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/hienmatkhau"
+        app:layout_constraintTop_toBottomOf="@+id/confirmpass" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

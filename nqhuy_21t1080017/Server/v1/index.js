@@ -9,7 +9,7 @@ console.log("HELLO NODEJS");
 //sử dụng để kiểm tra API có đang hoạt động
 app.get("/", function (req, res) {
   console.log(arrUser);
-  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - NQHUY");
+  res.status(200).send("Welcome to RESTFUL API - NODEJS - TIN4403 - VVDUNG");
 });
 app.get("/test", function (req, res) {
   res.status(200).send(JSON.stringify(arrUser));
@@ -18,10 +18,10 @@ app.get("/test", function (req, res) {
 
 var arrUser = [];
 var oUser = {};
-oUser.username = "vvdung";
+oUser.username = "nqhuy";
 oUser.password = "123456";
-oUser.fullname = "Võ Việt Dũng";
-oUser.email = "vvdung@gmail.com";
+oUser.fullname = "Nguyễn Quốc Huy";
+oUser.email = "nqhuy@gmail.com";
 
 arrUser.push(oUser);
 //hàm đăng nhập - nhận thông tin tài khoản từ Android App

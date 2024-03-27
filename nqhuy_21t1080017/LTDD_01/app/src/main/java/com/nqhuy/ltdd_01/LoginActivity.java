@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,9 +17,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ltdd_01.R;
-
 import java.io.IOException;
+import com.example.ltdd_01.R;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -34,40 +32,36 @@ import okhttp3.Response;
 public class LoginActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     //thay đổi _URL đúng với IP đang chạy dịch vu WebService
-    //static String _URL = "http://192.168.1.113:4080";
+    //static String _URL = "http://192.168.3.101:4080";
     static String _URL = "https://dev.husc.edu.vn/tin4403/api";
-    static String   _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
+    static String _usernameLogined;// Hiển thị tại Form User sau khi đã đăng nhập
     EditText m_edtUser,m_edtPass; //Biến điều khiển EditText
     Button m_btnLogin; //Biến điều khiển Đăng nhập
     TextView m_lblRegister;//Biến điều khiển Đăng ký mới
-    CheckBox hienthimatkhau;//Biến điều khiển checkbox hiển thị mật khẩu
-    ImageButton imgbtnback;//Biến điều khiển ImageButton imgbtnback
+    CheckBox m_cbhienthimatkhau;//Biến điều hien thi mat khau
+
+    ImageButton m_btnback;//Biến điều khiển quay lại
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         //Khởi tạo các biến điều khiển tương ứng trong layout
-        m_edtUser = (EditText)findViewById(R.id.username);
-        m_edtPass = (EditText)findViewById(R.id.password);
-        m_btnLogin = (Button) findViewById(R.id.btndangnhap);
+        m_edtUser = findViewById(R.id.username);
+        m_edtPass = findViewById(R.id.pass);
+        m_btnLogin = findViewById(R.id.btnLogin);
 
-        m_lblRegister = (TextView) findViewById(R.id.register_account);
-
-        hienthimatkhau = findViewById(R.id.hienthimatkhau);
-        imgbtnback = findViewById(R.id.imgbtnback);
+        m_lblRegister = findViewById(R.id.lblRegister);
+        m_cbhienthimatkhau = findViewById(R.id. hienmatkhau);
 
         //Cài đặt sự kiện Click cho Button Login
         m_btnLogin.setOnClickListener(new CButtonLogin());
 
-        //Cài đặt sự kiện Click cho Text View Register
-        m_lblRegister.setOnClickListener(new CTextViewRegister());
+        //Cài đặt sự kiện Click cho Button Register
+        m_lblRegister.setOnClickListener(new CButtonRegister());
 
-        //Cài đặt sự kiện Click cho CheckBox hienthimatkhau
-        hienthimatkhau.setOnClickListener(new LoginActivity.CheckBoxHienThiMatKhau());
-
-        //Cài đặt sự kiện Click cho ImageButton imgbtnback
-        imgbtnback.setOnClickListener(new LoginActivity.ImageButtonBack());
+        //Cài đặt sự kiện Click cho Button Back
+        m_btnback.setOnClickListener(new CButtonBack());
 
     }//protected void onCreate(Bundle savedInstanceState) {
 
@@ -93,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         }//public void onClick(View v) {//Hàm sử lý sự kiện click button login
     }//public class CButtonLogin  implements View.OnClickListener {
 
-    public class CTextViewRegister implements View.OnClickListener {
+    public class CButtonRegister implements View.OnClickListener {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button register
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
@@ -102,28 +96,24 @@ public class LoginActivity extends AppCompatActivity {
         }
     }//public class CButtonRegister implements View.OnClickListener {
 
-    public class CheckBoxHienThiMatKhau implements View.OnClickListener {
+    public class CShowPassword implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            if (hienthimatkhau.isChecked()) {
+            if (m_cbhienthimatkhau.isChecked()){
                 m_edtPass.setTransformationMethod(null);
-            } else {
-                m_edtPass.setTransformationMethod(new PasswordTransformationMethod());
+            }
+            else{
+                m_edtPass.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance());
             }
         }
     }
 
-    public class ImageButtonBack implements View.OnClickListener {
+    public class CButtonBack implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             // Xử lý sự kiện khi icon quay lại được nhấn
-            onBackPressedAction();
+            finish();
         }
-    }
-
-    void onBackPressedAction() {
-        // Thực hiện logic quay lại tùy thuộc vào yêu cầu của bạn
-        finish(); // hoặc thực hiện logic quay lại khác
     }
 
     //Hàm dịch vụ Login

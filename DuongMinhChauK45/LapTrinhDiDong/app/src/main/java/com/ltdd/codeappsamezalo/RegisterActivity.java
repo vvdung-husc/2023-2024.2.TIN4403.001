@@ -57,12 +57,12 @@ public class RegisterActivity extends AppCompatActivity {
             String pass = m_edtPass.getText().toString();
             Log.d("TIN4403","CLICK BUTTON LOGIN ACCOUNT " + user + "/" + pass);
             if (user.length() < 3 || pass.length() < 6){
-                MainActivity.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
+                Global.ShowToast(getApplicationContext(),"Tài khoản hoặc mật khẩu không hợp lệ!");
                 return;
             }
             String repass = m_edtRePass.getText().toString();
             if (pass.compareTo(repass) != 0){
-                MainActivity.ShowToast(getApplicationContext(),"Mật khẩu không chính xác!");
+                Global.ShowToast(getApplicationContext(),"Mật khẩu không chính xác!");
                 return;
             }
             try {
@@ -89,10 +89,10 @@ public class RegisterActivity extends AppCompatActivity {
     void okhttpApiRegister(JSONObject oUser) throws IOException {
         OkHttpClient client = new OkHttpClient();
         String json = oUser.toString();
-        RequestBody body = RequestBody.create(json, MainActivity.JSON);
+        RequestBody body = RequestBody.create(json, API.JSON);
 
         Request request = new Request.Builder()
-                .url(MainActivity._URL + "/register")
+                .url(Global._URL + "/register")
                 .post(body)
                 .build();
 
