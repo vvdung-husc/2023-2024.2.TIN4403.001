@@ -222,6 +222,11 @@ public class ChangePassScreen extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        m_edtNameCP.setText("");
+                                        m_edtEmailCP.setText("");
+                                        m_edtOldPass.setText("");
+                                        m_edtNewPass.setText("");
+                                        m_edtReNewPass.setText("");
                                         Toast.makeText(getApplicationContext(), "Thay đổi thành công", Toast.LENGTH_SHORT).show();
                                     }
                                 });
