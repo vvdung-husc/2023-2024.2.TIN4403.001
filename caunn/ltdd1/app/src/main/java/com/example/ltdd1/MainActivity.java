@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }//public class CButtonRegister implements View.OnClickListener {
 
+
     void threadLogin(String user, String pass) {
         //Tạo chuỗi theo cấu trúc JSON
         String jsonBody = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
