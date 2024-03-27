@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
     void threadLogin(String user, String pass) {
         //Tạo chuỗi theo cấu trúc JSON
         String jsonBody = "{\"username\":\"" + user + "\",\"password\":\"" + pass +"\"}";
+
         Log.d("threadLogin",jsonBody);
 
         String jsonResponse;
