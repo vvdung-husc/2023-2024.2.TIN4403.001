@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.myapplication.R;
+import com.example.application.R;
 
 public class User extends AppCompatActivity {
     TextView m_lblWelcome;
@@ -63,7 +63,6 @@ public class User extends AppCompatActivity {
         });
 
         m_btnUpdate.setOnClickListener(v -> {
-
             Toast.makeText(User.this, "UPDATE SUCCESSFULLY", Toast.LENGTH_SHORT).show();
         });
     }

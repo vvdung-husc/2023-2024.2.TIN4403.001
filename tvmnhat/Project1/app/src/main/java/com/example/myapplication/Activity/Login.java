@@ -1,15 +1,15 @@
 package com.example.myapplication.Activity;
 
 import android.content.Intent;
-import android.util.Log;
-import android.widget.*;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import com.example.application.R;
 import com.example.myapplication.Database.DatabaseHelper;
-import com.example.myapplication.Fraggment.HomePage;
-import com.example.myapplication.R;
-
-
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 

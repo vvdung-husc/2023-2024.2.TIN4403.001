@@ -86,7 +86,7 @@
                 android:drawablePadding="8dp"
                 android:hint="Họ và tên"
                 android:padding="8dp"
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
@@ -100,7 +100,7 @@
                 android:drawablePadding="8dp"
                 android:hint="Email"
                 android:padding="8dp"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
@@ -119,7 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Chưa có tài khoản?"
+                android:text="Bạn đã có tài khoản?"
                 android:textSize="14sp"
                 android:textAlignment="center"
                 android:textColor="@color/color_primary"
