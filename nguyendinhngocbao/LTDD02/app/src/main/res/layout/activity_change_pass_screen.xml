@@ -23,20 +23,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:backgroundTint="#00d4ff"
         android:text="Quay lại"
         android:textSize="16sp"
         app:icon="@android:drawable/ic_menu_revert"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnChange" />
+        app:layout_constraintTop_toBottomOf="@+id/btnChange"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnChange"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="60dp"
         android:enabled="false"
         android:text="Cập nhật thông tin"
@@ -44,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassNew2" />
+        app:layout_constraintTop_toBottomOf="@+id/chkOk" />
 
     <EditText
         android:id="@+id/edtName2"
@@ -147,4 +149,17 @@
         app:layout_constraintEnd_toEndOf="@+id/chkEmail"
         app:layout_constraintStart_toStartOf="@+id/chkEmail"
         app:layout_constraintTop_toBottomOf="@+id/edtEmail2" />
+
+    <CheckBox
+        android:id="@+id/chkOk"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
+        android:text="Đồng ý thay đổi"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/chkPass"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/chkPass"
+        app:layout_constraintTop_toBottomOf="@+id/chkPass" />
 </androidx.constraintlayout.widget.ConstraintLayout>
