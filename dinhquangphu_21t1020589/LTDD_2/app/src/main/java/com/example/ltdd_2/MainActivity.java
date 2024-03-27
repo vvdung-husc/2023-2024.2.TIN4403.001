@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btn_Login = findViewById(R.id.btnDangNhap);
         btn_Register = findViewById(R.id.btnDangKy);
 
-        btn_Register.setOnClickListener(new ButtonDangKy());
+        btn_Register.setOnClickListener(new ButtonDangKy()) ;
         btn_Login.setOnClickListener(new ButtonDangNhap());
     }
 
