@@ -69,7 +69,7 @@ function getUser(user){
 }
 function isExist(user,pass){
   var oUser = getUser(user);
-  if (oUser && oUser.password == pass) return true;
+  if (oUser.username === user && oUser.password === pass) return true;
   return false;
 }
 
