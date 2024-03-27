@@ -49,7 +49,7 @@ public class UserActivity extends AppCompatActivity {
         m_btnLogout = (Button) findViewById(R.id.btnLogout);
         m_btnChange = (Button) findViewById(R.id.btnChange);
 
-        m_lblWelcome.setText("*** Chào mừng ***");
+        m_lblWelcome.setText("Cài đặt");
 
         m_lblUser.setText ("Tài khoản\t\t:\t" + User._username);
         m_lblName.setText ("Họ và tên\t\t:\t" + User._fullname);
