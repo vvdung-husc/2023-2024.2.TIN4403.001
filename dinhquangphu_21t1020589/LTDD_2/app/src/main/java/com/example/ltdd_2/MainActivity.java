@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         _URL = "https://dev.husc.edu.vn/tin4403/api";
-        _URL = "http://192.168.1.7:4080";
+        //_URL = "http://192.168.1.7:4080";
 
         btn_Login = findViewById(R.id.btnDangNhap);
         btn_Register = findViewById(R.id.btnDangKy);
 
-        btn_Register.setOnClickListener(new ButtonDangKy());
+        btn_Register.setOnClickListener(new ButtonDangKy()) ;
         btn_Login.setOnClickListener(new ButtonDangNhap());
     }
 

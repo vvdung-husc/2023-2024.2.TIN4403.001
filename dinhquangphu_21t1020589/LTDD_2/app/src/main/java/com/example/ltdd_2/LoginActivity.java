@@ -96,7 +96,8 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url(" http://192.168.1.7:4080/login")
+                //.url(" http://192.168.1.7:4080/login")
+                .url("https://dev.husc.edu.vn/tin4403/api/login")
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();

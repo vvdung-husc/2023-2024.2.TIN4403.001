@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0E79C9"
-    tools:context=".Login">
+    android:background="#0E79C9">
 
     <ImageView
         android:layout_width="176dp"
@@ -53,7 +52,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="14dp"
+        android:layout_height="15dp"
         android:id="@+id/quenmatkhau"
         android:layout_below="@+id/password_toggle"
         android:text="@string/forgot_password"
