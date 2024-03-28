@@ -1,5 +1,5 @@
 
-Tài khoản test login - POST https://dev.husc.edu.vn/tin4403/api/login
+Tài khoản test login - POST ://dev.husc.edu.vn/tin4403/api/loginhttps
 username: admin
 password: 123456
 
