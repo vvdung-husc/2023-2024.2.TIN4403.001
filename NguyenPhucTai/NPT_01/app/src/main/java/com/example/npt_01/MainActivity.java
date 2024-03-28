@@ -19,8 +19,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.npt_01.R;
-import com.example.npt_01.UserActivity;
+import com.example.npt_01.MainActivity;
+import com.example.npt_01.MainActivity ;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {//Hàm sử lý sự kiện click button register
             //Toast.makeText(getApplicationContext(),"CButtonRegister::onClick...",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), com.example.npt_01.RegisterActivity.class);
+            Intent i = new Intent(getApplicationContext(), com.example.giakhanh_ltdd.RegisterActivity.class);
             startActivity(i);
         }
     }//public class CButtonRegister implements View.OnClickListener {
@@ -214,12 +214,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-<<<<<<< HEAD
-               // .url("https://dev.husc.edu.vn/tin4403/api/login")
-                .url("192.168.3.126:4080/login")
-=======
                 .url(Global._URL + "/login")
->>>>>>> origin/main
                 .post(body)
                 .build();
         OkHttpClient client = new OkHttpClient();
