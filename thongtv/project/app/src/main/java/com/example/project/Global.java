@@ -19,9 +19,9 @@ public class Global {
     public static Handler _Handler;
     public static String _token;
     public static String _URL ="https://dev.husc.edu.vn/tin4403/api";
-    //public static String _URL ="http://192.168.0.51:4080";
+    //public static String _URL ="http://172.20.10.19:5080";
     public static API _HTTP = new API(_URL);
-
+    public static String _userPassword;
     public static void ShowToast(Context ctx, String msg){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             Toast toast = Toast.makeText(ctx,msg,Toast.LENGTH_LONG);
