@@ -162,7 +162,7 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody body = RequestBody.create(json, LoginActivity.JSON);
 
         Request request = new Request.Builder()
-                .url(LoginActivity._URL + "/register")
+                .url(Global._URL + "/register")
                 .post(body)
                 .build();
 

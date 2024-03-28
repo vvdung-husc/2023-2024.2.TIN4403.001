@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        _URL = "https://dev.husc.edu.vn/tin4403/api";
+//        _URL = "https://dev.husc.edu.vn/tin4403/api";
         //_URL = "http://192.168.1.113:5080";
 
         loiginUsername = findViewById(R.id.username);
