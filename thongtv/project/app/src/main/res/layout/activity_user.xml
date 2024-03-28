@@ -7,6 +7,19 @@
     android:background="#FAF6F6"
     tools:context=".MainActivity">
 
+    <CheckBox
+        android:id="@+id/chkOk"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="Đồng ý thay đổi"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/chkPass"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/chkPass"
+        app:layout_constraintTop_toBottomOf="@+id/chkPass" />
+
     <TextView
         android:id="@+id/lblWelcome"
         android:layout_width="wrap_content"
@@ -24,7 +37,7 @@
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="16dp"
         android:background="#FAFBFF"
         android:text="Đăng xuất"
         android:textColor="#000000"
@@ -39,7 +52,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="60dp"
         android:enabled="false"
         android:text="Cập nhật thông tin"
@@ -59,6 +72,7 @@
         android:inputType="text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/chkName"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/chkName"
         app:layout_constraintTop_toBottomOf="@+id/chkName" />
 
@@ -67,11 +81,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="60dp"
         android:text="TextView"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblWelcome" />
 
@@ -154,12 +169,13 @@
         android:id="@+id/chkName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="4dp"
         android:text="Thay đổi họ tên"
         android:textAlignment="viewStart"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/lblEmail2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/lblEmail2"
         app:layout_constraintTop_toBottomOf="@+id/lblEmail2" />
 
